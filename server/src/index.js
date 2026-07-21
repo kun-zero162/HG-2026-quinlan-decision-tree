@@ -139,8 +139,24 @@ const server = app.listen(PORT, () => {
 const wss = new WebSocketServer({ server });
 
 // Broadcast utility
+const getOnlineUsers = () => {
+  const users = [];
+  wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN && client.user) {
+      if (!users.some(u => u.username === client.user.username)) {
+        users.push(client.user);
+      }
+    }
+  });
+  return users;
+};
+
 const broadcastState = () => {
-  const payload = JSON.stringify({ type: 'STATE_UPDATE', state: classState });
+  const payload = JSON.stringify({ 
+    type: 'STATE_UPDATE', 
+    state: classState,
+    onlineUsers: getOnlineUsers()
+  });
   wss.clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(payload);
@@ -150,13 +166,22 @@ const broadcastState = () => {
 
 wss.on('connection', (ws) => {
   // Immediately sync state on connection
-  ws.send(JSON.stringify({ type: 'STATE_UPDATE', state: classState }));
+  ws.send(JSON.stringify({ 
+    type: 'STATE_UPDATE', 
+    state: classState,
+    onlineUsers: getOnlineUsers()
+  }));
 
   ws.on('message', (message) => {
     try {
       const data = JSON.parse(message);
       
       switch (data.type) {
+        case 'USER_IDENTIFY':
+          ws.user = data.user;
+          broadcastState();
+          break;
+
         case 'TEACHER_UPDATE_STATE':
           // GV updates state fields
           classState = { ...classState, ...data.state };
@@ -206,5 +231,9 @@ wss.on('connection', (ws) => {
     } catch (error) {
       console.error('Error processing WS message:', error);
     }
+  });
+
+  ws.on('close', () => {
+    broadcastState();
   });
 });

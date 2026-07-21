@@ -192,14 +192,16 @@ const SLIDES = [
     type: 'vector-visualizer',
     title: 'Thuật ngữ: Vectơ thuộc tính',
     defaultAttr: 'Chuyên cần',
-    defaultVal: 'Đi học đủ'
+    defaultVal: 'Đi học đủ',
+    definition: 'Vectơ thuộc tính là vectơ chứa các nhãn kết quả của các mẫu dữ liệu có cùng thuộc tính.'
   },
   {
     stage: 'explain',
     type: 'vector-visualizer',
     title: 'Thuật ngữ: Vectơ đơn vị',
     defaultAttr: 'Chuyên cần',
-    defaultVal: 'Thường xuyên vắng'
+    defaultVal: 'Thường xuyên vắng',
+    definition: 'Vectơ đơn vị là vectơ thuộc tính mà tất cả phần tử có CÙNG một giá trị nhãn.'
   },
   {
     stage: 'explain',
@@ -463,7 +465,7 @@ const FALLBACK_ROWS = [
   { STT: 16, 'Điểm giữa kỳ': '<5', 'Chuyên cần': 'Đi học đủ', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Rớt môn' }
 ];
 
-function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal = 'Đi học đủ', isSlideshow = false }) {
+function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal = 'Đi học đủ', isSlideshow = false, definition = null }) {
   const [selectedAttr, setSelectedAttr] = useState(defaultAttr);
   const [selectedVal, setSelectedVal] = useState(defaultVal);
   const [animationStep, setAnimationStep] = useState(0);
@@ -514,6 +516,28 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: '1.5rem', marginTop: '0.5rem', width: '100%', alignItems: 'start', maxHeight: isSlideshow ? '58vh' : 'auto' }}>
       <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '0.75rem', border: '1px solid var(--border-color)' }}>
+        {definition && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(99, 102, 241, 0.08) 100%)',
+            border: '1.5px solid rgba(99, 102, 241, 0.15)',
+            borderRadius: '0.75rem',
+            padding: '0.75rem 1rem',
+            marginBottom: '1rem',
+            fontSize: isSlideshow ? '1.8vh' : '0.875rem',
+            lineHeight: '1.5',
+            color: 'var(--text-primary)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '0.6rem',
+            boxShadow: 'var(--shadow-sm)'
+          }}>
+            <span style={{ fontSize: isSlideshow ? '2.2vh' : '1.1rem', marginTop: '-2px' }}>📖</span>
+            <div>
+              <strong style={{ color: 'var(--primary)' }}>Định nghĩa:</strong> {definition}
+            </div>
+          </div>
+        )}
+
         <h4 style={{ margin: '0 0 0.75rem 0', color: 'var(--primary)', fontSize: isSlideshow ? '2.3vh' : '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
           <span>💡 Trích xuất Vectơ Minh Họa</span>
         </h4>
@@ -1852,6 +1876,7 @@ function App() {
   const [ws, setWs] = useState(null);
   const [dataset, setDataset] = useState(null);
   const [demoAccounts, setDemoAccounts] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   // Sync state values shorthand
   const currentSlide = SLIDES[classState.activeSlideIndex] || SLIDES[0];
@@ -1889,6 +1914,9 @@ function App() {
         const message = JSON.parse(event.data);
         if (message.type === 'STATE_UPDATE') {
           setClassState(message.state);
+          if (message.onlineUsers) {
+            setOnlineUsers(message.onlineUsers);
+          }
         }
       };
 
@@ -1902,6 +1930,28 @@ function App() {
     connect();
     return () => socket && socket.close();
   }, []);
+
+  // Identify user on connection / user state changes
+  useEffect(() => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      if (user) {
+        ws.send(JSON.stringify({
+          type: 'USER_IDENTIFY',
+          user: {
+            username: user.username,
+            fullname: user.fullname,
+            role: user.role,
+            group: user.group
+          }
+        }));
+      } else {
+        ws.send(JSON.stringify({
+          type: 'USER_IDENTIFY',
+          user: null
+        }));
+      }
+    }
+  }, [ws, user]);
 
   // Fullscreen state listeners
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -2689,6 +2739,7 @@ function App() {
                 defaultAttr={currentSlide.defaultAttr}
                 defaultVal={currentSlide.defaultVal}
                 isSlideshow={true}
+                definition={currentSlide.definition}
               />
             )}
 
@@ -3061,6 +3112,7 @@ function App() {
                 defaultAttr={currentSlide.defaultAttr}
                 defaultVal={currentSlide.defaultVal}
                 isSlideshow={false}
+                definition={currentSlide.definition}
               />
             )}
 
@@ -3174,14 +3226,75 @@ function App() {
               </div>
             </div>
 
+            {/* Student Login Status Widget */}
+            <div className="sidebar-item">
+              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.75rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>Quản lý Sinh viên</span>
+                <span style={{
+                  fontSize: '0.75rem',
+                  padding: '0.2rem 0.5rem',
+                  borderRadius: '12px',
+                  background: 'var(--primary-light)',
+                  color: 'var(--primary-hover)',
+                  fontWeight: '700'
+                }}>
+                  {demoAccounts.filter(acc => acc.role === 'student').filter(s => onlineUsers.some(o => o.username === s.username)).length}
+                  /
+                  {demoAccounts.filter(acc => acc.role === 'student').length} Online
+                </span>
+              </h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                maxHeight: '220px',
+                overflowY: 'auto',
+                paddingRight: '4px'
+              }}>
+                {demoAccounts.filter(acc => acc.role === 'student').map(student => {
+                  const isOnline = onlineUsers.some(u => u.username === student.username);
+                  return (
+                    <div
+                      key={student.username}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0.5rem 0.75rem',
+                        borderRadius: '0.75rem',
+                        background: isOnline ? 'var(--success-bg)' : '#f8fafc',
+                        border: '1px solid',
+                        borderColor: isOnline ? 'var(--success-border)' : 'var(--border-color)',
+                        fontSize: '0.85rem',
+                        transition: 'var(--transition)'
+                      }}
+                    >
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <span style={{ fontWeight: '700', color: 'var(--text-primary)' }}>{student.fullname}</span>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                          @{student.username} • Nhóm {student.group}
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <span className={isOnline ? 'online-dot' : 'offline-dot'} />
+                        <span style={{
+                          fontWeight: '600',
+                          color: isOnline ? 'var(--success-text)' : 'var(--text-muted)'
+                        }}>
+                          {isOnline ? 'Online' : 'Offline'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* User details / help */}
             <div className="sidebar-item">
               <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.5rem 0' }}>Thông tin bài giảng</h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '0 0 0.5rem 0' }}>
                 Lớp CD CNTT 24AI
-              </p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
-                Các tương tác trực tuyến của sinh viên đã được tắt để phục vụ cho các hoạt động thi đua thực tế bên ngoài.
               </p>
             </div>
           </section>
