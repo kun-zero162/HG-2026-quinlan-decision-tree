@@ -1,0 +1,17 @@
+﻿STT,Điểm giữa kỳ,Chuyên cần,Làm bài tập,Kết quả học tập
+1,>=5,Đi học đủ,Có,Khá giỏi
+2,>=5,Đi học đủ,Có,Khá giỏi
+3,>=5,Đi học đủ,Không,Khá giỏi 
+4,<5,Đi học đủ,Có,Trung bình khá
+5,<5,Đi học đủ,Có,Trung bình khá
+6,<5,Đi học đủ,Không,Rớt môn
+7,>=5,Thỉnh thoảng vắng,Có,Trung bình khá
+8,>=5,Thỉnh thoảng vắng,Không,Trung bình khá
+9,<5,Thỉnh thoảng vắng,Có,Rớt môn
+10,<5,Thỉnh thoảng vắng,Không,Rớt môn
+11,>=5,Thường xuyên vắng,Có,Rớt môn
+12,>=5,Thường xuyên vắng,Không,Rớt môn
+13,<5,Thường xuyên vắng,Có,Rớt môn
+14,<5,Thường xuyên vắng,Không,Rớt môn
+15,>=5,Đi học đủ,Có,Khá giỏi
+16,<5,Đi học đủ,Không,Rớt môn
