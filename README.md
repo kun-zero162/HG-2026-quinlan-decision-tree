@@ -57,21 +57,6 @@ npm run dev
 *   **Frontend Client:** Chạy tại địa chỉ `http://localhost:5173` hoặc thông qua tên miền `http://hoigiang2026.caothang.local:5173` (sau khi đã map host).
 *   **Backend API & WebSocket Server:** Chạy trên cổng `5000`.
 
----
-
-## 🔑 Tài khoản đăng nhập mặc định
-
-Dữ liệu tài khoản được định nghĩa sẵn trong file [users.csv](file:///d:/CDKTCT/HG/project/quinlan-decision-tree/server/data/users.csv):
-
-| Vai trò | Tên đăng nhập (Username) | Mật khẩu (Password) | Họ và tên | Nhóm |
-| :--- | :--- | :--- | :--- | :---: |
-| **Giảng viên** | `nhviet` | `Hoigiang2026` | Nguyễn Hoàng Việt | GV (0) |
-| **Sinh viên** | `student1` | `Abc123` | Nguyễn Văn A | 1 |
-| **Sinh viên** | `student2` | `Abc123` | Nguyễn Văn B | 1 |
-| **Sinh viên** | `student3` | `Abc123` | Nguyễn Văn C | 1 |
-| **Sinh viên** | `student4` | `Abc123` | Nguyễn Văn D | 2 |
-| **Sinh viên** | `student5` | `Abc123` | Nguyễn Văn E | 2 |
-| **Sinh viên** | `student6` | `Abc123` | Nguyễn Văn F | 2 |
 
 ---
 
