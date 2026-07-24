@@ -1,7 +1,7 @@
 # Script to map local domain to 127.0.0.1 for quinlan decision tree project
 
 $hostsPath = "C:\Windows\System32\drivers\etc\hosts"
-$domain = "hoigiang2026.caothang.local"
+$domain = "hoigiang2026cntt.caothang.edu.vn"
 $entry = "127.0.0.1 $domain"
 
 # Check if already exists

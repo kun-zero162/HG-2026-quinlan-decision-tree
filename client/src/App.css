@@ -636,6 +636,60 @@ body {
   border-color: var(--text-secondary);
 }
 
+/* Glow up score bubble effect */
+.glow-score-bubble {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.2rem;
+  font-weight: 900;
+  pointer-events: none;
+  z-index: 100;
+  animation: glowUpPop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.glow-score-bubble.group1 {
+  color: #ef4444;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.9), 0 0 20px rgba(239, 68, 68, 0.6), 0 0 30px rgba(239, 68, 68, 0.3);
+}
+
+.glow-score-bubble.group2 {
+  color: #3b82f6;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.9), 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* For footer, adjust size and alignment since it is a row */
+.glow-score-bubble-footer {
+  font-size: 1.6rem;
+  top: -35px;
+  left: 45%;
+  transform: translateX(-50%);
+}
+
+@keyframes glowUpPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.6);
+    filter: blur(2px);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -20px) scale(1.4);
+    filter: blur(0px);
+  }
+
+  30% {
+    transform: translate(-50%, -25px) scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -70px) scale(0.9);
+  }
+}
+
 /* Raise hand interface */
 .raise-hand-box {
   background: #fffbeb;
@@ -849,6 +903,87 @@ body {
   height: 78vh;
 }
 
+.slideshow-body.wide-layout {
+  max-width: 96vw;
+}
+
+.slideshow-split-layout {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 2vw;
+  align-items: center;
+  height: 74vh;
+  min-height: 0;
+  width: 100%;
+}
+
+.slideshow-left-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  padding-right: 1.5vw;
+}
+
+.slideshow-right-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 0;
+}
+
+.slideshow-right-col .tree-wrapper-slideshow {
+  height: 100%;
+  max-height: 74vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.standard-split-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 2rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.standard-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.standard-right-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.standard-split-layout .tree-svg-standard {
+  min-width: 0;
+  width: 100%;
+  height: auto;
+}
+
+.standard-split-layout .tree-wrapper-standard {
+  width: 100%;
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
 .slideshow-slide-heading {
   font-size: 4vh;
   font-weight: 800;
@@ -860,8 +995,8 @@ body {
 }
 
 .slideshow-slide-content {
-  font-size: 2.2vh;
-  line-height: 1.4;
+  font-size: 3vh;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
@@ -1163,10 +1298,46 @@ body {
   0% {
     box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
+}
+
+/* Classroom interactive timer widgets */
+.timer-pulse-critical {
+  animation: pulse-red-timer 1.2s infinite alternate;
+}
+
+@keyframes pulse-red-timer {
+  0% {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.45), inset 0 0 6px rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    background-color: rgba(254, 242, 242, 0.95);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.8), inset 0 0 15px rgba(239, 68, 68, 0.45);
+    border-color: #f87171;
+    background-color: rgba(254, 242, 242, 1);
+  }
+}
+
+.btn-timer-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.25);
+  filter: brightness(1.05);
+}
+
+.btn-timer-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  background-color: #f8fafc !important;
+}
+
+.btn-timer-toggle:active, .btn-timer-reset:active {
+  transform: translateY(0);
 }

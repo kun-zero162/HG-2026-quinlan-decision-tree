@@ -1,17 +1,17 @@
-﻿STT,Điểm giữa kỳ,Chuyên cần,Làm bài tập,Kết quả học tập
-1,>=5,Đi học đủ,Có,Khá giỏi
-2,>=5,Đi học đủ,Có,Khá giỏi
-3,>=5,Đi học đủ,Không,Khá giỏi 
-4,<5,Đi học đủ,Có,Trung bình khá
-5,<5,Đi học đủ,Có,Trung bình khá
-6,<5,Đi học đủ,Không,Rớt môn
-7,>=5,Thỉnh thoảng vắng,Có,Trung bình khá
-8,>=5,Thỉnh thoảng vắng,Không,Trung bình khá
-9,<5,Thỉnh thoảng vắng,Có,Rớt môn
-10,<5,Thỉnh thoảng vắng,Không,Rớt môn
-11,>=5,Thường xuyên vắng,Có,Rớt môn
-12,>=5,Thường xuyên vắng,Không,Rớt môn
-13,<5,Thường xuyên vắng,Có,Rớt môn
-14,<5,Thường xuyên vắng,Không,Rớt môn
-15,>=5,Đi học đủ,Có,Khá giỏi
-16,<5,Đi học đủ,Không,Rớt môn
+STT,Chuyên cần,Điểm giữa kỳ,Làm bài tập,Kết quả học tập
+1,Đi học đủ,>=5,Có,Giỏi
+2,Đi học đủ,>=5,Có,Giỏi
+3,Đi học đủ,>=5,Không,Giỏi
+4,Đi học đủ,<5,Có,Trung bình khá
+5,Đi học đủ,<5,Có,Trung bình khá
+6,Đi học đủ,<5,Không,Không đạt
+7,Thỉnh thoảng vắng,>=5,Có,Trung bình khá
+8,Thỉnh thoảng vắng,>=5,Không,Trung bình khá
+9,Thỉnh thoảng vắng,<5,Có,Không đạt
+10,Thỉnh thoảng vắng,<5,Không,Không đạt
+11,Thường xuyên vắng,>=5,Có,Không đạt
+12,Thường xuyên vắng,>=5,Không,Không đạt
+13,Thường xuyên vắng,<5,Có,Không đạt
+14,Thường xuyên vắng,<5,Không,Không đạt
+15,Đi học đủ,>=5,Có,Giỏi
+16,Đi học đủ,<5,Không,Không đạt

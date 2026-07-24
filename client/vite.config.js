@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
+    allowedHosts: ['hoigiang2026cntt.caothang.edu.vn'],
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
