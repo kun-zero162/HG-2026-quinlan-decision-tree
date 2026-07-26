@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext, createContext } from 'react';
 import './App.css';
 import DecisionTreeSVG from './components/DecisionTreeSVG';
+
+export const ClassStateContext = createContext(null);
 
 // Definition of slides across the 5E stages
 const SLIDES = [
@@ -327,7 +329,7 @@ const SLIDES = [
         }}>
           Cả lớp làm trên phiếu dữ liệu để xác định các vectơ cho thuộc tính <strong>“Làm bài tập”</strong>
         </p>
-        <CountdownTimer initialSeconds={120} />
+        <CountdownTimer />
       </div>
     )
   },
@@ -359,13 +361,7 @@ const SLIDES = [
       </div>
     )
   },
-  {
-    stage: 'explain',
-    type: 'vector-visualizer',
-    title: 'Hướng dẫn: Chọn Nút gốc cho Cây quyết định',
-    defaultAttr: 'Chuyên cần',
-    defaultVal: 'Đi học đủ'
-  },
+
   {
     stage: 'explain',
     type: 'content',
@@ -606,29 +602,32 @@ const FALLBACK_ROWS = [
   { STT: 16, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' }
 ];
 
-function CountdownTimer({ initialSeconds = 120 }) {
-  const [seconds, setSeconds] = useState(initialSeconds);
-  const [isActive, setIsActive] = useState(false);
+function CountdownTimer() {
+  const context = useContext(ClassStateContext);
+  if (!context) return null;
+  const { classState, isTeacher, sendStateUpdate } = context;
+
+  const seconds = classState.timerSeconds !== undefined ? classState.timerSeconds : 90;
+  const isActive = classState.timerActive !== undefined ? classState.timerActive : false;
 
   useEffect(() => {
     let interval = null;
-    if (isActive && seconds > 0) {
+    if (isTeacher && isActive && seconds > 0) {
       interval = setInterval(() => {
-        setSeconds((prev) => prev - 1);
+        sendStateUpdate({ timerSeconds: seconds - 1 });
       }, 1000);
-    } else if (seconds === 0) {
-      setIsActive(false);
+    } else if (isTeacher && isActive && seconds === 0) {
+      sendStateUpdate({ timerActive: false });
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [isTeacher, isActive, seconds]);
 
   const toggleTimer = () => {
-    setIsActive(!isActive);
+    sendStateUpdate({ timerActive: !isActive });
   };
 
   const resetTimer = () => {
-    setIsActive(false);
-    setSeconds(initialSeconds);
+    sendStateUpdate({ timerActive: false, timerSeconds: 90 });
   };
 
   const formatTime = (secs) => {
@@ -689,48 +688,50 @@ function CountdownTimer({ initialSeconds = 120 }) {
         </span>
       </div>
 
-      <div style={{ display: 'flex', gap: '1.5vw' }}>
-        <button
-          onClick={toggleTimer}
-          style={{
-            padding: '1.2vh 2.5vw',
-            fontSize: '2vh',
-            fontWeight: '600',
-            borderRadius: '2rem',
-            border: 'none',
-            cursor: 'pointer',
-            background: isActive ? 'var(--warning)' : 'var(--primary)',
-            color: 'white',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            transition: 'all 0.2s ease',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5vw'
-          }}
-          className="btn-timer-toggle"
-        >
-          {isActive ? '⏸️ Tạm dừng' : '▶️ Bắt đầu'}
-        </button>
+      {isTeacher && (
+        <div style={{ display: 'flex', gap: '1.5vw' }}>
+          <button
+            onClick={toggleTimer}
+            style={{
+              padding: '1.2vh 2.5vw',
+              fontSize: '2vh',
+              fontWeight: '600',
+              borderRadius: '2rem',
+              border: 'none',
+              cursor: 'pointer',
+              background: isActive ? 'var(--warning)' : 'var(--primary)',
+              color: 'white',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5vw'
+            }}
+            className="btn-timer-toggle"
+          >
+            {isActive ? '⏸️ Tạm dừng' : '▶️ Bắt đầu'}
+          </button>
 
-        <button
-          onClick={resetTimer}
-          style={{
-            padding: '1.2vh 2.5vw',
-            fontSize: '2vh',
-            fontWeight: '600',
-            borderRadius: '2rem',
-            border: '1.5px solid var(--border-color)',
-            cursor: 'pointer',
-            background: '#ffffff',
-            color: 'var(--text-primary)',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-            transition: 'all 0.2s ease'
-          }}
-          className="btn-timer-reset"
-        >
-          🔄 Đặt lại
-        </button>
-      </div>
+          <button
+            onClick={resetTimer}
+            style={{
+              padding: '1.2vh 2.5vw',
+              fontSize: '2vh',
+              fontWeight: '600',
+              borderRadius: '2rem',
+              border: '1.5px solid var(--border-color)',
+              cursor: 'pointer',
+              background: '#ffffff',
+              color: 'var(--text-primary)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+              transition: 'all 0.2s ease'
+            }}
+            className="btn-timer-reset"
+          >
+            🔄 Đặt lại
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -1045,6 +1046,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     diemGkOver5IsUnit: null,
     diemGkUnder5Vector: '',
     diemGkUnder5IsUnit: null,
+    baiTapYesVector: '',
+    baiTapYesIsUnit: null,
+    baiTapNoVector: '',
+    baiTapNoIsUnit: null,
     selectedNode: ''
   });
   const [showFeedback, setShowFeedback] = useState(false);
@@ -1056,6 +1061,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         diemGkOver5IsUnit: true,
         diemGkUnder5Vector: '(0/4, 2/4, 2/4)',
         diemGkUnder5IsUnit: false,
+        baiTapYesVector: '(3/5, 2/5, 0/5)',
+        baiTapYesIsUnit: false,
+        baiTapNoVector: '(1/3, 0/3, 2/3)',
+        baiTapNoIsUnit: false,
         selectedNode: 'Điểm giữa kỳ'
       });
       setShowFeedback(true);
@@ -1065,6 +1074,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         diemGkOver5IsUnit: null,
         diemGkUnder5Vector: '',
         diemGkUnder5IsUnit: null,
+        baiTapYesVector: '',
+        baiTapYesIsUnit: null,
+        baiTapNoVector: '',
+        baiTapNoIsUnit: null,
         selectedNode: ''
       });
       setShowFeedback(false);
@@ -1076,6 +1089,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     diemGkOver5IsUnit: true,
     diemGkUnder5Vector: '0/4,2/4,2/4',
     diemGkUnder5IsUnit: false,
+    baiTapYesVector: '3/5,2/5,0/5',
+    baiTapYesIsUnit: false,
+    baiTapNoVector: '1/3,0/3,2/3',
+    baiTapNoIsUnit: false,
     selectedNode: 'Điểm giữa kỳ'
   };
 
@@ -1089,6 +1106,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
       diemGkOver5IsUnit: null,
       diemGkUnder5Vector: '',
       diemGkUnder5IsUnit: null,
+      baiTapYesVector: '',
+      baiTapYesIsUnit: null,
+      baiTapNoVector: '',
+      baiTapNoIsUnit: null,
       selectedNode: ''
     });
     setShowFeedback(false);
@@ -1126,7 +1147,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     marginTop: '1vh',
     width: '100%',
     maxWidth: '600px',
-    margin: '0 auto'
+    margin: '0 auto',
+    maxHeight: '43vh',
+    overflowY: 'auto',
+    paddingRight: '6px'
   };
 
   const cardStyle = {
@@ -1283,6 +1307,77 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
                 >Không</button>
                 {getStatusIndicator('diemGkUnder5Vector', inputs.diemGkUnder5Vector)}
                 {getStatusIndicator('diemGkUnder5IsUnit', inputs.diemGkUnder5IsUnit)}
+              </div>
+            </div>
+          </div>
+
+          {/* Làm bài tập Card */}
+          <div style={cardStyle}>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: isSlideshow ? '2vh' : '0.9rem', fontWeight: '800', borderBottom: '1.5px solid var(--border-color)', paddingBottom: '0.5vh', textAlign: 'center' }}>
+              🔍 Khảo sát thuộc tính: Làm bài tập
+            </h4>
+
+            {/* Branch Có */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh' }}>
+              <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 1, 2, 4, 5, 15)</span>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>G, G, TB, TB, G</span>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  placeholder="Nhập giá trị vectơ ở đây"
+                  style={inputStyle('baiTapYesVector', inputs.baiTapYesVector)}
+                  value={inputs.baiTapYesVector}
+                  onChange={(e) => setInputs({ ...inputs, baiTapYesVector: e.target.value })}
+                  disabled={isRevealed}
+                />
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Đơn vị?</span>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapYesIsUnit', true, inputs.baiTapYesIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapYesIsUnit: true })}
+                >Có</button>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapYesIsUnit', false, inputs.baiTapYesIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapYesIsUnit: false })}
+                >Không</button>
+                {getStatusIndicator('baiTapYesVector', inputs.baiTapYesVector)}
+                {getStatusIndicator('baiTapYesIsUnit', inputs.baiTapYesIsUnit)}
+              </div>
+            </div>
+
+            {/* Branch Không */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh', marginTop: '0.5vh' }}>
+              <span style={labelStyle}>Nhánh: Làm bài tập = Không (Mẫu 3, 6, 16)</span>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>G, K, K</span>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  placeholder="Nhập giá trị vectơ ở đây"
+                  style={inputStyle('baiTapNoVector', inputs.baiTapNoVector)}
+                  value={inputs.baiTapNoVector}
+                  onChange={(e) => setInputs({ ...inputs, baiTapNoVector: e.target.value })}
+                  disabled={isRevealed}
+                />
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Đơn vị?</span>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapNoIsUnit', true, inputs.baiTapNoIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapNoIsUnit: true })}
+                >Có</button>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapNoIsUnit', false, inputs.baiTapNoIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapNoIsUnit: false })}
+                >Không</button>
+                {getStatusIndicator('baiTapNoVector', inputs.baiTapNoVector)}
+                {getStatusIndicator('baiTapNoIsUnit', inputs.baiTapNoIsUnit)}
               </div>
             </div>
           </div>
@@ -2138,6 +2233,9 @@ function App() {
     activeSlideIndex: 0,
     activeQuestionIndex: 0,
     slideshowActive: false,
+    isFullscreenActive: false,
+    timerSeconds: 90,
+    timerActive: false,
     scores: { group1: 0, group2: 0 },
     exploreRecord: null,
     isRevealed: false,
@@ -2261,29 +2359,13 @@ function App() {
 
   // Fullscreen state listeners
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showAutoFullscreenPrompt, setShowAutoFullscreenPrompt] = useState(false);
 
+  // Keep latest sendStateUpdate in a ref to avoid effect dependency re-runs
+  const sendStateUpdateRef = useRef(null);
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!(
-        document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.mozFullScreenElement ||
-        document.msFullscreenElement
-      ));
-    };
-
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
-    };
-  }, []);
+    sendStateUpdateRef.current = sendStateUpdate;
+  });
 
   const goFullscreen = () => {
     const docEl = document.documentElement;
@@ -2309,6 +2391,71 @@ function App() {
       document.msExitFullscreen().catch((err) => console.log('Exit fullscreen failed:', err));
     }
   };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const isNowFullscreen = !!(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+      );
+      setIsFullscreen(isNowFullscreen);
+      if (isTeacher) {
+        sendStateUpdateRef.current({ isFullscreenActive: isNowFullscreen });
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, [isTeacher]);
+
+  // Student sync fullscreen state
+  useEffect(() => {
+    if (!isTeacher && classState.slideshowActive) {
+      const isCurrentlyFullscreen = !!(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+      );
+
+      if (classState.isFullscreenActive && !isCurrentlyFullscreen) {
+        // Try to auto fullscreen
+        const docEl = document.documentElement;
+        const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+        if (req) {
+          const promise = req.call(docEl);
+          if (promise) {
+            promise.catch(() => {
+              setShowAutoFullscreenPrompt(true);
+            });
+          } else {
+            setShowAutoFullscreenPrompt(true);
+          }
+        } else {
+          setShowAutoFullscreenPrompt(true);
+        }
+      } else if (!classState.isFullscreenActive && isCurrentlyFullscreen) {
+        // Exit fullscreen
+        exitFullscreen();
+        setShowAutoFullscreenPrompt(false);
+      } else if (isCurrentlyFullscreen) {
+        setShowAutoFullscreenPrompt(false);
+      }
+    } else {
+      setShowAutoFullscreenPrompt(false);
+    }
+  }, [isTeacher, classState.isFullscreenActive, classState.slideshowActive, isFullscreen]);
 
   // Sync fullscreen state with slideshow state
   useEffect(() => {
@@ -3424,8 +3571,86 @@ function App() {
     );
   }
 
+  const renderFullscreenPromptModal = () => {
+    if (!showAutoFullscreenPrompt) return null;
+
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(15, 23, 42, 0.85)',
+        backdropFilter: 'blur(8px)',
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        animation: 'fadeIn 0.3s ease-out'
+      }}>
+        <div style={{
+          background: 'white',
+          padding: '2.5rem',
+          borderRadius: '1.5rem',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          maxWidth: '450px',
+          width: '90%',
+          textAlign: 'center',
+          border: '1px solid rgba(226, 232, 240, 0.8)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1.5rem'
+        }}>
+          <div style={{
+            width: '80px',
+            height: '80px',
+            borderRadius: '50%',
+            background: 'var(--primary-light)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '2.5rem',
+            userSelect: 'none'
+          }}>
+            🖥️
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>
+              Giảng viên đã bật Toàn Màn Hình
+            </h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0 }}>
+              Để theo dõi bài giảng tốt nhất, vui lòng nhấn nút dưới đây để đồng bộ chế độ Toàn Màn Hình.
+            </p>
+          </div>
+          <button
+            onClick={() => {
+              goFullscreen();
+              setShowAutoFullscreenPrompt(false);
+            }}
+            className="btn primary"
+            style={{
+              padding: '0.75rem 2rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              borderRadius: '0.75rem',
+              boxShadow: '0 4px 6px -1px var(--primary-light)',
+              cursor: 'pointer',
+              width: '100%'
+            }}
+          >
+            Đồng Ý & Vào Toàn Màn Hình
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div>
+    <ClassStateContext.Provider value={{ classState, isTeacher, sendStateUpdate }}>
+      <div>
+      {renderFullscreenPromptModal()}
       {/* Slideshow view takeover */}
       {renderSlideshowOverlay()}
 
@@ -3442,8 +3667,15 @@ function App() {
         </div>
 
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-          <div className="user-badge">
-            <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
+          <div className="user-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
+              <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
+              {!isTeacher && (
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>
+                  Nhóm {user.group}
+                </span>
+              )}
+            </div>
             <span className="user-role-lbl">{isTeacher ? 'Giảng Viên' : `Sinh Viên`}</span>
           </div>
           <button className="btn danger btn-sm" onClick={handleLogout}>🚪 Thoát</button>
@@ -3837,6 +4069,7 @@ function App() {
         )}
       </div>
     </div>
+    </ClassStateContext.Provider>
   );
 }
 

@@ -54,6 +54,9 @@ let classState = {
   activeSlideIndex: 0,
   activeQuestionIndex: 0,
   slideshowActive: false,
+  isFullscreenActive: false,
+  timerSeconds: 90,
+  timerActive: false,
   scores: { group1: 0, group2: 0 },
   exploreRecord: null, // Current active randomized PC troubleshooting sample
   isRevealed: false, // Whether the current slide's answer is revealed
@@ -195,6 +198,9 @@ wss.on('connection', (ws) => {
             activeSlideIndex: 0,
             activeQuestionIndex: 0,
             slideshowActive: false,
+            isFullscreenActive: false,
+            timerSeconds: 90,
+            timerActive: false,
             scores: { group1: 0, group2: 0 },
             exploreRecord: null,
             isRevealed: false,
