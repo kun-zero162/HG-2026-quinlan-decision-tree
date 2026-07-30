@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext, createContext } from 'react';
+import { useState, useEffect, useRef, useContext, createContext, Fragment } from 'react';
 import './App.css';
 import DecisionTreeSVG from './components/DecisionTreeSVG';
 
@@ -13,14 +13,14 @@ const SLIDES = [
     title: 'Kiểm tra bài cũ - Cây quyết định',
     content: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', alignItems: 'center', justifyContent: 'center', height: '100%', padding: '2vh 0' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '500px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '700px' }}>
           <div className="quiz-option-stats" style={{ background: '#ffffff', borderColor: 'var(--border-color)', padding: '2.5vh 3vw', borderRadius: '1rem', display: 'flex', alignItems: 'center', gap: '1vw', justifyContent: 'flex-start', textAlign: 'left', width: '100%' }}>
             <span style={{ background: 'var(--primary)', color: 'white', width: '4vh', height: '4vh', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', fontWeight: 'bold', fontSize: '2vh', flexShrink: 0 }}>1</span>
-            <span style={{ fontWeight: 'bold', fontSize: '2.4vh', color: 'var(--text-primary)' }}>Cây quyết định là gì?</span>
+            <span style={{ fontWeight: 'bold', fontSize: '3.5vh', color: 'var(--text-primary)' }}>Nêu các thành phần trên cây quyết định.</span>
           </div>
           <div className="quiz-option-stats" style={{ background: '#ffffff', borderColor: 'var(--border-color)', padding: '2.5vh 3vw', borderRadius: '1rem', display: 'flex', alignItems: 'center', gap: '1vw', justifyContent: 'flex-start', textAlign: 'left', width: '100%' }}>
             <span style={{ background: 'var(--primary)', color: 'white', width: '4vh', height: '4vh', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', fontWeight: 'bold', fontSize: '2vh', flexShrink: 0 }}>2</span>
-            <span style={{ fontWeight: 'bold', fontSize: '2.4vh', color: 'var(--text-primary)' }}>Nêu lợi ích của cây quyết định.</span>
+            <span style={{ fontWeight: 'bold', fontSize: '3.5vh', color: 'var(--text-primary)' }}>Nêu lợi ích của cây quyết định.</span>
           </div>
         </div>
       </div>
@@ -41,8 +41,9 @@ const SLIDES = [
     title: 'Đặt vấn đề - Dự đoán kết quả học tập',
     content: (
       <div>
-        <p>Chúng ta sẽ tiến hành hoạt động tiếp theo: <strong>"Dự đoán kết quả học tập của sinh viên"</strong> dựa trên tập dữ liệu học tập thực tế.</p>
-        <p>Giảng viên sẽ rút ra một mẫu dữ liệu ngẫu nhiên từ hệ thống. Sinh viên sẽ dựa vào cây quyết định và các thuộc tính nhận được để dự đoán kết quả học tập.</p>
+        <p>Hoạt động: <strong>"Dự đoán kết quả học tập của sinh viên"</strong>.</p>
+        <p>Các mẫu dữ liệu ngẫu nhiên sẽ được lần lượt hiển thị.</p>
+        <p>Sinh viên sẽ dựa vào cây quyết định và các thuộc tính nhận được để dự đoán kết quả học tập.</p>
       </div>
     ),
     showTree: true
@@ -182,7 +183,7 @@ const SLIDES = [
           <div style={{ flex: 1, textAlign: 'left' }}>
             <h4 style={{ margin: '0 0 0.5vh 0', color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Cột Kết quả (Mục tiêu phân lớp)</h4>
             <p style={{ margin: 0, fontSize: '2.5vh', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (Giỏi, Trung bình khá hoặc Không đạt).
+              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (Lên lớp hoặc Không lên lớp).
             </p>
           </div>
         </div>
@@ -385,25 +386,25 @@ const SLIDES = [
               <tr style={{ borderBottom: '1px solid var(--border-color)', background: 'rgba(79, 70, 229, 0.03)' }}>
                 <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold', color: 'var(--primary)' }}>Chuyên cần</td>
                 <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
-                  • Đi học đủ: (4/8, 2/8, 2/8)<br />
-                  • Thỉnh thoảng vắng: (0/4, 2/4, 2/4)<br />
-                  • Thường xuyên vắng: <strong>(0/4, 0/4, 4/4)</strong> 🌟
+                  • Đi học đủ: (6/8, 2/8)<br />
+                  • Thỉnh thoảng vắng: (2/4, 2/4)<br />
+                  • Thường xuyên vắng: <strong>(0/4, 4/4)</strong> 🌟
                 </td>
                 <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh', color: 'var(--success)' }}>1</td>
               </tr>
               <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
                 <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Điểm giữa kỳ</td>
                 <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
-                  • ≥ 5: (4/8, 2/8, 2/8)<br />
-                  • &lt; 5: (0/8, 2/8, 6/8)
+                  • ≥ 5: (6/8, 2/8)<br />
+                  • &lt; 5: (2/8, 6/8)
                 </td>
                 <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh' }}>0</td>
               </tr>
               <tr>
                 <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Làm bài tập</td>
                 <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
-                  • Có: (3/9, 3/9, 3/9)<br />
-                  • Không: (1/7, 1/7, 5/7)
+                  • Có: (6/9, 3/9)<br />
+                  • Không: (2/7, 5/7)
                 </td>
                 <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh' }}>0</td>
               </tr>
@@ -442,7 +443,7 @@ const SLIDES = [
       <div>
         <p>Sau khi đưa thuộc tính <strong>Chuyên cần</strong> vào nút gốc của cây quyết định:</p>
         <ul>
-          <li>Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi có kết quả = <strong>Không đạt</strong>. Với các giá trị nhãn: K, K, K, K, ta thu được vectơ đơn vị <strong>(0/4, 0/4, 4/4)</strong>. Nhánh này kết thúc tại nút lá <i>Không đạt</i>.</li>
+          <li>Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi có kết quả = <strong>Không lên lớp</strong>. Với các giá trị nhãn: K, K, K, K, ta thu được vectơ đơn vị <strong>(0/4, 4/4)</strong>. Nhánh này kết thúc tại nút lá <i>Không lên lớp</i>.</li>
           <li>Các nhánh <strong>Thỉnh thoảng vắng</strong> và <strong>Đi học đủ</strong> chứa nhiều nhãn kết quả học tập khác nhau. Chúng ta cần tiến hành phân nhánh tiếp!</li>
         </ul>
       </div>
@@ -483,12 +484,12 @@ const SLIDES = [
       <div className="rules-container">
         <p style={{ margin: '0 0 1vh 0' }}>Từ cây quyết định hoàn thiện, ta rút ra <strong>Tập luật quyết định (Decision Rules)</strong>:</p>
         <div className="rules-box">
-          1. IF Chuyên cần = Thường xuyên vắng THEN Kết quả học tập = Không đạt <br />
-          2. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Trung bình khá <br />
-          3. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ &lt; 5 THEN Kết quả học tập = Không đạt <br />
-          4. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Giỏi <br />
-          5. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Có THEN Kết quả học tập = Trung bình khá <br />
-          6. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Không THEN Kết quả học tập = Không đạt
+          1. IF Chuyên cần = Thường xuyên vắng THEN Kết quả học tập = Không lên lớp <br />
+          2. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Lên lớp <br />
+          3. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ &lt; 5 THEN Kết quả học tập = Không lên lớp <br />
+          4. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Lên lớp <br />
+          5. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Có THEN Kết quả học tập = Lên lớp <br />
+          6. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Không THEN Kết quả học tập = Không lên lớp
         </div>
       </div>
     ),
@@ -536,8 +537,8 @@ const SLIDES = [
         'Điểm giữa kỳ': '>=5',
         'Làm bài tập': 'Không'
       },
-      options: ['Giỏi', 'Trung bình khá', 'Không đạt'],
-      correct: 1,
+      options: ['Lên lớp', 'Không lên lớp'],
+      correct: 0,
       id: 'evaluate-q3'
     }
   },
@@ -551,10 +552,19 @@ const SLIDES = [
     type: 'content',
     title: 'Tổng kết',
     content: (
-      <div>
-        <h3 style={{ color: 'var(--primary)' }}>Củng cố bài học</h3>
-        <p>Thuật toán Quinlan cổ điển sử dụng việc so sánh số lượng vectơ đơn vị để lần lượt chọn thuộc tính làm nút quyết định.</p>
-        <p>Cấu trúc cây quyết định phụ thuộc trực tiếp vào đặc trưng của dữ liệu đầu vào.</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
+        <div>
+          <h3 style={{ color: 'var(--primary)', marginBottom: '1vh', fontSize: '2.8vh' }}>Củng cố bài học</h3>
+          <p style={{ margin: '0.5vh 0', fontSize: '3vh', color: 'var(--text-secondary)' }}>
+            Thuật toán Quinlan cổ điển sử dụng việc so sánh số lượng vectơ đơn vị để lần lượt chọn thuộc tính làm nút quyết định.
+          </p>
+        </div>
+
+        <AlgorithmProcessFlow />
+
+        <p style={{ margin: '1vh 0 0 0', fontSize: '2.5vh', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}>
+          * Cấu trúc cây quyết định phụ thuộc trực tiếp vào đặc trưng của dữ liệu học tập đầu vào.
+        </p>
       </div>
     )
   },
@@ -566,7 +576,7 @@ const SLIDES = [
     content: (
       <div>
         <h3 style={{ color: 'var(--primary)' }}>Nhiệm vụ về nhà</h3>
-        <ol style={{ paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+        <ol style={{ paddingLeft: '2.5rem', lineHeight: '1.6', paddingRight: '1.5rem' }}>
           <li>Giả sử thuộc tính Điểm giữa kỳ được chi tiết hóa thành &quot;&gt;=8&quot;, &quot;5 đến &lt;8&quot;, và &quot;&lt;5&quot;, hãy thực hiện lại thuật toán để xây dựng cây quyết định mới.</li>
           <li>Nếu ở bước chọn nút gốc, KHÔNG CÓ thuộc tính nào tạo được vectơ đơn vị thì thuật toán làm thế nào để chọn nút một cách khách quan nhất?</li>
         </ol>
@@ -584,23 +594,90 @@ const STAGE_START_INDICES = {
 };
 
 const FALLBACK_ROWS = [
-  { STT: 1, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Giỏi' },
-  { STT: 2, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Giỏi' },
-  { STT: 3, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Giỏi' },
-  { STT: 4, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Trung bình khá' },
-  { STT: 5, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Trung bình khá' },
-  { STT: 6, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' },
-  { STT: 7, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Trung bình khá' },
-  { STT: 8, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Trung bình khá' },
-  { STT: 9, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không đạt' },
-  { STT: 10, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' },
-  { STT: 11, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không đạt' },
-  { STT: 12, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' },
-  { STT: 13, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không đạt' },
-  { STT: 14, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' },
-  { STT: 15, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Giỏi' },
-  { STT: 16, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không đạt' }
+  { STT: 1, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 2, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 3, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 4, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 5, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 6, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 7, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 8, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 9, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 10, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 11, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 12, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 13, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 14, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
+  { STT: 15, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
+  { STT: 16, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' }
 ];
+
+function AlgorithmProcessFlow() {
+  const steps = [
+    {
+      id: 1,
+      badge: '1',
+      icon: '🔍',
+      title: 'Xét thuộc tính',
+      desc: 'Đánh giá các thuộc tính ứng viên chưa sử dụng.',
+      isLeaf: false
+    },
+    {
+      id: 2,
+      badge: '2',
+      icon: '📊',
+      title: 'Xác định vectơ',
+      desc: 'Lập vectơ nhãn theo từng phân nhánh thuộc tính.',
+      isLeaf: false
+    },
+    {
+      id: 3,
+      badge: '3',
+      icon: '🔢',
+      title: 'Đếm vectơ đơn vị',
+      desc: 'Xác định các vectơ chứa nhãn hoàn toàn đồng nhất.',
+      isLeaf: false
+    },
+    {
+      id: 4,
+      badge: '4',
+      icon: '🎯',
+      title: 'Chọn nút',
+      desc: 'Chọn thuộc tính tạo ra nhiều vectơ đơn vị nhất.',
+      isLeaf: false
+    },
+    {
+      id: 5,
+      badge: '5',
+      icon: '🌳',
+      title: 'Nhánh hóa / Dừng',
+      desc: 'Lặp lại cho nhánh chưa đồng nhất hoặc dừng tại nút lá.',
+      isLeaf: true
+    }
+  ];
+
+  return (
+    <div className="algo-flow-container">
+      {steps.map((step, idx) => (
+        <Fragment key={step.id}>
+          <div className={`algo-flow-card ${step.isLeaf ? 'leaf-step' : ''}`}>
+            <div className="algo-flow-badge">{step.badge}</div>
+            <div className="algo-flow-icon">{step.icon}</div>
+            <h4 className="algo-flow-title">{step.title}</h4>
+            <p className="algo-flow-desc">{step.desc}</p>
+          </div>
+          {idx < steps.length - 1 && (
+            <div className="algo-flow-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+          )}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
 
 function CountdownTimer() {
   const context = useContext(ClassStateContext);
@@ -646,7 +723,7 @@ function CountdownTimer() {
       gap: '2vh',
       marginTop: '3vh'
     }}>
-      <div 
+      <div
         className={`timer-display ${isUrgent && seconds > 0 ? 'timer-pulse-critical' : ''}`}
         style={{
           position: 'relative',
@@ -656,8 +733,8 @@ function CountdownTimer() {
           background: 'rgba(255, 255, 255, 0.8)',
           border: '4px solid',
           borderColor: isUrgent && seconds > 0 ? '#ef4444' : 'var(--primary)',
-          boxShadow: isUrgent && seconds > 0 
-            ? '0 0 20px rgba(239, 68, 68, 0.4)' 
+          boxShadow: isUrgent && seconds > 0
+            ? '0 0 20px rgba(239, 68, 68, 0.4)'
             : '0 8px 32px 0 rgba(31, 38, 135, 0.08)',
           backdropFilter: 'blur(4px)',
           display: 'flex',
@@ -768,16 +845,14 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
   const matchingRows = rows.filter(row => row[selectedAttr] === selectedVal);
 
   const getBadgeValue = (val) => {
-    if (val === 'Giỏi') return 'G';
-    if (val === 'Trung bình khá') return 'T';
-    if (val === 'Không đạt') return 'K';
+    if (val === 'Lên lớp') return 'L';
+    if (val === 'Không lên lớp') return 'K';
     return val;
   };
 
   const getBadgeColor = (val) => {
-    if (val === 'Giỏi' || val === 'G') return '#10b981';
-    if (val === 'Trung bình khá' || val === 'T') return '#f59e0b';
-    if (val === 'Không đạt' || val === 'K') return '#ef4444';
+    if (val === 'Lên lớp' || val === 'L') return '#10b981';
+    if (val === 'Không lên lớp' || val === 'K') return '#ef4444';
     return '#94a3b8';
   };
 
@@ -907,7 +982,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '0.95rem', minWidth: '120px', textAlign: 'left' }}>Vectơ (G, T, K):</span>
+              <span style={{ fontWeight: 'bold', fontSize: '0.95rem', minWidth: '120px', textAlign: 'left' }}>Vectơ (L, K):</span>
               <div style={{
                 fontSize: '1rem',
                 fontWeight: 'bold',
@@ -920,15 +995,19 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
               }}>
                 {(() => {
                   const total = matchingRows.length;
-                  const gVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Giỏi').length;
-                  const tVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Trung bình khá').length;
-                  const kVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Không đạt').length;
-                  return animationStep >= 3 ? `(${gVal}/${total}, ${tVal}/${total}, ${kVal}/${total})` : '(...)';
+                  const lVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Lên lớp').length;
+                  const kVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Không lên lớp').length;
+                  return animationStep >= 3 ? `(${lVal}/${total}, ${kVal}/${total})` : '(...)';
                 })()}
               </div>
               {animationStep >= 3 && (
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  (có {matchingRows.filter(r => r['Kết quả học tập'] === 'Giỏi').length}G, {matchingRows.filter(r => r['Kết quả học tập'] === 'Trung bình khá').length}T, {matchingRows.filter(r => r['Kết quả học tập'] === 'Không đạt').length}K trên {matchingRows.length} mẫu)
+                  {(() => {
+                    const total = matchingRows.length;
+                    const lVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Lên lớp').length;
+                    const kVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Không lên lớp').length;
+                    return `(có ${lVal}L, ${kVal}K trên ${total} mẫu)`;
+                  })()}
                 </span>
               )}
             </div>
@@ -1039,6 +1118,98 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
   );
 }
 
+function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }) {
+  const rows = FALLBACK_ROWS.filter(filterFunc);
+
+  const getBadgeColor = (val) => {
+    if (val === 'Lên lớp') return '#10b981';
+    if (val === 'Không lên lớp') return '#ef4444';
+    return '#94a3b8';
+  };
+
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1vh',
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center'
+    }}>
+      <h3 style={{
+        margin: '0 0 0.5vh 0',
+        fontSize: isSlideshow ? '2.2vh' : '1.1rem',
+        color: 'var(--primary)',
+        fontWeight: 'bold',
+        textAlign: 'center'
+      }}>
+        📊 Bảng dữ liệu rút gọn
+      </h3>
+      <div className="table-responsive" style={{
+        background: '#ffffff',
+        borderRadius: '0.75rem',
+        border: '1.5px solid var(--border-color)',
+        boxShadow: 'var(--shadow-sm)',
+        maxHeight: isSlideshow ? '60vh' : '450px',
+        overflowY: 'auto',
+        width: '100%'
+      }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: isSlideshow ? '1.8vh' : '0.85rem', textAlign: 'center' }}>
+          <thead>
+            <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', position: 'sticky', top: 0, zIndex: 5 }}>
+              <th style={{ padding: '1vh 0.8vw' }}>STT</th>
+              <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Chuyên cần' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Chuyên cần</th>
+              <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Điểm giữa kỳ' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Điểm giữa kỳ</th>
+              <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Làm bài tập' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Làm bài tập</th>
+              <th style={{ padding: '1vh 0.8vw', fontWeight: 'bold' }}>Kết quả học tập</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.STT} style={{ borderBottom: '1px solid #f1f5f9', background: '#ffffff' }}>
+                <td style={{ padding: '1vh 0.8vw', fontWeight: 'bold', color: 'var(--text-secondary)' }}>
+                  #{row.STT}
+                </td>
+                <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Chuyên cần' ? 'bold' : 'normal' }}>
+                  {row['Chuyên cần']}
+                </td>
+                <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Điểm giữa kỳ' ? 'bold' : 'normal' }}>
+                  {row['Điểm giữa kỳ']}
+                </td>
+                <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Làm bài tập' ? 'bold' : 'normal' }}>
+                  {row['Làm bài tập']}
+                </td>
+                <td style={{ padding: '1vh 0.8vw' }}>
+                  <span style={{
+                    display: 'inline-block',
+                    padding: '0.2em 0.6em',
+                    borderRadius: '0.25rem',
+                    fontSize: isSlideshow ? '1.6vh' : '0.75rem',
+                    fontWeight: 'bold',
+                    background: getBadgeColor(row['Kết quả học tập']) + '15',
+                    color: getBadgeColor(row['Kết quả học tập']),
+                    border: `1.5px solid ${getBadgeColor(row['Kết quả học tập'])}`
+                  }}>
+                    {row['Kết quả học tập']}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style={{
+        margin: '0.5vh 0 0 0',
+        fontSize: isSlideshow ? '1.6vh' : '0.8rem',
+        color: 'var(--text-muted)',
+        textAlign: 'center',
+        fontStyle: 'italic'
+      }}>
+        * Bảng chỉ hiển thị {rows.length} mẫu thỏa mãn điều kiện lọc của nhánh hiện tại.
+      </p>
+    </div>
+  );
+}
 
 function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
   const [inputs, setInputs] = useState({
@@ -1057,13 +1228,13 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
   useEffect(() => {
     if (isRevealed) {
       setInputs({
-        diemGkOver5Vector: '(4/4, 0/4, 0/4)',
+        diemGkOver5Vector: '(4/4, 0/4)',
         diemGkOver5IsUnit: true,
-        diemGkUnder5Vector: '(0/4, 2/4, 2/4)',
+        diemGkUnder5Vector: '(2/4, 2/4)',
         diemGkUnder5IsUnit: false,
-        baiTapYesVector: '(3/5, 2/5, 0/5)',
-        baiTapYesIsUnit: false,
-        baiTapNoVector: '(1/3, 0/3, 2/3)',
+        baiTapYesVector: '(5/5, 0/5)',
+        baiTapYesIsUnit: true,
+        baiTapNoVector: '(1/3, 2/3)',
         baiTapNoIsUnit: false,
         selectedNode: 'Điểm giữa kỳ'
       });
@@ -1085,13 +1256,13 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
   }, [isRevealed]);
 
   const correct = {
-    diemGkOver5Vector: '4/4,0/4,0/4',
+    diemGkOver5Vector: '4/4,0/4',
     diemGkOver5IsUnit: true,
-    diemGkUnder5Vector: '0/4,2/4,2/4',
+    diemGkUnder5Vector: '2/4,2/4',
     diemGkUnder5IsUnit: false,
-    baiTapYesVector: '3/5,2/5,0/5',
-    baiTapYesIsUnit: false,
-    baiTapNoVector: '1/3,0/3,2/3',
+    baiTapYesVector: '5/5,0/5',
+    baiTapYesIsUnit: true,
+    baiTapNoVector: '1/3,2/3',
     baiTapNoIsUnit: false,
     selectedNode: 'Điểm giữa kỳ'
   };
@@ -1236,7 +1407,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Đi học đủ</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (G, T, K)</strong> có dạng <strong>(số G/tổng, số T/tổng, số K/tổng)</strong>.
+          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Đi học đủ</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
         </p>
 
         <div style={containerStyle}>
@@ -1251,7 +1422,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Điểm giữa kỳ ≥ 5 (Mẫu 1, 2, 3, 15)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>G, G, G, G</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, L, L</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1283,7 +1454,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Điểm giữa kỳ &lt; 5 (Mẫu 4, 5, 6, 16)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>T, T, K, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, K, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1322,7 +1493,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 1, 2, 4, 5, 15)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>G, G, TB, TB, G</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, L, L, L</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1354,7 +1525,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Không (Mẫu 3, 6, 16)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>G, K, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1506,9 +1677,9 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
   useEffect(() => {
     if (isRevealed) {
       setInputs({
-        baiTapYesVector: '(0/2, 2/2, 0/2)',
+        baiTapYesVector: '(2/2, 0/2)',
         baiTapYesIsUnit: true,
-        baiTapNoVector: '(0/2, 0/2, 2/2)',
+        baiTapNoVector: '(0/2, 2/2)',
         baiTapNoIsUnit: true,
         selectedNode: 'Làm bài tập'
       });
@@ -1526,9 +1697,9 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
   }, [isRevealed]);
 
   const correct = {
-    baiTapYesVector: '0/2,2/2,0/2',
+    baiTapYesVector: '2/2,0/2',
     baiTapYesIsUnit: true,
-    baiTapNoVector: '0/2,0/2,2/2',
+    baiTapNoVector: '0/2,2/2',
     baiTapNoIsUnit: true,
     selectedNode: 'Làm bài tập'
   };
@@ -1666,7 +1837,7 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Đi học đủ ➔ Điểm giữa kỳ &lt; 5</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (G, T, K)</strong> có dạng <strong>(số G/tổng, số T/tổng, số K/tổng)</strong>.
+          Khảo sát dữ liệu tại nhánh <strong>Đi học đủ ➔ Điểm giữa kỳ &lt; 5</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
         </p>
 
         <div style={containerStyle}>
@@ -1681,7 +1852,7 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
               <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 4, 5)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>T, T</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1865,9 +2036,9 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
   useEffect(() => {
     if (isRevealed) {
       setInputs({
-        diemGkOver5Vector: '(0/2, 2/2, 0/2)',
+        diemGkOver5Vector: '(2/2, 0/2)',
         diemGkOver5IsUnit: true,
-        diemGkUnder5Vector: '(0/2, 0/2, 2/2)',
+        diemGkUnder5Vector: '(0/2, 2/2)',
         diemGkUnder5IsUnit: true,
         selectedNode: 'Điểm giữa kỳ'
       });
@@ -1885,9 +2056,9 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
   }, [isRevealed]);
 
   const correct = {
-    diemGkOver5Vector: '0/2,2/2,0/2',
+    diemGkOver5Vector: '2/2,0/2',
     diemGkOver5IsUnit: true,
-    diemGkUnder5Vector: '0/2,0/2,2/2',
+    diemGkUnder5Vector: '0/2,2/2',
     diemGkUnder5IsUnit: true,
     selectedNode: 'Điểm giữa kỳ'
   };
@@ -2025,7 +2196,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Thỉnh thoảng vắng</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (G, T, K)</strong> có dạng <strong>(số G/tổng, số T/tổng, số K/tổng)</strong>.
+          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Thỉnh thoảng vắng</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
         </p>
 
         <div style={containerStyle}>
@@ -2040,7 +2211,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Điểm giữa kỳ ≥ 5 (Mẫu 7, 8)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>T, T</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -3219,11 +3390,10 @@ function App() {
           </div>
         </div>
 
-        {/* Slide Body */}
-        <div className={`slideshow-body question-transition-container ${currentSlide.showTree && hasContent ? 'wide-layout' : ''}`} key={classState.activeSlideIndex}>
+        <div className={`slideshow-body question-transition-container ${currentSlide.showTree ? 'wide-layout' : ''}`} key={classState.activeSlideIndex}>
           <h2 className="slideshow-slide-heading">{currentSlide.title}</h2>
 
-          {currentSlide.showTree && hasContent ? (
+          {currentSlide.showTree ? (
             <div className="slideshow-split-layout">
               <div className="slideshow-left-col">
                 <div className="slideshow-slide-content" style={{ width: '100%' }}>
@@ -3293,7 +3463,15 @@ function App() {
                 </div>
               </div>
               <div className="slideshow-right-col">
-                <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} isSlideshow={true} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
+                {currentSlide.type === 'elaborate-h1' && !classState.isRevealed ? (
+                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ'} isSlideshow={true} />
+                ) : currentSlide.type === 'elaborate-h1-2' && !classState.isRevealed ? (
+                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm giữa kỳ'] === '<5'} isSlideshow={true} />
+                ) : currentSlide.type === 'elaborate-h2' && !classState.isRevealed ? (
+                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={true} />
+                ) : (
+                  <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} isSlideshow={true} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
+                )}
               </div>
             </div>
           ) : (
@@ -3400,29 +3578,44 @@ function App() {
             </div>
           </div>
 
-          {isTeacher && (
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              {(currentSlide.type === 'question' || currentSlide.type === 'explore-game' || currentSlide.type === 'elaborate-h1' || currentSlide.type === 'elaborate-h1-2' || currentSlide.type === 'elaborate-h2') && !classState.isRevealed && (
-                <button className="slideshow-nav-btn" style={{ background: 'var(--warning)' }} onClick={handleRevealAnswer}>
-                  👁️ Hiện đáp án
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <span style={{
+              fontSize: '2vh',
+              fontWeight: 'bold',
+              color: 'var(--text-secondary)',
+              background: '#f1f5f9',
+              padding: '0.6vh 1.2vw',
+              borderRadius: '0.5rem',
+              border: '1px solid var(--border-color)',
+              fontFamily: 'monospace'
+            }}>
+              Trang {classState.activeSlideIndex + 1} / {SLIDES.length}
+            </span>
+
+            {isTeacher && (
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                {(currentSlide.type === 'question' || currentSlide.type === 'explore-game' || currentSlide.type === 'elaborate-h1' || currentSlide.type === 'elaborate-h1-2' || currentSlide.type === 'elaborate-h2') && !classState.isRevealed && (
+                  <button className="slideshow-nav-btn" style={{ background: 'var(--warning)' }} onClick={handleRevealAnswer}>
+                    👁️ Hiện đáp án
+                  </button>
+                )}
+                <button
+                  className="slideshow-nav-btn secondary"
+                  onClick={handlePrevSlide}
+                  disabled={classState.activeSlideIndex === 0}
+                >
+                  ◀ Trở Về
                 </button>
-              )}
-              <button
-                className="slideshow-nav-btn secondary"
-                onClick={handlePrevSlide}
-                disabled={classState.activeSlideIndex === 0}
-              >
-                ◀ Trở Về
-              </button>
-              <button
-                className="slideshow-nav-btn"
-                onClick={handleNextSlide}
-                disabled={classState.activeSlideIndex === SLIDES.length - 1}
-              >
-                Kế Tiếp ▶
-              </button>
-            </div>
-          )}
+                <button
+                  className="slideshow-nav-btn"
+                  onClick={handleNextSlide}
+                  disabled={classState.activeSlideIndex === SLIDES.length - 1}
+                >
+                  Kế Tiếp ▶
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -3474,7 +3667,7 @@ function App() {
     return (
       <div>
         <p style={{ fontSize: isSlideshow ? '2.1vh' : '1rem', marginBottom: '1vh' }}>
-          Xem thuộc tính kết quả học tập bên dưới. Dự đoán xem kết quả học tập là <strong>Giỏi</strong>, <strong>Trung bình khá</strong> hay <strong>Không đạt</strong>?
+          Xem thuộc tính kết quả học tập bên dưới. Dự đoán xem kết quả học tập là <strong>Lên lớp</strong> hay <strong>Không lên lớp</strong>?
         </p>
 
         {isTeacher && (
@@ -3517,7 +3710,7 @@ function App() {
                     </td>
                     <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '1rem', fontWeight: 'bold', background: 'rgba(99, 102, 241, 0.02)' }}>
                       {classState.isRevealed ? (
-                        <span className={`badge ${classState.exploreRecord['Kết quả học tập'] === 'Giỏi' ? 'success' : classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá' ? 'warning' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+                        <span className={`badge ${(classState.exploreRecord['Kết quả học tập'] === 'Lên lớp' || classState.exploreRecord['Kết quả học tập'] === 'Giỏi' || classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá') ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
                           {classState.exploreRecord['Kết quả học tập']}
                         </span>
                       ) : (
@@ -3543,7 +3736,7 @@ function App() {
 
               {classState.isRevealed ? (
                 <div
-                  className={`badge ${classState.exploreRecord['Kết quả học tập'] === 'Giỏi' ? 'success' : classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá' ? 'warning' : 'danger'}`}
+                  className={`badge ${(classState.exploreRecord['Kết quả học tập'] === 'Lên lớp' || classState.exploreRecord['Kết quả học tập'] === 'Giỏi' || classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá') ? 'success' : 'danger'}`}
                   style={{
                     padding: isSlideshow ? '1.5vh 2.5vw' : '0.6rem 2rem',
                     fontSize: isSlideshow ? '2.2vh' : '1rem',
@@ -3650,119 +3843,229 @@ function App() {
   return (
     <ClassStateContext.Provider value={{ classState, isTeacher, sendStateUpdate }}>
       <div>
-      {renderFullscreenPromptModal()}
-      {/* Slideshow view takeover */}
-      {renderSlideshowOverlay()}
+        {renderFullscreenPromptModal()}
+        {/* Slideshow view takeover */}
+        {renderSlideshowOverlay()}
 
-      {/* Classroom Header */}
-      <header className="app-header">
-        <div className="brand">
-          <div style={{ fontSize: '1.5rem' }}>🎓</div>
-          <div>
-            <h1 className="brand-title">Lớp Học Tương Tác: Thuật Toán Quinlan</h1>
-            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-              Môn học: Cơ sở trí tuệ nhân tạo (Lớp: CD CNTT 24AI)
-            </p>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-          <div className="user-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
-              <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
-              {!isTeacher && (
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>
-                  Nhóm {user.group}
-                </span>
-              )}
+        {/* Classroom Header */}
+        <header className="app-header">
+          <div className="brand">
+            <div style={{ fontSize: '1.5rem' }}>🎓</div>
+            <div>
+              <h1 className="brand-title">Lớp Học Tương Tác: Thuật Toán Quinlan</h1>
+              <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+                Môn học: Cơ sở trí tuệ nhân tạo (Lớp: CD CNTT 24AI)
+              </p>
             </div>
-            <span className="user-role-lbl">{isTeacher ? 'Giảng Viên' : `Sinh Viên`}</span>
-          </div>
-          <button className="btn danger btn-sm" onClick={handleLogout}>🚪 Thoát</button>
-        </div>
-      </header>
-
-      {/* Student read-only mirror notice */}
-      {!isTeacher && (
-        <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', color: '#1e40af', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', marginBottom: '1.5rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          🖥️ Chế độ gương: Màn hình đang đồng bộ với bài giảng của Giảng viên. Hãy cùng tham gia thảo luận trực tiếp tại lớp học!
-        </div>
-      )}
-
-      {/* GV Controls Bar */}
-      {isTeacher && (
-        <section className="gv-controls-panel">
-          <div className="gv-section-title">Bảng điều khiển Giảng viên</div>
-          <div className="stage-tabs">
-            <button
-              className={`stage-tab-btn ${classState.activeStage === 'engage' ? 'active' : ''}`}
-              onClick={() => handleStageJump('engage')}
-            >
-              1. Khởi động (Engage)
-            </button>
-            <button
-              className={`stage-tab-btn ${classState.activeStage === 'explore' ? 'active' : ''}`}
-              onClick={() => handleStageJump('explore')}
-            >
-              2. Đặt vấn đề (Explore)
-            </button>
-            <button
-              className={`stage-tab-btn ${classState.activeStage === 'explain' ? 'active' : ''}`}
-              onClick={() => handleStageJump('explain')}
-            >
-              3. Bài học (Explain)
-            </button>
-            <button
-              className={`stage-tab-btn ${classState.activeStage === 'elaborate' ? 'active' : ''}`}
-              onClick={() => handleStageJump('elaborate')}
-            >
-              4. Thực hành (Elaborate)
-            </button>
-            <button
-              className={`stage-tab-btn ${classState.activeStage === 'evaluate' ? 'active' : ''}`}
-              onClick={() => handleStageJump('evaluate')}
-            >
-              5. Đánh giá (Evaluate)
-            </button>
           </div>
 
-          <div className="gv-action-row">
-            <button className="btn primary" onClick={() => sendStateUpdate({ slideshowActive: true })}>
-              🎬 Mở Trình Chiếu (Slideshow)
-            </button>
-            <button className="btn" onClick={handlePrevSlide} disabled={classState.activeSlideIndex === 0}>
-              ◀ Trước
-            </button>
-            <button className="btn" onClick={handleNextSlide} disabled={classState.activeSlideIndex === SLIDES.length - 1}>
-              Sau ▶
-            </button>
-            <div style={{ flexGrow: 1 }} />
-            <button className="btn danger" onClick={handleResetClass}>
-              🔄 Reset Lớp Học
-            </button>
+          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+            <div className="user-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
+                <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
+                {!isTeacher && (
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>
+                    Nhóm {user.group}
+                  </span>
+                )}
+              </div>
+              <span className="user-role-lbl">{isTeacher ? 'Giảng Viên' : `Sinh Viên`}</span>
+            </div>
+            <button className="btn danger btn-sm" onClick={handleLogout}>🚪 Thoát</button>
           </div>
-        </section>
-      )}
+        </header>
 
-      {/* Main Interactive Screen */}
-      <div className="content-grid" style={{ gridTemplateColumns: isTeacher ? '3fr 1fr' : '1fr' }}>
-        {/* Main Content Side */}
-        <section className="main-content-card question-transition-container" key={classState.activeSlideIndex}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem', marginBottom: '1.5rem' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--primary)' }}>
-              Phần: {classState.activeStage} (Slide {classState.activeSlideIndex + 1}/{SLIDES.length})
-            </span>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              Đồng bộ hoạt động thực tế
-            </span>
+        {/* Student read-only mirror notice */}
+        {!isTeacher && (
+          <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', color: '#1e40af', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', marginBottom: '1.5rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            🖥️ Chế độ gương: Màn hình đang đồng bộ với bài giảng của Giảng viên. Hãy cùng tham gia thảo luận trực tiếp tại lớp học!
           </div>
+        )}
 
-          <h2 className="slide-title">{currentSlide.title}</h2>
+        {/* GV Controls Bar */}
+        {isTeacher && (
+          <section className="gv-controls-panel">
+            <div className="gv-section-title">Bảng điều khiển Giảng viên</div>
+            <div className="stage-tabs">
+              <button
+                className={`stage-tab-btn ${classState.activeStage === 'engage' ? 'active' : ''}`}
+                onClick={() => handleStageJump('engage')}
+              >
+                1. Khởi động (Engage)
+              </button>
+              <button
+                className={`stage-tab-btn ${classState.activeStage === 'explore' ? 'active' : ''}`}
+                onClick={() => handleStageJump('explore')}
+              >
+                2. Đặt vấn đề (Explore)
+              </button>
+              <button
+                className={`stage-tab-btn ${classState.activeStage === 'explain' ? 'active' : ''}`}
+                onClick={() => handleStageJump('explain')}
+              >
+                3. Bài học (Explain)
+              </button>
+              <button
+                className={`stage-tab-btn ${classState.activeStage === 'elaborate' ? 'active' : ''}`}
+                onClick={() => handleStageJump('elaborate')}
+              >
+                4. Thực hành (Elaborate)
+              </button>
+              <button
+                className={`stage-tab-btn ${classState.activeStage === 'evaluate' ? 'active' : ''}`}
+                onClick={() => handleStageJump('evaluate')}
+              >
+                5. Đánh giá (Evaluate)
+              </button>
+            </div>
 
-          <div className="slide-body">
-            {currentSlide.showTree && hasContent ? (
-              <div className="standard-split-layout">
-                <div className="standard-left-col">
+            <div className="gv-action-row">
+              <button className="btn primary" onClick={() => sendStateUpdate({ slideshowActive: true })}>
+                🎬 Mở Trình Chiếu (Slideshow)
+              </button>
+              <button className="btn" onClick={handlePrevSlide} disabled={classState.activeSlideIndex === 0}>
+                ◀ Trước
+              </button>
+              <button className="btn" onClick={handleNextSlide} disabled={classState.activeSlideIndex === SLIDES.length - 1}>
+                Sau ▶
+              </button>
+              <div style={{ flexGrow: 1 }} />
+              <button className="btn danger" onClick={handleResetClass}>
+                🔄 Reset Lớp Học
+              </button>
+            </div>
+          </section>
+        )}
+
+        {/* Main Interactive Screen */}
+        <div className="content-grid" style={{ gridTemplateColumns: isTeacher ? '3fr 1fr' : '1fr' }}>
+          {/* Main Content Side */}
+          <section className="main-content-card question-transition-container" key={classState.activeSlideIndex}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem', marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--primary)' }}>
+                Phần: {classState.activeStage} (Slide {classState.activeSlideIndex + 1}/{SLIDES.length})
+              </span>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                Đồng bộ hoạt động thực tế
+              </span>
+            </div>
+
+            <h2 className="slide-title">{currentSlide.title}</h2>
+
+            <div className="slide-body">
+              {currentSlide.showTree && hasContent ? (
+                <div className="standard-split-layout">
+                  <div className="standard-left-col">
+                    {currentSlide.type === 'content' && currentSlide.content}
+
+                    {currentSlide.type === 'vector-visualizer' && (
+                      <VectorExtractionVisualizer
+                        defaultAttr={currentSlide.defaultAttr}
+                        defaultVal={currentSlide.defaultVal}
+                        isSlideshow={false}
+                        definition={currentSlide.definition}
+                      />
+                    )}
+
+                    {currentSlide.type === 'elaborate-h1' && (
+                      <ElaborateActivity1
+                        isTeacher={isTeacher}
+                        isRevealed={classState.isRevealed}
+                        isSlideshow={false}
+                        onReveal={handleRevealAnswer}
+                      />
+                    )}
+
+                    {currentSlide.type === 'elaborate-h1-2' && (
+                      <ElaborateActivity1Part2
+                        isTeacher={isTeacher}
+                        isRevealed={classState.isRevealed}
+                        isSlideshow={false}
+                        onReveal={handleRevealAnswer}
+                      />
+                    )}
+
+                    {currentSlide.type === 'elaborate-h2' && (
+                      <ElaborateActivity2
+                        isTeacher={isTeacher}
+                        isRevealed={classState.isRevealed}
+                        isSlideshow={false}
+                        onReveal={handleRevealAnswer}
+                      />
+                    )}
+
+                    {/* Questions screen (standard view) */}
+                    {currentSlide.type === 'question' && (
+                      <div style={{ marginTop: '1.5rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
+                          <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.15rem', margin: 0 }}>
+                            {currentSlide.question.text}
+                          </p>
+                          {isTeacher && !classState.isRevealed && (
+                            <button
+                              type="button"
+                              className="btn"
+                              style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
+                              onClick={handleRevealAnswer}
+                            >
+                              👁️ Hiện đáp án
+                            </button>
+                          )}
+                        </div>
+
+                        {currentSlide.question.record && renderRecordTable(currentSlide.question.record, false)}
+
+                        {currentSlide.stage === 'engage' && !classState.isRevealed ? (
+                          <div style={{ padding: '1rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem' }}>
+                            ❓ Trả lời câu hỏi thực tế tại lớp.
+                          </div>
+                        ) : (
+                          renderInteractiveOptions(currentSlide.question, false)
+                        )}
+                        {currentSlide.stage === 'evaluate' && renderEvaluateAnswerLogger(currentSlide.question.id, false)}
+                      </div>
+                    )}
+
+                    {/* Explore troubleshooting game screen (standard view) */}
+                    {currentSlide.type === 'explore-game' && (
+                      <div>
+                        {isTeacher && !classState.isRevealed && (
+                          <div style={{ marginBottom: '1rem' }}>
+                            <button
+                              type="button"
+                              className="btn"
+                              style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
+                              onClick={handleRevealAnswer}
+                            >
+                              👁️ Hiện đáp án
+                            </button>
+                          </div>
+                        )}
+                        {renderExploreGameContent(false)}
+                      </div>
+                    )}
+
+                    {/* Evaluate Stats Screen */}
+                    {currentSlide.type === 'evaluate-stats' && renderEvaluateStatsContent(false)}
+                  </div>
+                  <div className="standard-right-col">
+                    {currentSlide.type === 'elaborate-h1' && !classState.isRevealed ? (
+                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ'} isSlideshow={false} />
+                    ) : currentSlide.type === 'elaborate-h1-2' && !classState.isRevealed ? (
+                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm giữa kỳ'] === '<5'} isSlideshow={false} />
+                    ) : currentSlide.type === 'elaborate-h2' && !classState.isRevealed ? (
+                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={false} />
+                    ) : (
+                      <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {currentSlide.showTree && (
+                    <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
+                  )}
+
                   {currentSlide.type === 'content' && currentSlide.content}
 
                   {currentSlide.type === 'vector-visualizer' && (
@@ -3854,221 +4157,119 @@ function App() {
 
                   {/* Evaluate Stats Screen */}
                   {currentSlide.type === 'evaluate-stats' && renderEvaluateStatsContent(false)}
-                </div>
-                <div className="standard-right-col">
-                  <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
-                </div>
-              </div>
-            ) : (
-              <>
-                {currentSlide.showTree && (
-                  <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
-                )}
-
-                {currentSlide.type === 'content' && currentSlide.content}
-
-                {currentSlide.type === 'vector-visualizer' && (
-                  <VectorExtractionVisualizer
-                    defaultAttr={currentSlide.defaultAttr}
-                    defaultVal={currentSlide.defaultVal}
-                    isSlideshow={false}
-                    definition={currentSlide.definition}
-                  />
-                )}
-
-                {currentSlide.type === 'elaborate-h1' && (
-                  <ElaborateActivity1
-                    isTeacher={isTeacher}
-                    isRevealed={classState.isRevealed}
-                    isSlideshow={false}
-                    onReveal={handleRevealAnswer}
-                  />
-                )}
-
-                {currentSlide.type === 'elaborate-h1-2' && (
-                  <ElaborateActivity1Part2
-                    isTeacher={isTeacher}
-                    isRevealed={classState.isRevealed}
-                    isSlideshow={false}
-                    onReveal={handleRevealAnswer}
-                  />
-                )}
-
-                {currentSlide.type === 'elaborate-h2' && (
-                  <ElaborateActivity2
-                    isTeacher={isTeacher}
-                    isRevealed={classState.isRevealed}
-                    isSlideshow={false}
-                    onReveal={handleRevealAnswer}
-                  />
-                )}
-
-                {/* Questions screen (standard view) */}
-                {currentSlide.type === 'question' && (
-                  <div style={{ marginTop: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                      <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.15rem', margin: 0 }}>
-                        {currentSlide.question.text}
-                      </p>
-                      {isTeacher && !classState.isRevealed && (
-                        <button
-                          type="button"
-                          className="btn"
-                          style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
-                          onClick={handleRevealAnswer}
-                        >
-                          👁️ Hiện đáp án
-                        </button>
-                      )}
-                    </div>
-
-                    {currentSlide.question.record && renderRecordTable(currentSlide.question.record, false)}
-
-                    {currentSlide.stage === 'engage' && !classState.isRevealed ? (
-                      <div style={{ padding: '1rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem' }}>
-                        ❓ Trả lời câu hỏi thực tế tại lớp.
-                      </div>
-                    ) : (
-                      renderInteractiveOptions(currentSlide.question, false)
-                    )}
-                    {currentSlide.stage === 'evaluate' && renderEvaluateAnswerLogger(currentSlide.question.id, false)}
-                  </div>
-                )}
-
-                {/* Explore troubleshooting game screen (standard view) */}
-                {currentSlide.type === 'explore-game' && (
-                  <div>
-                    {isTeacher && !classState.isRevealed && (
-                      <div style={{ marginBottom: '1rem' }}>
-                        <button
-                          type="button"
-                          className="btn"
-                          style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
-                          onClick={handleRevealAnswer}
-                        >
-                          👁️ Hiện đáp án
-                        </button>
-                      </div>
-                    )}
-                    {renderExploreGameContent(false)}
-                  </div>
-                )}
-
-                {/* Evaluate Stats Screen */}
-                {currentSlide.type === 'evaluate-stats' && renderEvaluateStatsContent(false)}
-              </>
-            )}
-          </div>
-        </section>
-
-        {/* Sidebar Status/Tools (Only for Teacher) */}
-        {isTeacher && (
-          <section className="sidebar-card">
-            {/* Scoreboard Widget */}
-            <div className="sidebar-item">
-              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 1rem 0' }}>Bảng điểm nhóm thi đua</h3>
-              <div className="score-card-group">
-                <div className="score-widget" style={{ position: 'relative' }}>
-                  <div className="score-team-name" style={{ color: '#ef4444' }}>Nhóm 1</div>
-                  <div className="score-number">{classState.scores.group1}</div>
-                  <div className="score-btn-row">
-                    <button className="score-adjust-btn" onClick={() => adjustScore('group1', 1)}>+1</button>
-                    <button className="score-adjust-btn" onClick={() => adjustScore('group1', -1)}>-1</button>
-                  </div>
-                  {glowEffects.filter(g => g.team === 'group1').map(g => (
-                    <div key={g.id} className={`glow-score-bubble ${g.team}`}>+{g.amount}</div>
-                  ))}
-                </div>
-
-                <div className="score-widget" style={{ position: 'relative' }}>
-                  <div className="score-team-name" style={{ color: '#3b82f6' }}>Nhóm 2</div>
-                  <div className="score-number">{classState.scores.group2}</div>
-                  <div className="score-btn-row">
-                    <button className="score-adjust-btn" onClick={() => adjustScore('group2', 1)}>+1</button>
-                    <button className="score-adjust-btn" onClick={() => adjustScore('group2', -1)}>-1</button>
-                  </div>
-                  {glowEffects.filter(g => g.team === 'group2').map(g => (
-                    <div key={g.id} className={`glow-score-bubble ${g.team}`}>+{g.amount}</div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Student Login Status Widget */}
-            <div className="sidebar-item">
-              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.75rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span>Quản lý Sinh viên</span>
-                <span style={{
-                  fontSize: '0.75rem',
-                  padding: '0.2rem 0.5rem',
-                  borderRadius: '12px',
-                  background: 'var(--primary-light)',
-                  color: 'var(--primary-hover)',
-                  fontWeight: '700'
-                }}>
-                  {demoAccounts.filter(acc => acc.role === 'student').filter(s => onlineUsers.some(o => o.username === s.username)).length}
-                  /
-                  {demoAccounts.filter(acc => acc.role === 'student').length} Online
-                </span>
-              </h3>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.5rem',
-                maxHeight: '220px',
-                overflowY: 'auto',
-                paddingRight: '4px'
-              }}>
-                {demoAccounts.filter(acc => acc.role === 'student').map(student => {
-                  const isOnline = onlineUsers.some(u => u.username === student.username);
-                  return (
-                    <div
-                      key={student.username}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '0.5rem 0.75rem',
-                        borderRadius: '0.75rem',
-                        background: isOnline ? 'var(--success-bg)' : '#f8fafc',
-                        border: '1px solid',
-                        borderColor: isOnline ? 'var(--success-border)' : 'var(--border-color)',
-                        fontSize: '0.85rem',
-                        transition: 'var(--transition)'
-                      }}
-                    >
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                        <span style={{ fontWeight: '700', color: 'var(--text-primary)' }}>{student.fullname}</span>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                          @{student.username} • Nhóm {student.group}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                        <span className={isOnline ? 'online-dot' : 'offline-dot'} />
-                        <span style={{
-                          fontWeight: '600',
-                          color: isOnline ? 'var(--success-text)' : 'var(--text-muted)'
-                        }}>
-                          {isOnline ? 'Online' : 'Offline'}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* User details / help */}
-            <div className="sidebar-item">
-              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.5rem 0' }}>Thông tin bài giảng</h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '0 0 0.5rem 0' }}>
-                Lớp CD CNTT 24AI
-              </p>
+                </>
+              )}
             </div>
           </section>
-        )}
+
+          {/* Sidebar Status/Tools (Only for Teacher) */}
+          {isTeacher && (
+            <section className="sidebar-card">
+              {/* Scoreboard Widget */}
+              <div className="sidebar-item">
+                <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 1rem 0' }}>Bảng điểm nhóm thi đua</h3>
+                <div className="score-card-group">
+                  <div className="score-widget" style={{ position: 'relative' }}>
+                    <div className="score-team-name" style={{ color: '#ef4444' }}>Nhóm 1</div>
+                    <div className="score-number">{classState.scores.group1}</div>
+                    <div className="score-btn-row">
+                      <button className="score-adjust-btn" onClick={() => adjustScore('group1', 1)}>+1</button>
+                      <button className="score-adjust-btn" onClick={() => adjustScore('group1', -1)}>-1</button>
+                    </div>
+                    {glowEffects.filter(g => g.team === 'group1').map(g => (
+                      <div key={g.id} className={`glow-score-bubble ${g.team}`}>+{g.amount}</div>
+                    ))}
+                  </div>
+
+                  <div className="score-widget" style={{ position: 'relative' }}>
+                    <div className="score-team-name" style={{ color: '#3b82f6' }}>Nhóm 2</div>
+                    <div className="score-number">{classState.scores.group2}</div>
+                    <div className="score-btn-row">
+                      <button className="score-adjust-btn" onClick={() => adjustScore('group2', 1)}>+1</button>
+                      <button className="score-adjust-btn" onClick={() => adjustScore('group2', -1)}>-1</button>
+                    </div>
+                    {glowEffects.filter(g => g.team === 'group2').map(g => (
+                      <div key={g.id} className={`glow-score-bubble ${g.team}`}>+{g.amount}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Student Login Status Widget */}
+              <div className="sidebar-item">
+                <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.75rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>Quản lý Sinh viên</span>
+                  <span style={{
+                    fontSize: '0.75rem',
+                    padding: '0.2rem 0.5rem',
+                    borderRadius: '12px',
+                    background: 'var(--primary-light)',
+                    color: 'var(--primary-hover)',
+                    fontWeight: '700'
+                  }}>
+                    {demoAccounts.filter(acc => acc.role === 'student').filter(s => onlineUsers.some(o => o.username === s.username)).length}
+                    /
+                    {demoAccounts.filter(acc => acc.role === 'student').length} Online
+                  </span>
+                </h3>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.5rem',
+                  maxHeight: '220px',
+                  overflowY: 'auto',
+                  paddingRight: '4px'
+                }}>
+                  {demoAccounts.filter(acc => acc.role === 'student').map(student => {
+                    const isOnline = onlineUsers.some(u => u.username === student.username);
+                    return (
+                      <div
+                        key={student.username}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '0.75rem',
+                          background: isOnline ? 'var(--success-bg)' : '#f8fafc',
+                          border: '1px solid',
+                          borderColor: isOnline ? 'var(--success-border)' : 'var(--border-color)',
+                          fontSize: '0.85rem',
+                          transition: 'var(--transition)'
+                        }}
+                      >
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                          <span style={{ fontWeight: '700', color: 'var(--text-primary)' }}>{student.fullname}</span>
+                          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                            @{student.username} • Nhóm {student.group}
+                          </span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <span className={isOnline ? 'online-dot' : 'offline-dot'} />
+                          <span style={{
+                            fontWeight: '600',
+                            color: isOnline ? 'var(--success-text)' : 'var(--text-muted)'
+                          }}>
+                            {isOnline ? 'Online' : 'Offline'}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* User details / help */}
+              <div className="sidebar-item">
+                <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.5rem 0' }}>Thông tin bài giảng</h3>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '0 0 0.5rem 0' }}>
+                  Lớp CD CNTT 24AI
+                </p>
+              </div>
+            </section>
+          )}
+        </div>
       </div>
-    </div>
     </ClassStateContext.Provider>
   );
 }

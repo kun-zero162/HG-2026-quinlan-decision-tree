@@ -112,11 +112,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     const isActive = hasCustomHighlight ? activeNodes.has(id) : (activeNodes.has(id) || !highlightRecord);
 
     if (type === 'decision') {
-      // Attribute nodes drawn as diamonds (hình thoi)
+      // Attribute nodes drawn as diamonds (hình thoi) - Enlarged
       return (
         <g key={id}>
           <polygon
-            points={`${x},${y - 34} ${x + 85},${y} ${x},${y + 34} ${x - 85},${y}`}
+            points={`${x},${y - 45} ${x + 110},${y} ${x},${y + 45} ${x - 110},${y}`}
             fill="#ffffff"
             stroke={isActive ? '#8b5cf6' : '#e2e8f0'}
             strokeWidth={isActive ? 3 : 2}
@@ -124,18 +124,18 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           />
           <text
             x={x}
-            y={y + 5}
+            y={y + 6}
             textAnchor="middle"
             fill={isActive ? '#1e293b' : '#94a3b8'}
             fontWeight="bold"
-            fontSize="14px"
+            fontSize="18px"
           >
             {label}
           </text>
         </g>
       );
     } else if (type === 'placeholder') {
-      // Dashed diamond placeholder
+      // Dashed diamond placeholder - Enlarged
       const parts = label.split('|');
       const nodeText = parts[0] || '?';
       const subText = parts[1] || '';
@@ -143,7 +143,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       return (
         <g key={id}>
           <polygon
-            points={`${x},${y - 30} ${x + 75},${y} ${x},${y + 30} ${x - 75},${y}`}
+            points={`${x},${y - 40} ${x + 100},${y} ${x},${y + 40} ${x - 100},${y}`}
             fill="#f8fafc"
             stroke="#94a3b8"
             strokeWidth={2}
@@ -155,17 +155,17 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
             textAnchor="middle"
             fill="#64748b"
             fontWeight="bold"
-            fontSize="20px"
+            fontSize="22px"
           >
             {nodeText}
           </text>
           {subText && (
             <g>
               <rect
-                x={x - 75}
-                y={y + 36}
-                width={150}
-                height={20}
+                x={x - 100}
+                y={y + 46}
+                width={200}
+                height={24}
                 rx={4}
                 fill="#fef2f2"
                 stroke="#fca5a5"
@@ -173,11 +173,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
               />
               <text
                 x={x}
-                y={y + 50}
+                y={y + 62}
                 textAnchor="middle"
                 fill="#ef4444"
                 fontWeight="bold"
-                fontSize="11px"
+                fontSize="13px"
               >
                 {subText}
               </text>
@@ -186,16 +186,16 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
         </g>
       );
     } else {
-      // Leaf node drawn as rounded rect (capsule)
-      const isKha = label === 'Giỏi' || label === 'Khá giỏi';
+      // Leaf node drawn as rounded rect (capsule) - Enlarged
+      const isKha = label === 'Giỏi' || label === 'Khá giỏi' || label === 'Lên lớp';
       const isTb = label === 'Trung bình khá';
-      const isRot = label === 'Không đạt' || label === 'Rớt môn';
+      const isRot = label === 'Không đạt' || label === 'Rớt môn' || label === 'Không lên lớp';
 
-      let activeColor = '#ef4444'; // Fail (Không đạt / Rớt môn)
+      let activeColor = '#ef4444'; // Fail (Không đạt / Rớt môn / Không lên lớp)
       let activeBg = 'rgba(239, 68, 68, 0.05)';
 
       if (isKha) {
-        activeColor = '#10b981'; // Success (Giỏi / Khá giỏi)
+        activeColor = '#10b981'; // Success (Giỏi / Khá giỏi / Lên lớp)
         activeBg = 'rgba(16, 185, 129, 0.08)';
       } else if (isTb) {
         activeColor = '#f59e0b'; // Warning (Trung bình khá)
@@ -205,11 +205,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       return (
         <g key={id}>
           <rect
-            x={x - 70}
-            y={y - 25}
-            width={140}
-            height={50}
-            rx={25}
+            x={x - 90}
+            y={y - 30}
+            width={180}
+            height={60}
+            rx={30}
             fill={isActive ? activeBg : '#ffffff'}
             stroke={isActive ? activeColor : '#e2e8f0'}
             strokeWidth={isActive ? 3 : 2}
@@ -217,11 +217,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           />
           <text
             x={x}
-            y={y + 5}
+            y={y + 6}
             textAnchor="middle"
             fill={isActive ? activeColor : '#94a3b8'}
             fontWeight="bold"
-            fontSize="14px"
+            fontSize="18px"
           >
             {label}
           </text>
@@ -273,64 +273,64 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
 
   return (
     <div className={isSlideshow ? "tree-wrapper-slideshow" : "tree-wrapper-standard"}>
-      <svg viewBox="20 0 1080 480" className={isSlideshow ? "tree-svg-slideshow" : "tree-svg-standard"} {...(!isSlideshow ? { width: 1080, height: 480 } : {})}>
+      <svg viewBox="20 0 1080 800" className={isSlideshow ? "tree-svg-slideshow" : "tree-svg-standard"} {...(!isSlideshow ? { width: 1080, height: 800 } : {})}>
         {/* Links */}
-        {renderLink('root-left', 560, 50, 240, 170, 'Đi học đủ', 75, { x: -25, y: -10 }, 34, (treeState === 'elaborate-1' ? 30 : 34))}
-        {renderLink('root-middle', 560, 50, 600, 170, 'Thỉnh thoảng vắng', 125, { x: 10, y: 15 }, 34, (treeState === 'full' ? 34 : 30))}
-        {renderLink('root-right', 560, 50, 960, 170, 'Thường xuyên vắng', 130, { x: 35, y: -10 }, 34, 25)}
+        {renderLink('root-left', 560, 80, 240, 280, 'Đi học đủ', 75, { x: -25, y: -10 }, 45, (treeState === 'elaborate-1' ? 40 : 45))}
+        {renderLink('root-middle', 560, 80, 660, 280, 'Thỉnh thoảng vắng', 125, { x: 10, y: 15 }, 45, (treeState === 'full' ? 45 : 40))}
+        {renderLink('root-right', 560, 80, 960, 280, 'Thường xuyên vắng', 130, { x: 35, y: -10 }, 45, 30)}
 
         {treeState !== 'elaborate-1' && (
           <>
-            {renderLink('diem-left-left', 240, 170, 110, 290, '≥5', 45, { x: -15, y: 0 }, 34, 25)}
-            {renderLink('diem-left-right', 240, 170, 360, 290, '<5', 45, { x: 15, y: 0 }, 34, (treeState === 'elaborate-3' || treeState === 'full' ? 34 : 30))}
+            {renderLink('diem-left-left', 240, 280, 110, 480, '≥5', 45, { x: -15, y: 0 }, 45, 30)}
+            {renderLink('diem-left-right', 240, 280, 360, 480, '<5', 45, { x: 15, y: 0 }, 45, (treeState === 'elaborate-3' || treeState === 'full' ? 45 : 40))}
           </>
         )}
 
         {treeState === 'full' && (
           <>
-            {renderLink('diem-mid-left', 600, 170, 540, 290, '≥5', 45, { x: -15, y: 0 }, 34, 25)}
-            {renderLink('diem-mid-right', 600, 170, 700, 290, '<5', 45, { x: 15, y: 0 }, 34, 25)}
+            {renderLink('diem-mid-left', 660, 280, 560, 480, '≥5', 45, { x: -15, y: 0 }, 45, 30)}
+            {renderLink('diem-mid-right', 660, 280, 760, 480, '<5', 45, { x: 15, y: 0 }, 45, 30)}
           </>
         )}
 
         {(treeState === 'elaborate-3' || treeState === 'full') && (
           <>
-            {renderLink('baitap-left', 360, 290, 300, 410, 'Có', 45, { x: -15, y: 0 }, 34, 25)}
-            {renderLink('baitap-right', 360, 290, 480, 410, 'Không', 55, { x: 15, y: 0 }, 34, 25)}
+            {renderLink('baitap-left', 360, 480, 250, 680, 'Có', 45, { x: -15, y: 0 }, 45, 30)}
+            {renderLink('baitap-right', 360, 480, 470, 680, 'Không', 55, { x: 15, y: 0 }, 45, 30)}
           </>
         )}
 
         {/* Nodes */}
-        {renderNode('root', 560, 50, 'Chuyên cần?')}
+        {renderNode('root', 560, 80, 'Chuyên cần?')}
 
         {/* Right branch leaf */}
-        {renderNode('leaf-fail-1', 960, 170, 'Không đạt', 'leaf')}
+        {renderNode('leaf-fail-1', 960, 280, 'Không lên lớp', 'leaf')}
 
         {/* Left branch */}
-        {treeState === 'elaborate-1' && renderNode('placeholder-left', 240, 170, '?|Mẫu: 1,2,3,4,5,6,15,16', 'placeholder')}
+        {treeState === 'elaborate-1' && renderNode('placeholder-left', 240, 280, '?|Mẫu: 1,2,3,4,5,6,15,16', 'placeholder')}
         {treeState !== 'elaborate-1' && (
           <>
-            {renderNode('node-diem-left', 240, 170, 'Điểm giữa kỳ?')}
-            {renderNode('leaf-kha-1', 110, 290, 'Giỏi', 'leaf')}
+            {renderNode('node-diem-left', 240, 280, 'Điểm giữa kỳ?')}
+            {renderNode('leaf-kha-1', 110, 480, 'Lên lớp', 'leaf')}
 
-            {treeState === 'elaborate-2' && renderNode('placeholder-left-right', 360, 290, '?|Mẫu: 4,5,6,16', 'placeholder')}
+            {treeState === 'elaborate-2' && renderNode('placeholder-left-right', 360, 480, '?|Mẫu: 4,5,6,16', 'placeholder')}
             {(treeState === 'elaborate-3' || treeState === 'full') && (
               <>
-                {renderNode('node-baitap', 360, 290, 'Làm bài tập?')}
-                {renderNode('leaf-tb-2', 300, 410, 'Trung bình khá', 'leaf')}
-                {renderNode('leaf-fail-3', 480, 410, 'Không đạt', 'leaf')}
+                {renderNode('node-baitap', 360, 480, 'Làm bài tập?')}
+                {renderNode('leaf-tb-2', 250, 680, 'Lên lớp', 'leaf')}
+                {renderNode('leaf-fail-3', 470, 680, 'Không lên lớp', 'leaf')}
               </>
             )}
           </>
         )}
 
         {/* Middle branch */}
-        {treeState !== 'full' && renderNode('placeholder-mid', 600, 170, '?|Mẫu: 7,8,9,10', 'placeholder')}
+        {treeState !== 'full' && renderNode('placeholder-mid', 660, 280, '?|Mẫu: 7,8,9,10', 'placeholder')}
         {treeState === 'full' && (
           <>
-            {renderNode('node-diem-mid', 600, 170, 'Điểm giữa kỳ?')}
-            {renderNode('leaf-tb-1', 540, 290, 'Trung bình khá', 'leaf')}
-            {renderNode('leaf-fail-2', 700, 290, 'Không đạt', 'leaf')}
+            {renderNode('node-diem-mid', 660, 280, 'Điểm giữa kỳ?')}
+            {renderNode('leaf-tb-1', 560, 480, 'Lên lớp', 'leaf')}
+            {renderNode('leaf-fail-2', 760, 480, 'Không lên lớp', 'leaf')}
           </>
         )}
       </svg>
