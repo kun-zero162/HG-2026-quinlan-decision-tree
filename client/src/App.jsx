@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useContext, createContext, Fragment } from 'react';
 import './App.css';
 import DecisionTreeSVG from './components/DecisionTreeSVG';
+import quinlanImg from './assets/images/quinlan-small.jpg';
 
 export const ClassStateContext = createContext(null);
 
@@ -41,9 +42,9 @@ const SLIDES = [
     title: 'Đặt vấn đề - Dự đoán kết quả học tập',
     content: (
       <div>
-        <p>Hoạt động: <strong>"Dự đoán kết quả học tập của sinh viên"</strong>.</p>
+        <p>Hoạt động: <strong>"Dự đoán kết quả học tập"</strong>.</p>
         <p>Các mẫu dữ liệu ngẫu nhiên sẽ được lần lượt hiển thị.</p>
-        <p>Sinh viên sẽ dựa vào cây quyết định và các thuộc tính nhận được để dự đoán kết quả học tập.</p>
+        <p>Dựa vào cây quyết định và các thuộc tính nhận được, hãy dự đoán nhãn của dữ liệu là <strong>kết quả học tập</strong>.</p>
       </div>
     ),
     showTree: true
@@ -96,10 +97,75 @@ const SLIDES = [
     type: 'content',
     title: 'Thuật toán Quinlan - Lịch sử phát triển',
     content: (
-      <div>
-        <p>Thuật toán cây quyết định Quinlan được phát triển đầu tiên vào năm <strong>1986 bởi Ross Quinlan</strong>.</p>
-        <p>Đây là thuật toán <strong>tham lam (greedy)</strong> xây dựng cây quyết định bằng cách phân vùng tập dữ liệu một cách đệ quy thành các tập con nhỏ hơn cho đến khi tất cả các điểm dữ liệu trong tập con đều thuộc cùng một lớp (đồng nhất).</p>
-        <p>Các phiên bản nâng cấp nổi tiếng tiếp theo bao gồm <strong>ID3</strong> và <strong>C4.5</strong>. Trong bài học này chúng ta tập trung vào ý tưởng Quinlan nguyên thủy sử dụng <strong>phương pháp so sánh vectơ</strong>.</p>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '40px',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        padding: '10px 0'
+      }}>
+        <div style={{ flex: '1 1 450px', minWidth: '300px' }}>
+          <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
+            Thuật toán cây quyết định Quinlan được phát triển đầu tiên vào năm <strong>1986 bởi Ross Quinlan</strong>.
+          </p>
+          <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
+            Đây là thuật toán <strong>tham lam (greedy)</strong> xây dựng cây quyết định bằng cách:
+          </p>
+          <ul style={{ fontSize: '3vh', marginBottom: '1.5vh' }}>
+            <li>
+              Phân vùng tập dữ liệu một cách đệ quy thành các tập con nhỏ hơn.</li>
+            <li>
+              Thuật toán dừng lại khi tất cả các điểm dữ liệu trong tập con đều thuộc cùng một lớp (đồng nhất).
+            </li>
+          </ul>
+          <p style={{ fontSize: '3.5vh' }}>
+            Các phiên bản nâng cấp nổi tiếng hiện nay bao gồm <strong>ID3</strong> và <strong>C4.5</strong>. Trong bài học này chúng ta tập trung vào ý tưởng Quinlan nguyên thủy sử dụng <strong>phương pháp so sánh vectơ</strong>.
+          </p>
+        </div>
+        <div style={{
+          flex: '0 0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+          background: 'white',
+          padding: '16px',
+          borderRadius: '16px',
+          boxShadow: 'var(--shadow-md)',
+          border: '1px solid var(--border-color)',
+          maxWidth: '300px',
+          margin: '0 auto'
+        }}>
+          <img
+            src={quinlanImg}
+            alt="Ross Quinlan"
+            style={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '8px',
+              border: '1px solid var(--border-color)',
+              objectFit: 'cover'
+            }}
+          />
+          <p style={{
+            fontSize: 'clamp(0.75rem, 1.8vh, 0.85rem)',
+            color: 'var(--text-muted)',
+            textAlign: 'center',
+            margin: 0,
+            lineHeight: '1.4'
+          }}>
+            John Ross Quinlan, nguồn: Ross Quinlan's personal homepage (<a
+              href="https://www.rulequest.com/Personal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--primary)', textDecoration: 'underline' }}
+            >
+              https://www.rulequest.com/Personal
+            </a>)
+          </p>
+        </div>
       </div>
     )
   },
@@ -183,7 +249,7 @@ const SLIDES = [
           <div style={{ flex: 1, textAlign: 'left' }}>
             <h4 style={{ margin: '0 0 0.5vh 0', color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Cột Kết quả (Mục tiêu phân lớp)</h4>
             <p style={{ margin: 0, fontSize: '2.5vh', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (Lên lớp hoặc Không lên lớp).
+              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (<strong>Lên lớp</strong> hoặc <strong>Không lên lớp</strong>).
             </p>
           </div>
         </div>
@@ -208,29 +274,32 @@ const SLIDES = [
         border: '1.5px solid var(--border-color)',
         boxShadow: 'var(--shadow-sm)',
         margin: '2vh auto',
-        maxWidth: '900px',
+        maxWidth: '1500px',
         textAlign: 'center'
       }}>
-        <div style={{ fontSize: '7vh', marginBottom: '2vh' }}>📈,📊,📉</div>
         <p style={{
-          fontSize: '3vh',
-          lineHeight: '1.6',
+          fontSize: '3.5vh',
+          lineHeight: '2',
           color: 'var(--text-secondary)',
           margin: 0,
+          maxWidth: '1200px'
+        }}>
+          <strong>Là vectơ chứa các nhãn kết quả của các mẫu dữ liệu có cùng thuộc tính.</strong>
+        </p>
+        <p style={{
+          fontSize: '3vh',
+          lineHeight: '2',
+          color: 'var(--text-secondary)',
+          margin: 40,
           maxWidth: '700px'
         }}>
-          Là vectơ chứa các <strong>nhãn kết quả</strong> của các mẫu dữ liệu có cùng thuộc tính.
+          Ví dụ: V<sub>[CC = ĐHĐ]</sub> = (6/8, 2/8) là một vectơ thuộc tính.
         </p>
+
       </div>
     )
   },
-  // {
-  //   stage: 'explain',
-  //   type: 'vector-visualizer',
-  //   title: 'Minh họa: Vectơ thuộc tính',
-  //   defaultAttr: 'Chuyên cần',
-  //   defaultVal: 'Đi học đủ'
-  // },
+
   {
     stage: 'explain',
     type: 'content',
@@ -249,18 +318,26 @@ const SLIDES = [
         border: '1.5px solid var(--border-color)',
         boxShadow: 'var(--shadow-sm)',
         margin: '2vh auto',
-        maxWidth: '900px',
+        maxWidth: '1500px',
         textAlign: 'center'
       }}>
-        <div style={{ fontSize: '7vh', marginBottom: '2vh' }}>✅,✅,✅,✅</div>
         <p style={{
-          fontSize: '3vh',
-          lineHeight: '1.6',
+          fontSize: '3.5vh',
+          lineHeight: '2',
           color: 'var(--text-secondary)',
           margin: 0,
+          maxWidth: '1200px'
+        }}>
+          <strong>Là vectơ thuộc tính mà tất cả phần tử đều có CÙNG một giá trị nhãn (đồng nhất).</strong>
+        </p>
+        <p style={{
+          fontSize: '3vh',
+          lineHeight: '2',
+          color: 'var(--text-secondary)',
+          margin: 40,
           maxWidth: '700px'
         }}>
-          Là vectơ thuộc tính mà tất cả phần tử đều có <strong>CÙNG</strong> một giá trị nhãn (đồng nhất).
+          Ví dụ: V<sub>[CC = TXV]</sub> = (0/4, 4/4) là một vectơ đơn vị.
         </p>
       </div>
     )
@@ -613,68 +690,137 @@ const FALLBACK_ROWS = [
 ];
 
 function AlgorithmProcessFlow() {
-  const steps = [
-    {
-      id: 1,
-      badge: '1',
-      icon: '🔍',
-      title: 'Xét thuộc tính',
-      desc: 'Đánh giá các thuộc tính ứng viên chưa sử dụng.',
-      isLeaf: false
-    },
-    {
-      id: 2,
-      badge: '2',
-      icon: '📊',
-      title: 'Xác định vectơ',
-      desc: 'Lập vectơ nhãn theo từng phân nhánh thuộc tính.',
-      isLeaf: false
-    },
-    {
-      id: 3,
-      badge: '3',
-      icon: '🔢',
-      title: 'Đếm vectơ đơn vị',
-      desc: 'Xác định các vectơ chứa nhãn hoàn toàn đồng nhất.',
-      isLeaf: false
-    },
-    {
-      id: 4,
-      badge: '4',
-      icon: '🎯',
-      title: 'Chọn nút',
-      desc: 'Chọn thuộc tính tạo ra nhiều vectơ đơn vị nhất.',
-      isLeaf: false
-    },
-    {
-      id: 5,
-      badge: '5',
-      icon: '🌳',
-      title: 'Nhánh hóa / Dừng',
-      desc: 'Lặp lại cho nhánh chưa đồng nhất hoặc dừng tại nút lá.',
-      isLeaf: true
-    }
-  ];
-
   return (
-    <div className="algo-flow-container">
-      {steps.map((step, idx) => (
-        <Fragment key={step.id}>
-          <div className={`algo-flow-card ${step.isLeaf ? 'leaf-step' : ''}`}>
-            <div className="algo-flow-badge">{step.badge}</div>
-            <div className="algo-flow-icon">{step.icon}</div>
-            <h4 className="algo-flow-title">{step.title}</h4>
-            <p className="algo-flow-desc">{step.desc}</p>
-          </div>
-          {idx < steps.length - 1 && (
-            <div className="algo-flow-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-          )}
-        </Fragment>
-      ))}
+    <div className="svg-flow-container">
+      <svg viewBox="0 0 1160 460" className="svg-flow-element">
+        <defs>
+          <marker id="arrow-grey" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 2 L 6 5 L 0 8 Z" fill="#cbd5e1" />
+          </marker>
+          <marker id="arrow-purple" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 2 L 6 5 L 0 8 Z" fill="#8b5cf6" />
+          </marker>
+          <clipPath id="clip-card-1"><rect x="20" y="15" width="190" height="160" rx="12" /></clipPath>
+          <clipPath id="clip-card-2"><rect x="250" y="15" width="190" height="160" rx="12" /></clipPath>
+          <clipPath id="clip-card-3"><rect x="480" y="15" width="190" height="160" rx="12" /></clipPath>
+          <clipPath id="clip-card-4"><rect x="710" y="15" width="190" height="160" rx="12" /></clipPath>
+          <clipPath id="clip-card-5"><rect x="940" y="15" width="190" height="160" rx="12" /></clipPath>
+          <clipPath id="clip-card-6"><rect x="940" y="330" width="190" height="115" rx="12" /></clipPath>
+        </defs>
+
+        {/* Top-row straight arrows */}
+        <path d="M 215 95 L 245 95" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <path d="M 445 95 L 475 95" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <path d="M 675 95 L 705 95" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <path d="M 905 95 L 935 95" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+
+        {/* Down arrow from Card 5 to Diamond */}
+        <path d="M 1035 175 L 1035 209" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+
+        {/* Down arrow from Diamond to Card 6 */}
+        <path d="M 1035 285 L 1035 324" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <text x="1046" y="308" fill="#10b981" fontWeight="bold" fontSize="12px">CÓ</text>
+
+        {/* Left dashed arrow from Diamond to Recursion Pill */}
+        <path d="M 950 250 L 742 250" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
+        <text x="848" y="242" fill="#ef4444" fontWeight="bold" fontSize="13px" textAnchor="middle">KHÔNG</text>
+
+        {/* Returning dashed arrow from Recursion Pill back to Card 1 */}
+        <path d="M 415 250 L 115 250 L 115 182" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
+
+        {/* Card 1: XÉT THUỘC TÍNH */}
+        <g className="svg-card-group" style={{ '--card-theme': '#4f46e5' }}>
+          <rect x="20" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
+          <rect x="20" y="15" width="190" height="6" fill="#4f46e5" clipPath="url(#clip-card-1)" />
+          <circle cx="115" cy="45" r="14" fill="#4f46e5" className="svg-card-badge" />
+          <text x="115" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">1</text>
+          <text x="115" y="80" textAnchor="middle" fontSize="24px">🔍</text>
+          <text x="115" y="103" textAnchor="middle" fill="#4f46e5" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">XÉT THUỘC TÍNH</text>
+          <text x="115" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Xét tập các thuộc tính</text>
+          <text x="115" y="139" textAnchor="middle" fill="#475569" fontSize="11px">còn lại có thể sử dụng.</text>
+        </g>
+
+        {/* Card 2: XÁC ĐỊNH VECTOR */}
+        <g className="svg-card-group" style={{ '--card-theme': '#0284c7' }}>
+          <rect x="250" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
+          <rect x="250" y="15" width="190" height="6" fill="#0284c7" clipPath="url(#clip-card-2)" />
+          <circle cx="345" cy="45" r="14" fill="#0284c7" className="svg-card-badge" />
+          <text x="345" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">2</text>
+          <text x="345" y="80" textAnchor="middle" fontSize="24px">📊</text>
+          <text x="345" y="103" textAnchor="middle" fill="#0284c7" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">XÁC ĐỊNH VECTOR</text>
+          <text x="345" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Với mỗi thuộc tính A, lập</text>
+          <text x="345" y="139" textAnchor="middle" fill="#475569" fontSize="11px">các vector nhãn theo từng</text>
+          <text x="345" y="155" textAnchor="middle" fill="#475569" fontSize="11px">giá trị (nhánh) của A.</text>
+        </g>
+
+        {/* Card 3: ĐẾM VECTOR ĐƠN VỊ */}
+        <g className="svg-card-group" style={{ '--card-theme': '#6366f1' }}>
+          <rect x="480" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
+          <rect x="480" y="15" width="190" height="6" fill="#6366f1" clipPath="url(#clip-card-3)" />
+          <circle cx="575" cy="45" r="14" fill="#6366f1" className="svg-card-badge" />
+          <text x="575" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">3</text>
+          <text x="575" y="80" textAnchor="middle" fontSize="24px">📋</text>
+          <text x="575" y="103" textAnchor="middle" fill="#6366f1" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">ĐẾM VECTOR ĐƠN VỊ</text>
+          <text x="575" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Đếm số lượng vector đơn vị</text>
+          <text x="575" y="139" textAnchor="middle" fill="#475569" fontSize="11px">(mỗi vector có tất cả mẫu</text>
+          <text x="575" y="155" textAnchor="middle" fill="#475569" fontSize="11px">cùng một lớp).</text>
+        </g>
+
+        {/* Card 4: CHỌN NÚT */}
+        <g className="svg-card-group" style={{ '--card-theme': '#ef4444' }}>
+          <rect x="710" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
+          <rect x="710" y="15" width="190" height="6" fill="#ef4444" clipPath="url(#clip-card-4)" />
+          <circle cx="805" cy="45" r="14" fill="#ef4444" className="svg-card-badge" />
+          <text x="805" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">4</text>
+          <text x="805" y="80" textAnchor="middle" fontSize="24px">🎯</text>
+          <text x="805" y="103" textAnchor="middle" fill="#ef4444" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">CHỌN NÚT</text>
+          <text x="805" y="121" textAnchor="middle" fill="#475569" fontSize="10.2px">Chọn thuộc tính có số lượng</text>
+          <text x="805" y="134" textAnchor="middle" fill="#475569" fontSize="10.2px">vector đơn vị lớn nhất.</text>
+          <text x="805" y="147" textAnchor="middle" fill="#475569" fontSize="10.2px">(Nếu hòa: chọn thuộc tính</text>
+          <text x="805" y="160" textAnchor="middle" fill="#475569" fontSize="10.2px">có tổng số vector ít hơn).</text>
+        </g>
+
+        {/* Card 5: NHÁNH HÓA */}
+        <g className="svg-card-group" style={{ '--card-theme': '#10b981' }}>
+          <rect x="940" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
+          <rect x="940" y="15" width="190" height="6" fill="#10b981" clipPath="url(#clip-card-5)" />
+          <circle cx="1035" cy="45" r="14" fill="#10b981" className="svg-card-badge" />
+          <text x="1035" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">5</text>
+          <text x="1035" y="80" textAnchor="middle" fontSize="24px">🌳</text>
+          <text x="1035" y="103" textAnchor="middle" fill="#10b981" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">NHÁNH HÓA</text>
+          <text x="1035" y="121" textAnchor="middle" fill="#475569" fontSize="10.2px">Chọn thuộc tính đó làm nút,</text>
+          <text x="1035" y="134" textAnchor="middle" fill="#475569" fontSize="10.2px">tạo các nhánh tương ứng với</text>
+          <text x="1035" y="147" textAnchor="middle" fill="#475569" fontSize="10.2px">các giá trị của thuộc tính</text>
+          <text x="1035" y="160" textAnchor="middle" fill="#475569" fontSize="10.2px">và phân vùng dữ liệu.</text>
+        </g>
+
+        {/* Decision Diamond: DỮ LIỆU CON CÓ THUẦN? */}
+        <g className="svg-diamond-group">
+          <polygon points="1035,215 1120,250 1035,285 950,250" className="svg-diamond-bg" />
+          <text x="1035" y="246" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="10.5px" letterSpacing="0.3px">DỮ LIỆU CON</text>
+          <text x="1035" y="258" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="10.5px" letterSpacing="0.3px">CÓ THUẦN?</text>
+        </g>
+
+        {/* Card 6: DỪNG (NÚT LÁ) */}
+        <g className="svg-card-group" style={{ '--card-theme': '#10b981' }}>
+          <rect x="940" y="330" width="190" height="115" rx="12" className="svg-card-bg" />
+          <rect x="940" y="330" width="190" height="6" fill="#10b981" clipPath="url(#clip-card-6)" />
+          <circle cx="1035" cy="358" r="14" fill="#10b981" className="svg-card-badge" />
+          <text x="1035" y="362" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">6</text>
+          <text x="1035" y="388" textAnchor="middle" fontSize="20px">🍃</text>
+          <text x="1035" y="407" textAnchor="middle" fill="#10b981" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">DỪNG (NÚT LÁ)</text>
+          <text x="1035" y="422" textAnchor="middle" fill="#475569" fontSize="10.5px">Tạo nút lá với nhãn</text>
+          <text x="1035" y="434" textAnchor="middle" fill="#475569" fontSize="10.5px">của lớp đồng nhất.</text>
+        </g>
+
+        {/* Recursion Pill: ĐỆ QUY TRÊN TỪNG NHÁNH */}
+        <g className="svg-pill-group">
+          <rect x="415" y="220" width="320" height="60" rx="30" ry="30" className="svg-pill-bg" />
+          <text x="575" y="241" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px" letterSpacing="0.5px">ĐỆ QUY TRÊN TỪNG NHÁNH</text>
+          <text x="575" y="257" textAnchor="middle" fill="#f3e8ff" fontSize="10px">Lặp lại quy trình cho từng nhánh dữ liệu con</text>
+          <text x="575" y="270" textAnchor="middle" fill="#f3e8ff" fontSize="10px">với tập thuộc tính còn lại.</text>
+        </g>
+      </svg>
     </div>
   );
 }
@@ -1298,7 +1444,9 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
       return val === correct[field];
     }
     if (field === 'selectedNode') {
-      return val.trim().toLowerCase() === correct.selectedNode.toLowerCase();
+      if (!val) return false;
+      const cleanVal = val.trim().toLowerCase();
+      return cleanVal === 'điểm giữa kỳ' || cleanVal === 'làm bài tập';
     }
     return normalize(val) === correct[field];
   };
@@ -1589,7 +1737,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               style={{
                 padding: '0.5vh 0.8vw',
                 borderRadius: '0.375rem',
-                border: `1.5px solid ${showFeedback && inputs.selectedNode !== 'Điểm giữa kỳ' ? 'var(--error)' : showFeedback ? 'var(--success)' : 'var(--border-color)'}`,
+                border: `1.5px solid ${showFeedback && !isFieldCorrect('selectedNode', inputs.selectedNode) ? 'var(--error)' : showFeedback ? 'var(--success)' : 'var(--border-color)'}`,
                 fontSize: isSlideshow ? '1.8vh' : '0.85rem',
                 outline: 'none',
                 background: '#ffffff',
@@ -1655,7 +1803,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
             animation: 'fadeIn 0.25s ease-out'
           }}>
             {isFieldCorrect('selectedNode', inputs.selectedNode)
-              ? '🎉 Chính xác! Nút quyết định tiếp theo tại nhánh Đi học đủ là Điểm giữa kỳ.'
+              ? '🎉 Chính xác! Cả "Điểm giữa kỳ" và "Làm bài tập" đều có thể được chọn (đều có 1 vectơ đơn vị). Để tiếp tục bài học, ta thống nhất chọn Điểm giữa kỳ.'
               : '❌ Chưa chính xác. Gợi ý: Hãy tính số vectơ đơn vị của từng thuộc tính.'}
           </div>
         )}

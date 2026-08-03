@@ -1493,3 +1493,123 @@ body {
     padding: 2vh 4vw;
   }
 }
+
+/* New SVG-based Recursive Algorithm Flowchart */
+.svg-flow-container {
+  width: 100%;
+  margin: 0.5vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5vh;
+  box-shadow: var(--shadow-sm);
+}
+
+.svg-flow-element {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+}
+
+/* Card hover animation */
+.svg-card-group {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.svg-card-group:hover {
+  transform: translateY(-5px);
+}
+
+.svg-card-bg {
+  fill: #ffffff;
+  stroke: var(--border-color);
+  stroke-width: 1.5px;
+  transition: stroke 0.3s ease, filter 0.3s ease;
+}
+
+.svg-card-group:hover .svg-card-bg {
+  stroke: var(--card-theme);
+  filter: drop-shadow(0 8px 16px rgba(99, 102, 241, 0.1));
+}
+
+.svg-card-badge {
+  transition: transform 0.3s ease;
+}
+
+.svg-card-group:hover .svg-card-badge {
+  transform: scale(1.05);
+}
+
+/* Diamond condition hover effect */
+.svg-diamond-group {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.svg-diamond-group:hover {
+  transform: scale(1.03);
+}
+
+.svg-diamond-bg {
+  fill: #fffbeb;
+  stroke: #f59e0b;
+  stroke-width: 2px;
+  transition: filter 0.3s ease;
+}
+
+.svg-diamond-group:hover .svg-diamond-bg {
+  filter: drop-shadow(0 6px 12px rgba(245, 158, 11, 0.15));
+}
+
+/* Recursion Pill styling */
+.svg-pill-group {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.svg-pill-group:hover {
+  transform: scale(1.03);
+}
+
+.svg-pill-bg {
+  fill: #8b5cf6;
+  stroke: #7c3aed;
+  stroke-width: 1px;
+  transition: fill 0.3s ease, filter 0.3s ease;
+}
+
+.svg-pill-group:hover .svg-pill-bg {
+  fill: #7c3aed;
+  filter: drop-shadow(0 6px 12px rgba(124, 58, 237, 0.25));
+}
+
+/* Arrow animations */
+.svg-arrow-line {
+  stroke: #cbd5e1;
+  stroke-width: 2.5px;
+}
+
+.svg-arrow-line-dashed {
+  stroke: #8b5cf6;
+  stroke-width: 2.5px;
+  stroke-dasharray: 6,4;
+  animation: dashOffset 40s linear infinite;
+}
+
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.svg-arrow-head {
+  fill: #cbd5e1;
+}
+
+.svg-arrow-head-dashed {
+  fill: #8b5cf6;
+}
