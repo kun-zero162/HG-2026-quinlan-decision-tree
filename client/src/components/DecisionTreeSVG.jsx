@@ -6,11 +6,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
   if (propTreeState) {
     treeState = propTreeState;
   } else if (activeSlideIndex !== undefined) {
-    if (activeSlideIndex >= 12 && activeSlideIndex <= 17) {
+    if (activeSlideIndex >= 13 && activeSlideIndex <= 18) {
       treeState = 'elaborate-1';
-    } else if (activeSlideIndex >= 18 && activeSlideIndex <= 21) {
+    } else if (activeSlideIndex >= 19 && activeSlideIndex <= 22) {
       treeState = 'elaborate-2';
-    } else if (activeSlideIndex >= 22 && activeSlideIndex <= 24) {
+    } else if (activeSlideIndex >= 23 && activeSlideIndex <= 25) {
       treeState = 'elaborate-3';
     }
   }
@@ -20,14 +20,14 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
   const activeNodes = new Set();
   const activeLinks = new Set();
 
-  if (activeSlideIndex === 15 && treeState === 'elaborate-2') {
+  if (activeSlideIndex === 16 && treeState === 'elaborate-2') {
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
     activeNodes.add('node-diem-left');
     activeLinks.add('diem-left-left');
     activeNodes.add('leaf-kha-1');
-  } else if (activeSlideIndex === 16 && treeState === 'elaborate-3') {
+  } else if (activeSlideIndex === 17 && treeState === 'elaborate-3') {
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
@@ -40,7 +40,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     activeNodes.add('leaf-tb-2');
     activeLinks.add('baitap-right');
     activeNodes.add('leaf-fail-3');
-  } else if (activeSlideIndex === 17 && treeState === 'full') {
+  } else if (activeSlideIndex === 18 && treeState === 'full') {
     hasCustomHighlight = true;
     // Add all nodes to light up the entire tree
     activeNodes.add('root');

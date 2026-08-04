@@ -35,7 +35,7 @@ const SLIDES = [
     showTree: true
   },
 
-  // --- EXPLORE (4 to 5) ---
+  // --- EXPLORE (3 to 5) ---
   {
     stage: 'explore',
     type: 'content',
@@ -91,7 +91,7 @@ const SLIDES = [
     )
   },
 
-  // --- EXPLAIN (6 to 11) ---
+  // --- EXPLAIN (6 to 15) ---
   {
     stage: 'explain',
     type: 'content',
@@ -325,25 +325,66 @@ const SLIDES = [
         maxWidth: '1500px',
         textAlign: 'center'
       }}>
+
         <p style={{
           fontSize: '3.5vh',
           lineHeight: '2',
           color: 'var(--text-secondary)',
           margin: 0,
-          maxWidth: '1200px'
+          maxWidth: '1400px'
         }}>
-          <strong>Là vectơ chứa các nhãn kết quả của các mẫu dữ liệu có cùng thuộc tính.</strong>
+          <strong>Vectơ thuộc tính</strong> là một vectơ chứa các nhãn kết quả của các mẫu dữ liệu có cùng thuộc tính.<sup><a href="#ref-quinlan" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 'bold' }}>[*]</a></sup>
         </p>
+        <div style={{ textAlign: 'center', fontSize: '2.5vh', fontWeight: '700', color: 'var(--primary)', marginTop: '2vh' }}>
+          Công thức tổng quát:
+        </div>
+        <div style={{ textAlign: 'center', fontSize: '2.8vh', fontFamily: 'Consolas, monospace', fontWeight: '600', margin: '1vh 0' }}>
+          V<sub>[A = j]</sub> = ( T(j, r<sub>1</sub>), T(j, r<sub>2</sub>), ..., T(j, r<sub>n</sub>) )
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', fontSize: '2.1vh' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontWeight: 'bold', color: 'var(--primary)' }}>Trong đó:</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <span style={{ fontWeight: 'bold', minWidth: '80px', fontFamily: 'Consolas, monospace' }}>T(j, r<sub>i</sub>)</span>
+            <span>=</span>
+            <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', verticalAlign: 'middle', margin: '0 0.5rem' }}>
+              <span style={{ borderBottom: '1px solid var(--text-secondary)', padding: '0 4px', textAlign: 'center', fontWeight: '500' }}>
+                tổng số phần tử trong phân hoạch có giá trị thuộc tính dẫn xuất A là j và có giá trị thuộc tính mục tiêu là r<sub>i</sub>
+              </span>
+              <span style={{ padding: '0 4px', textAlign: 'center', fontWeight: '500' }}>
+                tổng số phần tử trong phân hoạch có giá trị thuộc tính dẫn xuất A là j
+              </span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <span style={{ fontWeight: 'bold', minWidth: '80px', fontFamily: 'Consolas, monospace' }}>r<sub>1</sub>, r<sub>2</sub>, ..., r<sub>n</sub></span>
+            <span>là các giá trị của thuộc tính mục tiêu.</span>
+          </div>
+        </div>
         <p style={{
           fontSize: '3vh',
           lineHeight: '2',
           color: 'var(--text-secondary)',
-          margin: 40,
+          margin: '20px 0',
           maxWidth: '700px'
         }}>
           Ví dụ: V<sub>[CC = ĐHĐ]</sub> = (6/8, 2/8) là một vectơ thuộc tính.
         </p>
 
+        <div id="ref-quinlan" style={{
+          marginTop: '3vh',
+          paddingTop: '1.5vh',
+          borderTop: '1px solid var(--border-color)',
+          width: '100%',
+          maxWidth: '950px',
+          textAlign: 'left',
+          fontSize: '1.8vh',
+          color: 'var(--text-muted)',
+          lineHeight: '1.4'
+        }}>
+          <span style={{ fontWeight: 'bold', color: 'var(--primary)' }}>[*]</span> QUINLAN J. R., <em>"Discovering Rules by Induction from Large Collections of Examples"</em>, Expert Systems in the Micro Electronics Age, Edinburgh University Press, 1979. URL: <a href="https://cir.nii.ac.jp/crid/1571698598996724992" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>https://cir.nii.ac.jp/crid/1571698598996724992</a>
+        </div>
       </div>
     )
   },
@@ -559,7 +600,7 @@ const SLIDES = [
     showTree: false
   },
 
-  // --- ELABORATE (11 to 22) ---
+  // --- ELABORATE (16 to 19) ---
   {
     stage: 'elaborate',
     type: 'content',
@@ -600,7 +641,7 @@ const SLIDES = [
     showTree: true
   },
 
-  // --- EVALUATE (23 to 28) ---
+  // --- EVALUATE (20 to 26) ---
   {
     stage: 'evaluate',
     type: 'content',
@@ -714,8 +755,8 @@ const STAGE_START_INDICES = {
   engage: 0,
   explore: 2,
   explain: 5,
-  elaborate: 14,
-  evaluate: 18
+  elaborate: 15,
+  evaluate: 19
 };
 
 const FALLBACK_ROWS = [
