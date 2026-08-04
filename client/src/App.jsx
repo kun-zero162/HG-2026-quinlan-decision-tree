@@ -14,7 +14,7 @@ const SLIDES = [
     title: 'Kiểm tra bài cũ - Cây quyết định',
     content: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', alignItems: 'center', justifyContent: 'center', height: '100%', padding: '2vh 0' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '700px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '900px' }}>
           <div className="quiz-option-stats" style={{ background: '#ffffff', borderColor: 'var(--border-color)', padding: '2.5vh 3vw', borderRadius: '1rem', display: 'flex', alignItems: 'center', gap: '1vw', justifyContent: 'flex-start', textAlign: 'left', width: '100%' }}>
             <span style={{ background: 'var(--primary)', color: 'white', width: '4vh', height: '4vh', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', fontWeight: 'bold', fontSize: '2vh', flexShrink: 0 }}>1</span>
             <span style={{ fontWeight: 'bold', fontSize: '3.5vh', color: 'var(--text-primary)' }}>Nêu các thành phần trên cây quyết định.</span>
@@ -74,7 +74,7 @@ const SLIDES = [
         border: '1.5px dashed rgba(99, 102, 241, 0.25)',
         boxShadow: 'inset 0 2px 4px rgba(99, 102, 241, 0.02)',
         margin: '2vh auto',
-        maxWidth: '800px'
+        maxWidth: '1000px'
       }}>
         <h3 style={{
           color: 'var(--primary)',
@@ -91,11 +91,59 @@ const SLIDES = [
     )
   },
 
-  // --- EXPLAIN (6 to 10) ---
+  // --- EXPLAIN (6 to 11) ---
   {
     stage: 'explain',
     type: 'content',
-    title: 'Thuật toán Quinlan - Lịch sử phát triển',
+    title: 'Bài giảng',
+    content: (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '35vh',
+        height: '100%',
+        textAlign: 'center',
+        padding: '4vh 2vw',
+        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(99, 102, 241, 0.08) 100%)',
+        borderRadius: '1.25rem',
+        border: '1.5px dashed rgba(99, 102, 241, 0.25)',
+        boxShadow: 'inset 0 2px 4px rgba(99, 102, 241, 0.02)',
+        margin: '2vh auto',
+        maxWidth: '1600px'
+      }}>
+        <h3 style={{
+          color: '#12498dff',
+          fontSize: '7vh',
+          fontWeight: '800',
+          lineHeight: '1.6',
+          margin: 0,
+          letterSpacing: '-0.02em',
+          textShadow: '0 2px 10px rgba(99, 102, 241, 0.05)'
+        }}>
+          THUẬT TOÁN XÂY DỰNG CÂY QUYẾT ĐỊNH
+        </h3>
+        <div>
+          <h3 style={{
+            color: '#12498dff',
+            fontSize: '7vh',
+            fontWeight: '800',
+            lineHeight: '1.6',
+            margin: 0,
+            letterSpacing: '-0.02em',
+            textShadow: '0 2px 10px rgba(99, 102, 241, 0.05)'
+          }}>
+            DỰA TRÊN XÁC SUẤT CÓ ĐIỀU KIỆN
+          </h3>
+        </div>
+      </div>
+    )
+  },
+  {
+    stage: 'explain',
+    type: 'content',
+    title: 'Giới thiệu thuật toán',
     content: (
       <div style={{
         display: 'flex',
@@ -108,7 +156,7 @@ const SLIDES = [
       }}>
         <div style={{ flex: '1 1 450px', minWidth: '300px' }}>
           <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
-            Thuật toán cây quyết định Quinlan được phát triển đầu tiên vào năm <strong>1986 bởi Ross Quinlan</strong>.
+            Thuật toán <strong>xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện</strong> được phát triển đầu tiên bởi <strong>Ross Quinlan</strong>.
           </p>
           <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
             Đây là thuật toán <strong>tham lam (greedy)</strong> xây dựng cây quyết định bằng cách:
@@ -121,7 +169,7 @@ const SLIDES = [
             </li>
           </ul>
           <p style={{ fontSize: '3.5vh' }}>
-            Các phiên bản nâng cấp nổi tiếng hiện nay bao gồm <strong>ID3</strong> và <strong>C4.5</strong>. Trong bài học này chúng ta tập trung vào ý tưởng Quinlan nguyên thủy sử dụng <strong>phương pháp so sánh vectơ</strong>.
+            Thuật toán này cũng là nền tảng cơ sở để Quinlan đưa ra các thuật toán xây dựng cây quyết định sau này như <strong>ID3</strong> và <strong>C4.5</strong>.
           </p>
         </div>
         <div style={{
@@ -421,10 +469,10 @@ const SLIDES = [
   {
     stage: 'explain',
     type: 'content',
-    title: 'Nguyên lý chọn nút của Thuật toán Quinlan',
+    title: 'Nguyên lý chọn nút của Thuật toán',
     content: (
       <div>
-        <p>Ý tưởng cốt lõi của thuật toán Quinlan cổ điển:</p>
+        <p>Ý tưởng cốt lõi của thuật toán Xây dựng cây quyết định dựa trên xác suất có điều kiện:</p>
         <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--border-color)', margin: '1rem 0' }}>
           <p style={{ fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>Quy tắc tạo nút:</p>
           <p>1. Đánh giá tất cả các thuộc tính chưa được dùng.</p>
@@ -515,7 +563,7 @@ const SLIDES = [
   {
     stage: 'elaborate',
     type: 'content',
-    title: 'Áp dụng thuật toán Quinlan',
+    title: 'Áp dụng thuật toán',
     content: (
       <div>
         <p>Sau khi đưa thuộc tính <strong>Chuyên cần</strong> vào nút gốc của cây quyết định:</p>
@@ -576,12 +624,12 @@ const SLIDES = [
     type: 'question',
     title: 'Đánh giá - Câu hỏi 1',
     question: {
-      text: 'Thuật toán Quinlan dùng dữ liệu để làm gì đầu tiên?',
+      text: 'Thuật toán Xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện thực hiện thao tác gì đầu tiên?',
       options: [
-        'A. Chọn ngẫu nhiên thuộc tính làm nút gốc.',
-        'B. Chọn thuộc tính có số vectơ đơn vị lớn nhất để làm nút gốc.',
-        'C. Xóa các record để làm sạch dữ liệu.',
-        'D. Dự đoán kết quả theo các công thức của thuật toán.'
+        'Chọn ngẫu nhiên thuộc tính làm nút gốc.',
+        'Chọn thuộc tính có số vectơ đơn vị lớn nhất để làm nút gốc.',
+        'Xóa các record để làm sạch dữ liệu.',
+        'Dự đoán kết quả theo các công thức của thuật toán.'
       ],
       correct: 1,
       id: 'evaluate-q1'
@@ -594,10 +642,10 @@ const SLIDES = [
     question: {
       text: 'Sau khi xác định các vectơ, nếu hai thuộc tính có cùng số vectơ đơn vị, thuật toán sẽ làm gì?',
       options: [
-        'A. Dừng quá trình tạo nút.',
-        'B. Tiếp tục chọn thuộc tính khác và xác định các vectơ mới.',
-        'C. Chọn thuộc tính có số lượng vectơ ít hơn làm nút.',
-        'D. Ghép 2 thuộc tính đó thành một nhóm và tạo nút.'
+        'Dừng quá trình tạo nút.',
+        'Tiếp tục chọn thuộc tính khác và xác định các vectơ mới.',
+        'Chọn thuộc tính có tổng số vectơ ít hơn làm nút.',
+        'Ghép 2 thuộc tính đó thành một nhóm và tạo nút.'
       ],
       correct: 2,
       id: 'evaluate-q2'
@@ -633,7 +681,7 @@ const SLIDES = [
         <div>
           <h3 style={{ color: 'var(--primary)', marginBottom: '1vh', fontSize: '2.8vh' }}>Củng cố bài học</h3>
           <p style={{ margin: '0.5vh 0', fontSize: '3vh', color: 'var(--text-secondary)' }}>
-            Thuật toán Quinlan cổ điển sử dụng việc so sánh số lượng vectơ đơn vị để lần lượt chọn thuộc tính làm nút quyết định.
+            Thuật toán Xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện thực hiện việc so sánh số lượng các vectơ đơn vị một cách đệ quy để lần lượt chọn thuộc tính làm nút quyết định.
           </p>
         </div>
 
@@ -2177,6 +2225,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     diemGkOver5IsUnit: null,
     diemGkUnder5Vector: '',
     diemGkUnder5IsUnit: null,
+    baiTapYesVector: '',
+    baiTapYesIsUnit: null,
+    baiTapNoVector: '',
+    baiTapNoIsUnit: null,
     selectedNode: ''
   });
   const [showFeedback, setShowFeedback] = useState(false);
@@ -2188,6 +2240,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         diemGkOver5IsUnit: true,
         diemGkUnder5Vector: '(0/2, 2/2)',
         diemGkUnder5IsUnit: true,
+        baiTapYesVector: '(1/2, 1/2)',
+        baiTapYesIsUnit: false,
+        baiTapNoVector: '(1/2, 1/2)',
+        baiTapNoIsUnit: false,
         selectedNode: 'Điểm giữa kỳ'
       });
       setShowFeedback(true);
@@ -2197,6 +2253,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         diemGkOver5IsUnit: null,
         diemGkUnder5Vector: '',
         diemGkUnder5IsUnit: null,
+        baiTapYesVector: '',
+        baiTapYesIsUnit: null,
+        baiTapNoVector: '',
+        baiTapNoIsUnit: null,
         selectedNode: ''
       });
       setShowFeedback(false);
@@ -2208,6 +2268,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     diemGkOver5IsUnit: true,
     diemGkUnder5Vector: '0/2,2/2',
     diemGkUnder5IsUnit: true,
+    baiTapYesVector: '1/2,1/2',
+    baiTapYesIsUnit: false,
+    baiTapNoVector: '1/2,1/2',
+    baiTapNoIsUnit: false,
     selectedNode: 'Điểm giữa kỳ'
   };
 
@@ -2221,6 +2285,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
       diemGkOver5IsUnit: null,
       diemGkUnder5Vector: '',
       diemGkUnder5IsUnit: null,
+      baiTapYesVector: '',
+      baiTapYesIsUnit: null,
+      baiTapNoVector: '',
+      baiTapNoIsUnit: null,
       selectedNode: ''
     });
     setShowFeedback(false);
@@ -2258,7 +2326,10 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     marginTop: '1vh',
     width: '100%',
     maxWidth: '600px',
-    margin: '0 auto'
+    margin: '0 auto',
+    maxHeight: '43vh',
+    overflowY: 'auto',
+    paddingRight: '6px'
   };
 
   const cardStyle = {
@@ -2415,6 +2486,77 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
                 >Không</button>
                 {getStatusIndicator('diemGkUnder5Vector', inputs.diemGkUnder5Vector)}
                 {getStatusIndicator('diemGkUnder5IsUnit', inputs.diemGkUnder5IsUnit)}
+              </div>
+            </div>
+          </div>
+
+          {/* Làm bài tập Card */}
+          <div style={cardStyle}>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: isSlideshow ? '2vh' : '0.9rem', fontWeight: '800', borderBottom: '1.5px solid var(--border-color)', paddingBottom: '0.5vh', textAlign: 'center' }}>
+              🔍 Khảo sát thuộc tính: Làm bài tập
+            </h4>
+
+            {/* Branch Có */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh' }}>
+              <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 7, 9)</span>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K</span>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  placeholder="Nhập giá trị vectơ ở đây"
+                  style={inputStyle('baiTapYesVector', inputs.baiTapYesVector)}
+                  value={inputs.baiTapYesVector}
+                  onChange={(e) => setInputs({ ...inputs, baiTapYesVector: e.target.value })}
+                  disabled={isRevealed}
+                />
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Đơn vị?</span>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapYesIsUnit', true, inputs.baiTapYesIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapYesIsUnit: true })}
+                >Có</button>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapYesIsUnit', false, inputs.baiTapYesIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapYesIsUnit: false })}
+                >Không</button>
+                {getStatusIndicator('baiTapYesVector', inputs.baiTapYesVector)}
+                {getStatusIndicator('baiTapYesIsUnit', inputs.baiTapYesIsUnit)}
+              </div>
+            </div>
+
+            {/* Branch Không */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh', marginTop: '0.5vh' }}>
+              <span style={labelStyle}>Nhánh: Làm bài tập = Không (Mẫu 8, 10)</span>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K</span>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  placeholder="Nhập giá trị vectơ ở đây"
+                  style={inputStyle('baiTapNoVector', inputs.baiTapNoVector)}
+                  value={inputs.baiTapNoVector}
+                  onChange={(e) => setInputs({ ...inputs, baiTapNoVector: e.target.value })}
+                  disabled={isRevealed}
+                />
+                <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Đơn vị?</span>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapNoIsUnit', true, inputs.baiTapNoIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapNoIsUnit: true })}
+                >Có</button>
+                <button
+                  type="button"
+                  style={btnToggleStyle('baiTapNoIsUnit', false, inputs.baiTapNoIsUnit)}
+                  onClick={() => !isRevealed && setInputs({ ...inputs, baiTapNoIsUnit: false })}
+                >Không</button>
+                {getStatusIndicator('baiTapNoVector', inputs.baiTapNoVector)}
+                {getStatusIndicator('baiTapNoIsUnit', inputs.baiTapNoIsUnit)}
               </div>
             </div>
           </div>
@@ -3405,7 +3547,7 @@ function App() {
     sendStateUpdate({ isRevealed: true });
   };
 
-  // Handle arrow keys for slideshow navigation in fullscreen mode
+  // Handle arrow keys and Tab key for slideshow navigation in fullscreen mode
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Only allow the teacher to control slide navigation via keys
@@ -3423,7 +3565,10 @@ function App() {
         return;
       }
 
-      if (e.key === 'ArrowRight') {
+      if (e.key === 'ArrowRight' || e.key === 'Tab') {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+        }
         handleNextSlide();
       } else if (e.key === 'ArrowLeft') {
         handlePrevSlide();
@@ -4000,7 +4145,7 @@ function App() {
           <div className="brand">
             <div style={{ fontSize: '1.5rem' }}>🎓</div>
             <div>
-              <h1 className="brand-title">Lớp Học Tương Tác: Thuật Toán Quinlan</h1>
+              <h1 className="brand-title">Lớp Học Tương Tác</h1>
               <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
                 Môn học: Cơ sở trí tuệ nhân tạo (Lớp: CD CNTT 24AI)
               </p>

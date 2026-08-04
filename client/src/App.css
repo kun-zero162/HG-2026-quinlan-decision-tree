@@ -1538,6 +1538,8 @@ body {
 
 .svg-card-badge {
   transition: transform 0.3s ease;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .svg-card-group:hover .svg-card-badge {
@@ -1548,6 +1550,8 @@ body {
 .svg-diamond-group {
   cursor: pointer;
   transition: transform 0.3s ease;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .svg-diamond-group:hover {
@@ -1569,6 +1573,8 @@ body {
 .svg-pill-group {
   cursor: pointer;
   transition: transform 0.3s ease;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .svg-pill-group:hover {
