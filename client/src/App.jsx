@@ -11,19 +11,35 @@ const SLIDES = [
   {
     stage: 'engage',
     type: 'content',
-    title: 'Kiểm tra bài cũ - Cây quyết định',
+    title: 'Kiểm tra bài cũ',
     content: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', alignItems: 'center', justifyContent: 'center', height: '100%', padding: '2vh 0' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '900px' }}>
-          <div className="quiz-option-stats" style={{ background: '#ffffff', borderColor: 'var(--border-color)', padding: '2.5vh 3vw', borderRadius: '1rem', display: 'flex', alignItems: 'center', gap: '1vw', justifyContent: 'flex-start', textAlign: 'left', width: '100%' }}>
-            <span style={{ background: 'var(--primary)', color: 'white', width: '4vh', height: '4vh', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', fontWeight: 'bold', fontSize: '2vh', flexShrink: 0 }}>1</span>
-            <span style={{ fontWeight: 'bold', fontSize: '3.5vh', color: 'var(--text-primary)' }}>Nêu các thành phần trên cây quyết định.</span>
-          </div>
-          <div className="quiz-option-stats" style={{ background: '#ffffff', borderColor: 'var(--border-color)', padding: '2.5vh 3vw', borderRadius: '1rem', display: 'flex', alignItems: 'center', gap: '1vw', justifyContent: 'flex-start', textAlign: 'left', width: '100%' }}>
-            <span style={{ background: 'var(--primary)', color: 'white', width: '4vh', height: '4vh', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', fontWeight: 'bold', fontSize: '2vh', flexShrink: 0 }}>2</span>
-            <span style={{ fontWeight: 'bold', fontSize: '3.5vh', color: 'var(--text-primary)' }}>Nêu lợi ích của cây quyết định.</span>
-          </div>
-        </div>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '35vh',
+        height: '100%',
+        textAlign: 'center',
+        padding: '4vh 2vw',
+        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(99, 102, 241, 0.08) 100%)',
+        borderRadius: '1.25rem',
+        border: '1.5px dashed rgba(99, 102, 241, 0.25)',
+        boxShadow: 'inset 0 2px 4px rgba(99, 102, 241, 0.02)',
+        margin: '2vh auto',
+        maxWidth: '1600px'
+      }}>
+        <h3 style={{
+          color: 'var(--text-secondary)',
+          fontSize: '5vh',
+          fontWeight: '800',
+          lineHeight: '1.6',
+          margin: 0,
+          letterSpacing: '-0.02em',
+          textShadow: '0 2px 10px rgba(99, 102, 241, 0.05)'
+        }}>
+          KIỂM TRA BÀI CŨ
+        </h3>
       </div>
     )
   },
@@ -31,7 +47,43 @@ const SLIDES = [
     stage: 'engage',
     type: 'content',
     title: 'Kiểm tra bài cũ - Cây quyết định',
-    content: null,
+    content: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', justifyContent: 'center', height: '100%', padding: '1vh 0' }}>
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.12) 100%)',
+          border: '1.5px solid rgba(99, 102, 241, 0.25)',
+          padding: '3vh 2.5vw',
+          borderRadius: '1rem',
+          boxShadow: '0 4px 15px rgba(99, 102, 241, 0.06)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5vh',
+          textAlign: 'left'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: 'var(--primary)',
+            fontWeight: '700',
+            fontSize: '2.2vh',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em'
+          }}>
+            <span>❓ Câu hỏi:</span>
+          </div>
+          <p style={{
+            margin: 0,
+            fontSize: '3vh',
+            fontWeight: '700',
+            color: 'var(--text-primary)',
+            lineHeight: '1.5'
+          }}>
+            Xác định các thành phần chính trên cây quyết định.
+          </p>
+        </div>
+      </div>
+    ),
     showTree: true
   },
 
@@ -39,12 +91,12 @@ const SLIDES = [
   {
     stage: 'explore',
     type: 'content',
-    title: 'Đặt vấn đề - Dự đoán kết quả học tập',
+    title: 'Đặt vấn đề - Dự đoán nhãn dữ liệu',
     content: (
       <div>
-        <p>Hoạt động: <strong>"Dự đoán kết quả học tập"</strong>.</p>
+        <p>Hoạt động: <strong>"Dự đoán nhãn dữ liệu"</strong>.</p>
         <p>Các mẫu dữ liệu ngẫu nhiên sẽ được lần lượt hiển thị.</p>
-        <p>Dựa vào cây quyết định và các thuộc tính nhận được, hãy dự đoán nhãn của dữ liệu là <strong>kết quả học tập</strong>.</p>
+        <p>Dựa vào cây quyết định và các thuộc tính nhận được, hãy dự đoán nhãn của dữ liệu là <strong>kết quả</strong>.</p>
       </div>
     ),
     showTree: true
@@ -52,7 +104,7 @@ const SLIDES = [
   {
     stage: 'explore',
     type: 'explore-game',
-    title: 'Hoạt động: Dự đoán nhãn dữ liệu',
+    title: 'Đặt vấn đề - Hoạt động: Dự đoán nhãn dữ liệu',
     showTree: true
   },
   {
@@ -155,21 +207,14 @@ const SLIDES = [
         padding: '10px 0'
       }}>
         <div style={{ flex: '1 1 450px', minWidth: '300px' }}>
-          <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
+          <p style={{ fontSize: '4.5vh', marginBottom: '1.5vh' }}>
             Thuật toán <strong>xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện</strong> được phát triển đầu tiên bởi <strong>Ross Quinlan</strong>.
           </p>
-          <p style={{ fontSize: '3.5vh', marginBottom: '1.5vh' }}>
-            Đây là thuật toán <strong>tham lam (greedy)</strong> xây dựng cây quyết định bằng cách:
+          <p style={{ fontSize: '6vh', marginBottom: '1.5vh', textAlign: 'center' }}>
+            <span style={{ fontWeight: 'bold' }}>GREEDY + RECURSIVE</span> &rarr; <span style={{ fontWeight: 'bold' }}>CLASSIFY</span>
           </p>
-          <ul style={{ fontSize: '3vh', marginBottom: '1.5vh' }}>
-            <li>
-              Phân vùng tập dữ liệu một cách đệ quy thành các tập con nhỏ hơn.</li>
-            <li>
-              Thuật toán dừng lại khi tất cả các điểm dữ liệu trong tập con đều thuộc cùng một lớp (đồng nhất).
-            </li>
-          </ul>
-          <p style={{ fontSize: '3.5vh' }}>
-            Thuật toán này cũng là nền tảng cơ sở để Quinlan đưa ra các thuật toán xây dựng cây quyết định sau này như <strong>ID3</strong> và <strong>C4.5</strong>.
+          <p style={{ fontSize: '4.5vh' }}>
+            Đây là nền tảng để Quinlan phát triển các thuật toán nổi tiếng như <strong>ID3</strong> và <strong>C4.5</strong>.
           </p>
         </div>
         <div style={{
@@ -220,31 +265,263 @@ const SLIDES = [
   {
     stage: 'explain',
     type: 'content',
+    title: 'Giới thiệu thuật toán - Công thức tổng quát của vectơ thuộc tính',
+    content: (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        minHeight: '40vh',
+        height: '100%',
+        padding: '2.5vh 2vw',
+        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(99, 102, 241, 0.08) 100%)',
+        borderRadius: '1.5rem',
+        border: '1.5px solid rgba(99, 102, 241, 0.2)',
+        boxShadow: 'var(--shadow-md)',
+        margin: '1.5vh auto',
+        maxWidth: '1350px',
+        width: '100%'
+      }}>
+        {/* Main Formula Card */}
+        <div style={{
+          background: '#ffffff',
+          borderRadius: '1.2rem',
+          padding: '2.5vh 3vw',
+          width: '100%',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+          border: '1px solid rgba(99, 102, 241, 0.15)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '2.5vh',
+          marginBottom: '2vh'
+        }}>
+          {/* Top Formula: Vector V */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'clamp(1.4rem, 3.4vh, 2.2rem)',
+            fontFamily: '"Cambria Math", "STIX Two Math", "Times New Roman", serif',
+            color: 'var(--text-primary)',
+            letterSpacing: '0.02em',
+            padding: '1vh 2vw',
+            background: 'rgba(99, 102, 241, 0.04)',
+            borderRadius: '0.8rem',
+            border: '1px dashed rgba(99, 102, 241, 0.3)',
+            width: 'fit-content'
+          }}>
+            <span style={{ fontStyle: 'italic', fontWeight: 'bold', color: 'var(--primary)' }}>V</span>
+            <sub style={{ fontSize: '0.7em', marginLeft: '2px', fontStyle: 'normal' }}>[<span style={{ fontStyle: 'italic' }}>A</span> = <span style={{ fontStyle: 'italic' }}>j</span>]</sub>
+            <span style={{ margin: '0 0.8rem', fontWeight: '500' }}>=</span>
+            <span>(</span>
+            <span style={{ margin: '0 0.25rem' }}>
+              <span style={{ fontStyle: 'italic' }}>T</span>(<span style={{ fontStyle: 'italic' }}>j</span>, <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.7em' }}>1</sub>),
+            </span>
+            <span style={{ margin: '0 0.25rem' }}>
+              <span style={{ fontStyle: 'italic' }}>T</span>(<span style={{ fontStyle: 'italic' }}>j</span>, <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.7em' }}>2</sub>),
+            </span>
+            <span style={{ margin: '0 0.4rem', letterSpacing: '0.2em' }}>...</span>,
+            <span style={{ margin: '0 0.25rem' }}>
+              <span style={{ fontStyle: 'italic' }}>T</span>(<span style={{ fontStyle: 'italic' }}>j</span>, <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.7em' }}>n</sub>)
+            </span>
+            <span>)</span>
+          </div>
+
+          {/* Sub Formula: T(j, ri) with beautiful fraction & Sigma */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+            fontFamily: '"Cambria Math", "STIX Two Math", "Times New Roman", serif',
+            color: 'var(--text-primary)',
+            gap: '1.2rem',
+            flexWrap: 'wrap'
+          }}>
+            <div>
+              <span style={{ fontStyle: 'italic', fontWeight: 'bold', color: 'var(--primary)' }}>T</span>
+              (<span style={{ fontStyle: 'italic' }}>j</span>, <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.7em', fontStyle: 'italic' }}>i</sub>)
+            </div>
+
+            <span style={{ fontSize: '1.2em', fontWeight: '500' }}>=</span>
+
+            {/* Fraction Container */}
+            <div style={{
+              display: 'inline-flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              verticalAlign: 'middle',
+              padding: '0 0.5rem'
+            }}>
+              {/* Numerator */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.4vh 1.2vw',
+                borderBottom: '2px solid var(--text-primary)',
+                width: '100%',
+                justifyContent: 'center'
+              }}>
+                {/* Sigma operator */}
+                <div style={{
+                  display: 'inline-flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  lineHeight: '1',
+                  marginRight: '0.2rem'
+                }}>
+                  <span style={{ fontSize: '0.55em', fontStyle: 'italic' }}>N</span>
+                  <span style={{ fontSize: '1.35em', lineHeight: '0.9', fontWeight: '400' }}>∑</span>
+                  <span style={{ fontSize: '0.55em', fontStyle: 'italic', whiteSpace: 'nowrap' }}>k=1</span>
+                </div>
+
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <span><strong style={{ fontFamily: 'serif' }}>𝕀</strong>(<span style={{ fontStyle: 'italic' }}>A</span><sub style={{ fontSize: '0.7em', fontStyle: 'italic' }}>k</sub> = <span style={{ fontStyle: 'italic' }}>j</span>)</span>
+                  <span style={{ margin: '0 0.4rem', fontWeight: '600', color: 'var(--text-secondary)' }}>×</span>
+                  <span><strong style={{ fontFamily: 'serif' }}>𝕀</strong>(<span style={{ fontStyle: 'italic' }}>R</span><sub style={{ fontSize: '0.7em', fontStyle: 'italic' }}>k</sub> = <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.7em', fontStyle: 'italic' }}>i</sub>)</span>
+                </div>
+              </div>
+
+              {/* Denominator */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.4vh 1.2vw',
+                width: '100%',
+                justifyContent: 'center'
+              }}>
+                {/* Sigma operator */}
+                <div style={{
+                  display: 'inline-flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  lineHeight: '1',
+                  marginRight: '0.2rem'
+                }}>
+                  <span style={{ fontSize: '0.55em', fontStyle: 'italic' }}>N</span>
+                  <span style={{ fontSize: '1.35em', lineHeight: '0.9', fontWeight: '400' }}>∑</span>
+                  <span style={{ fontSize: '0.55em', fontStyle: 'italic', whiteSpace: 'nowrap' }}>k=1</span>
+                </div>
+
+                <span><strong style={{ fontFamily: 'serif' }}>𝕀</strong>(<span style={{ fontStyle: 'italic' }}>A</span><sub style={{ fontSize: '0.7em' }}>k</sub> = <span style={{ fontStyle: 'italic' }}>j</span>)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Legend / Explanation of Symbols */}
+        <div style={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '1.2vh 1.5vw',
+          fontSize: 'clamp(0.9rem, 2.2vh, 1.2rem)',
+          textAlign: 'left',
+          background: '#ffffff',
+          borderRadius: '1rem',
+          padding: '2vh 2vw',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+          border: '1px solid var(--border-color)'
+        }}>
+          {/* Indicator Function */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              color: 'var(--primary)',
+              padding: '0.3vh 0.8vw',
+              borderRadius: '6px',
+              fontFamily: '"Cambria Math", "Times New Roman", serif',
+              fontSize: '1.1em',
+              fontWeight: 'bold',
+              minWidth: '55px',
+              textAlign: 'center'
+            }}>
+              𝕀(·)
+            </span>
+            <span>
+              <strong>Hàm chỉ báo</strong>: Nhận giá trị <strong>1</strong> nếu điều kiện đúng, <strong>0</strong> nếu sai.
+            </span>
+          </div>
+
+          {/* N */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              color: 'var(--primary)',
+              padding: '0.3vh 0.8vw',
+              borderRadius: '6px',
+              fontFamily: '"Cambria Math", "Times New Roman", serif',
+              fontSize: '1.1em',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              minWidth: '55px',
+              textAlign: 'center'
+            }}>
+              N
+            </span>
+            <span>
+              Tổng số mẫu dữ liệu trong tập huấn luyện.
+            </span>
+          </div>
+
+          {/* A and j */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              color: 'var(--primary)',
+              padding: '0.3vh 0.8vw',
+              borderRadius: '6px',
+              fontFamily: '"Cambria Math", "Times New Roman", serif',
+              fontSize: '1.1em',
+              fontWeight: 'bold',
+              minWidth: '55px',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontStyle: 'italic' }}>A, j</span>
+            </span>
+            <span>
+              <span style={{ fontStyle: 'italic' }}>A</span> là thuộc tính xét; <span style={{ fontStyle: 'italic' }}>j</span> là một giá trị cụ thể của <span style={{ fontStyle: 'italic' }}>A</span>.
+            </span>
+          </div>
+
+          {/* R and r */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              color: 'var(--primary)',
+              padding: '0.3vh 0.8vw',
+              borderRadius: '6px',
+              fontFamily: '"Cambria Math", "Times New Roman", serif',
+              fontSize: '1.1em',
+              fontWeight: 'bold',
+              minWidth: '55px',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontStyle: 'italic' }}>R, r</span><sub style={{ fontSize: '0.7em' }}>i</sub>
+            </span>
+            <span>
+              <span style={{ fontStyle: 'italic' }}>R</span> là thuộc tính mục tiêu (nhãn lớp); <span style={{ fontStyle: 'italic' }}>r</span><sub style={{ fontSize: '0.75em' }}>i</sub> là các giá trị nhãn.
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    stage: 'explain',
+    type: 'content',
     title: 'Xác định Ngữ cảnh Dữ liệu',
     content: (
       <div style={{ padding: '2vh 3vw', display: 'flex', flexDirection: 'column', gap: '3vh', height: '100%', justifyContent: 'center' }}>
         <p style={{ fontSize: '2.75vh', color: 'var(--text-secondary)', lineHeight: '1.6', margin: '0 auto', textAlign: 'center', maxWidth: '800px' }}>
-          Một trường học đã thu thập dữ liệu học tập của sinh viên dựa trên <strong>ba yếu tố đầu vào</strong> nhằm phân loại và đánh giá kết quả học tập của từng sinh viên.
+          Giảng viên đã thu thập dữ liệu học tập của sinh viên cho một môn học vào năm ngoái dựa trên <strong>ba yếu tố đầu vào</strong> nhằm phân loại và đánh giá kết quả của từng sinh viên.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', width: '100%', maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-            border: '1.5px solid var(--border-color)',
-            borderRadius: '1rem',
-            padding: '2.5vh 2vw',
-            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1vh'
-          }}>
-            <span style={{ fontSize: '4vh' }}>📝</span>
-            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Điểm giữa kỳ</h4>
-            <p style={{ margin: 0, fontSize: '2.2vh', color: 'var(--text-muted)', lineHeight: '1.4' }}>Phản ánh năng lực và quá trình học tập nửa đầu học kỳ</p>
-          </div>
-
           <div style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
             border: '1.5px solid var(--border-color)',
@@ -274,8 +551,25 @@ const SLIDES = [
             alignItems: 'center',
             gap: '1vh'
           }}>
-            <span style={{ fontSize: '4vh' }}>🏠</span>
-            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Bài tập về nhà</h4>
+            <span style={{ fontSize: '3.5vh' }}>📝</span>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Điểm kiểm tra lần 1</h4>
+            <p style={{ margin: 0, fontSize: '2.2vh', color: 'var(--text-muted)', lineHeight: '1.4' }}>Phản ánh năng lực và quá trình học tập nửa đầu học kỳ</p>
+          </div>
+
+          <div style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+            border: '1.5px solid var(--border-color)',
+            borderRadius: '1rem',
+            padding: '2.5vh 2vw',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1vh'
+          }}>
+            <span style={{ fontSize: '3.5vh' }}>🏠</span>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Làm bài tập</h4>
             <p style={{ margin: 0, fontSize: '2.2vh', color: 'var(--text-muted)', lineHeight: '1.4' }}>Việc tự giác hoàn thành đầy đủ các nhiệm vụ tự học</p>
           </div>
         </div>
@@ -297,7 +591,7 @@ const SLIDES = [
           <div style={{ flex: 1, textAlign: 'left' }}>
             <h4 style={{ margin: '0 0 0.5vh 0', color: 'var(--primary)', fontSize: '3vh', fontWeight: '700' }}>Cột Kết quả (Mục tiêu phân lớp)</h4>
             <p style={{ margin: 0, fontSize: '2.5vh', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (<strong>Lên lớp</strong> hoặc <strong>Không lên lớp</strong>).
+              Cột cuối cùng chính là <strong>kết quả thực tế</strong> của sinh viên trong năm học đó sau khi thi xong cuối kỳ và có điểm tổng kết (<strong>Đạt</strong> hoặc <strong>Không đạt</strong>).
             </p>
           </div>
         </div>
@@ -335,33 +629,7 @@ const SLIDES = [
         }}>
           <strong>Vectơ thuộc tính</strong> là một vectơ chứa các nhãn kết quả của các mẫu dữ liệu có cùng thuộc tính.<sup><a href="#ref-quinlan" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 'bold' }}>[*]</a></sup>
         </p>
-        <div style={{ textAlign: 'center', fontSize: '2.5vh', fontWeight: '700', color: 'var(--primary)', marginTop: '2vh' }}>
-          Công thức tổng quát:
-        </div>
-        <div style={{ textAlign: 'center', fontSize: '2.8vh', fontFamily: 'Consolas, monospace', fontWeight: '600', margin: '1vh 0' }}>
-          V<sub>[A = j]</sub> = ( T(j, r<sub>1</sub>), T(j, r<sub>2</sub>), ..., T(j, r<sub>n</sub>) )
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', fontSize: '2.1vh' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontWeight: 'bold', color: 'var(--primary)' }}>Trong đó:</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <span style={{ fontWeight: 'bold', minWidth: '80px', fontFamily: 'Consolas, monospace' }}>T(j, r<sub>i</sub>)</span>
-            <span>=</span>
-            <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', verticalAlign: 'middle', margin: '0 0.5rem' }}>
-              <span style={{ borderBottom: '1px solid var(--text-secondary)', padding: '0 4px', textAlign: 'center', fontWeight: '500' }}>
-                tổng số phần tử trong phân hoạch có giá trị thuộc tính dẫn xuất A là j và có giá trị thuộc tính mục tiêu là r<sub>i</sub>
-              </span>
-              <span style={{ padding: '0 4px', textAlign: 'center', fontWeight: '500' }}>
-                tổng số phần tử trong phân hoạch có giá trị thuộc tính dẫn xuất A là j
-              </span>
-            </div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span style={{ fontWeight: 'bold', minWidth: '80px', fontFamily: 'Consolas, monospace' }}>r<sub>1</sub>, r<sub>2</sub>, ..., r<sub>n</sub></span>
-            <span>là các giá trị của thuộc tính mục tiêu.</span>
-          </div>
-        </div>
+
         <p style={{
           fontSize: '3vh',
           lineHeight: '2',
@@ -460,7 +728,7 @@ const SLIDES = [
           margin: 0,
           maxWidth: '900px'
         }}>
-          Sinh viên lên bảng xác định các vectơ cho thuộc tính <strong>“Điểm giữa kỳ”</strong>
+          Sinh viên lên bảng xác định các vectơ cho thuộc tính <strong>“Điểm kiểm tra lần 1”</strong>
         </p>
       </div>
     )
@@ -559,7 +827,7 @@ const SLIDES = [
                 <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh', color: 'var(--success)' }}>1</td>
               </tr>
               <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Điểm giữa kỳ</td>
+                <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Điểm kiểm tra lần 1</td>
                 <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
                   • ≥ 5: (6/8, 2/8)<br />
                   • &lt; 5: (2/8, 6/8)
@@ -609,8 +877,8 @@ const SLIDES = [
       <div>
         <p>Sau khi đưa thuộc tính <strong>Chuyên cần</strong> vào nút gốc của cây quyết định:</p>
         <ul>
-          <li>Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi có kết quả = <strong>Không lên lớp</strong>. Với các giá trị nhãn: K, K, K, K, ta thu được vectơ đơn vị <strong>(0/4, 4/4)</strong>. Nhánh này kết thúc tại nút lá <i>Không lên lớp</i>.</li>
-          <li>Các nhánh <strong>Thỉnh thoảng vắng</strong> và <strong>Đi học đủ</strong> chứa nhiều nhãn kết quả học tập khác nhau. Chúng ta cần tiến hành phân nhánh tiếp!</li>
+          <li>Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi có kết quả = <strong>Không đạt</strong>. Với các giá trị nhãn: K, K, K, K, ta thu được vectơ đơn vị <strong>(0/4, 4/4)</strong>. Nhánh này kết thúc tại nút lá <i>Không đạt</i>.</li>
+          <li>Các nhánh <strong>Thỉnh thoảng vắng</strong> và <strong>Đi học đủ</strong> chứa nhiều nhãn kết quả khác nhau. Chúng ta cần tiến hành phân nhánh tiếp!</li>
         </ul>
       </div>
     ),
@@ -650,12 +918,12 @@ const SLIDES = [
       <div className="rules-container">
         <p style={{ margin: '0 0 1vh 0' }}>Từ cây quyết định hoàn thiện, ta rút ra <strong>Tập luật quyết định (Decision Rules)</strong>:</p>
         <div className="rules-box">
-          1. IF Chuyên cần = Thường xuyên vắng THEN Kết quả học tập = Không lên lớp <br />
-          2. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Lên lớp <br />
-          3. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm giữa kỳ &lt; 5 THEN Kết quả học tập = Không lên lớp <br />
-          4. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ ≥ 5 THEN Kết quả học tập = Lên lớp <br />
-          5. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Có THEN Kết quả học tập = Lên lớp <br />
-          6. IF Chuyên cần = Đi học đủ AND Điểm giữa kỳ &lt; 5 AND Làm bài tập = Không THEN Kết quả học tập = Không lên lớp
+          1. IF Chuyên cần = Thường xuyên vắng THEN Kết quả = Không đạt <br />
+          2. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm kiểm tra lần 1 ≥ 5 THEN Kết quả = Đạt <br />
+          3. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm kiểm tra lần 1 &lt; 5 THEN Kết quả = Không đạt <br />
+          4. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 ≥ 5 THEN Kết quả = Đạt <br />
+          5. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 &lt; 5 AND Làm bài tập = Có THEN Kết quả = Đạt <br />
+          6. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 &lt; 5 AND Làm bài tập = Không THEN Kết quả = Không đạt
         </div>
       </div>
     ),
@@ -697,13 +965,13 @@ const SLIDES = [
     type: 'question',
     title: 'Đánh giá - Câu hỏi 3',
     question: {
-      text: 'Với bản ghi mới dưới đây, dựa vào cây quyết định và tập luật đã học, kết quả học tập dự đoán của sinh viên này sẽ là gì?',
+      text: 'Với bản ghi mới dưới đây, dựa vào cây quyết định và tập luật đã học, kết quả dự đoán của sinh viên này sẽ là gì?',
       record: {
         'Chuyên cần': 'Thỉnh thoảng vắng',
-        'Điểm giữa kỳ': '>=5',
+        'Điểm kiểm tra lần 1': '>=5',
         'Làm bài tập': 'Không'
       },
-      options: ['Lên lớp', 'Không lên lớp'],
+      options: ['Đạt', 'Không đạt'],
       correct: 0,
       id: 'evaluate-q3'
     }
@@ -743,7 +1011,7 @@ const SLIDES = [
       <div>
         <h3 style={{ color: 'var(--primary)' }}>Nhiệm vụ về nhà</h3>
         <ol style={{ paddingLeft: '2.5rem', lineHeight: '1.6', paddingRight: '1.5rem' }}>
-          <li>Giả sử thuộc tính Điểm giữa kỳ được chi tiết hóa thành &quot;&gt;=8&quot;, &quot;5 đến &lt;8&quot;, và &quot;&lt;5&quot;, hãy thực hiện lại thuật toán để xây dựng cây quyết định mới.</li>
+          <li>Giả sử thuộc tính Điểm kiểm tra lần 1 được chi tiết hóa thành &quot;&gt;=8&quot;, &quot;5 đến &lt;8&quot;, và &quot;&lt;5&quot;, hãy thực hiện lại thuật toán để xây dựng cây quyết định mới.</li>
           <li>Nếu ở bước chọn nút gốc, KHÔNG CÓ thuộc tính nào tạo được vectơ đơn vị thì thuật toán làm thế nào để chọn nút một cách khách quan nhất?</li>
         </ol>
       </div>
@@ -752,30 +1020,30 @@ const SLIDES = [
 ];
 
 const STAGE_START_INDICES = {
-  engage: 0,
-  explore: 2,
-  explain: 5,
-  elaborate: 15,
-  evaluate: 19
+  engage: SLIDES.findIndex(slide => slide.stage === 'engage'),
+  explore: SLIDES.findIndex(slide => slide.stage === 'explore'),
+  explain: SLIDES.findIndex(slide => slide.stage === 'explain'),
+  elaborate: SLIDES.findIndex(slide => slide.stage === 'elaborate'),
+  evaluate: SLIDES.findIndex(slide => slide.stage === 'evaluate')
 };
 
 const FALLBACK_ROWS = [
-  { STT: 1, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 2, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 3, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 4, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 5, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 6, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 7, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 8, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 9, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 10, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 11, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 12, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 13, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 14, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' },
-  { STT: 15, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '>=5', 'Làm bài tập': 'Có', 'Kết quả học tập': 'Lên lớp' },
-  { STT: 16, 'Chuyên cần': 'Đi học đủ', 'Điểm giữa kỳ': '<5', 'Làm bài tập': 'Không', 'Kết quả học tập': 'Không lên lớp' }
+  { STT: 1, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 2, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 3, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Không', 'Kết quả': 'Đạt' },
+  { STT: 4, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 5, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 6, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Không', 'Kết quả': 'Không đạt' },
+  { STT: 7, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 8, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Không', 'Kết quả': 'Đạt' },
+  { STT: 9, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Có', 'Kết quả': 'Không đạt' },
+  { STT: 10, 'Chuyên cần': 'Thỉnh thoảng vắng', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Không', 'Kết quả': 'Không đạt' },
+  { STT: 11, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Có', 'Kết quả': 'Không đạt' },
+  { STT: 12, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Không', 'Kết quả': 'Không đạt' },
+  { STT: 13, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Có', 'Kết quả': 'Không đạt' },
+  { STT: 14, 'Chuyên cần': 'Thường xuyên vắng', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Không', 'Kết quả': 'Không đạt' },
+  { STT: 15, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '>=5', 'Làm bài tập': 'Có', 'Kết quả': 'Đạt' },
+  { STT: 16, 'Chuyên cần': 'Đi học đủ', 'Điểm kiểm tra lần 1': '<5', 'Làm bài tập': 'Không', 'Kết quả': 'Không đạt' }
 ];
 
 function AlgorithmProcessFlow() {
@@ -914,15 +1182,17 @@ function AlgorithmProcessFlow() {
   );
 }
 
-function CountdownTimer() {
+function CountdownTimer({ style = {} }) {
   const context = useContext(ClassStateContext);
-  if (!context) return null;
-  const { classState, isTeacher, sendStateUpdate } = context;
+  const classState = context?.classState || {};
+  const isTeacher = context?.isTeacher || false;
+  const sendStateUpdate = context?.sendStateUpdate || (() => { });
 
   const seconds = classState.timerSeconds !== undefined ? classState.timerSeconds : 90;
   const isActive = classState.timerActive !== undefined ? classState.timerActive : false;
 
   useEffect(() => {
+    if (!context) return;
     let interval = null;
     if (isTeacher && isActive && seconds > 0) {
       interval = setInterval(() => {
@@ -932,7 +1202,9 @@ function CountdownTimer() {
       sendStateUpdate({ timerActive: false });
     }
     return () => clearInterval(interval);
-  }, [isTeacher, isActive, seconds]);
+  }, [context, isTeacher, isActive, seconds, sendStateUpdate]);
+
+  if (!context) return null;
 
   const toggleTimer = () => {
     sendStateUpdate({ timerActive: !isActive });
@@ -956,7 +1228,8 @@ function CountdownTimer() {
       flexDirection: 'column',
       alignItems: 'center',
       gap: '2vh',
-      marginTop: '3vh'
+      marginTop: '2vh',
+      ...style
     }}>
       <div
         className={`timer-display ${isUrgent && seconds > 0 ? 'timer-pulse-critical' : ''}`}
@@ -1055,7 +1328,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
 
   const attributes = {
     'Chuyên cần': ['Đi học đủ', 'Thỉnh thoảng vắng', 'Thường xuyên vắng'],
-    'Điểm giữa kỳ': ['>=5', '<5'],
+    'Điểm kiểm tra lần 1': ['>=5', '<5'],
     'Làm bài tập': ['Có', 'Không']
   };
 
@@ -1080,19 +1353,19 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
   const matchingRows = rows.filter(row => row[selectedAttr] === selectedVal);
 
   const getBadgeValue = (val) => {
-    if (val === 'Lên lớp') return 'L';
-    if (val === 'Không lên lớp') return 'K';
+    if (val === 'Đạt') return 'Đ';
+    if (val === 'Không đạt') return 'K';
     return val;
   };
 
   const getBadgeColor = (val) => {
-    if (val === 'Lên lớp' || val === 'L') return '#10b981';
-    if (val === 'Không lên lớp' || val === 'K') return '#ef4444';
+    if (val === 'Đạt' || val === 'Đ') return '#10b981';
+    if (val === 'Không đạt' || val === 'K') return '#ef4444';
     return '#94a3b8';
   };
 
-  const firstOutcome = matchingRows[0] ? matchingRows[0]['Kết quả học tập'] : '';
-  const isUnitVector = matchingRows.every(row => row['Kết quả học tập'] === firstOutcome);
+  const firstOutcome = matchingRows[0] ? matchingRows[0]['Kết quả'] : '';
+  const isUnitVector = matchingRows.every(row => row['Kết quả'] === firstOutcome);
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: '1.5rem', marginTop: '0.5rem', width: '100%', alignItems: 'start', maxHeight: isSlideshow ? '58vh' : 'auto' }}>
@@ -1194,7 +1467,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                       <span
                         style={{
                           display: 'inline-flex',
-                          background: getBadgeColor(row['Kết quả học tập']),
+                          background: getBadgeColor(row['Kết quả']),
                           color: 'white',
                           width: '24px',
                           height: '24px',
@@ -1208,7 +1481,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                           transition: `all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${idx * 0.08}s`
                         }}
                       >
-                        {getBadgeValue(row['Kết quả học tập'])}
+                        {getBadgeValue(row['Kết quả'])}
                       </span>
                     </span>
                   );
@@ -1217,7 +1490,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '0.95rem', minWidth: '120px', textAlign: 'left' }}>Vectơ (L, K):</span>
+              <span style={{ fontWeight: 'bold', fontSize: '0.95rem', minWidth: '120px', textAlign: 'left' }}>Vectơ (Đ, K):</span>
               <div style={{
                 fontSize: '1rem',
                 fontWeight: 'bold',
@@ -1230,8 +1503,8 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
               }}>
                 {(() => {
                   const total = matchingRows.length;
-                  const lVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Lên lớp').length;
-                  const kVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Không lên lớp').length;
+                  const lVal = matchingRows.filter(r => r['Kết quả'] === 'Đạt').length;
+                  const kVal = matchingRows.filter(r => r['Kết quả'] === 'Không đạt').length;
                   return animationStep >= 3 ? `(${lVal}/${total}, ${kVal}/${total})` : '(...)';
                 })()}
               </div>
@@ -1239,9 +1512,9 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                   {(() => {
                     const total = matchingRows.length;
-                    const lVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Lên lớp').length;
-                    const kVal = matchingRows.filter(r => r['Kết quả học tập'] === 'Không lên lớp').length;
-                    return `(có ${lVal}L, ${kVal}K trên ${total} mẫu)`;
+                    const lVal = matchingRows.filter(r => r['Kết quả'] === 'Đạt').length;
+                    const kVal = matchingRows.filter(r => r['Kết quả'] === 'Không đạt').length;
+                    return `(có ${lVal}Đ, ${kVal}K trên ${total} mẫu)`;
                   })()}
                 </span>
               )}
@@ -1275,7 +1548,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
             <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', position: 'sticky', top: 0, zIndex: 5 }}>
               <th style={{ padding: '0.5rem 0.6rem' }}>STT</th>
               <th style={{ padding: '0.5rem 0.6rem', background: selectedAttr === 'Chuyên cần' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Chuyên cần</th>
-              <th style={{ padding: '0.5rem 0.6rem', background: selectedAttr === 'Điểm giữa kỳ' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Điểm giữa kỳ</th>
+              <th style={{ padding: '0.5rem 0.6rem', background: selectedAttr === 'Điểm kiểm tra lần 1' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Điểm kiểm tra lần 1</th>
               <th style={{ padding: '0.5rem 0.6rem', background: selectedAttr === 'Làm bài tập' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Làm bài tập</th>
               <th style={{ padding: '0.5rem 0.6rem', fontWeight: 'bold' }}>Kết quả</th>
               <th style={{ padding: '0.5rem 0.2rem', width: '35px' }}>Trích</th>
@@ -1303,8 +1576,8 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                   <td style={{ padding: '0.4rem 0.6rem', fontWeight: selectedAttr === 'Chuyên cần' ? 'bold' : 'normal' }}>
                     {row['Chuyên cần']}
                   </td>
-                  <td style={{ padding: '0.4rem 0.6rem', fontWeight: selectedAttr === 'Điểm giữa kỳ' ? 'bold' : 'normal' }}>
-                    {row['Điểm giữa kỳ']}
+                  <td style={{ padding: '0.4rem 0.6rem', fontWeight: selectedAttr === 'Điểm kiểm tra lần 1' ? 'bold' : 'normal' }}>
+                    {row['Điểm kiểm tra lần 1']}
                   </td>
                   <td style={{ padding: '0.4rem 0.6rem', fontWeight: selectedAttr === 'Làm bài tập' ? 'bold' : 'normal' }}>
                     {row['Làm bài tập']}
@@ -1316,19 +1589,19 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                       borderRadius: '0.25rem',
                       fontSize: '0.75rem',
                       fontWeight: 'bold',
-                      background: isMatch && isStep1 ? getBadgeColor(row['Kết quả học tập']) + '15' : '#f1f5f9',
-                      color: isMatch && isStep1 ? getBadgeColor(row['Kết quả học tập']) : 'var(--text-muted)',
-                      border: `1.5px solid ${isMatch && isStep1 ? getBadgeColor(row['Kết quả học tập']) : '#e2e8f0'}`,
+                      background: isMatch && isStep1 ? getBadgeColor(row['Kết quả']) + '15' : '#f1f5f9',
+                      color: isMatch && isStep1 ? getBadgeColor(row['Kết quả']) : 'var(--text-muted)',
+                      border: `1.5px solid ${isMatch && isStep1 ? getBadgeColor(row['Kết quả']) : '#e2e8f0'}`,
                       transition: 'all 0.3s ease'
                     }}>
-                      {row['Kết quả học tập']}
+                      {row['Kết quả']}
                     </span>
                   </td>
                   <td style={{ padding: '0.4rem 0.2rem', verticalAlign: 'middle' }}>
                     {isMatch && isStep2 && (
                       <span style={{
                         display: 'inline-flex',
-                        background: getBadgeColor(row['Kết quả học tập']),
+                        background: getBadgeColor(row['Kết quả']),
                         color: 'white',
                         width: '18px',
                         height: '18px',
@@ -1339,7 +1612,7 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
                         fontSize: '0.75rem',
                         animation: 'fadeIn 0.25s ease-out'
                       }}>
-                        {getBadgeValue(row['Kết quả học tập'])}
+                        {getBadgeValue(row['Kết quả'])}
                       </span>
                     )}
                   </td>
@@ -1353,12 +1626,12 @@ function VectorExtractionVisualizer({ defaultAttr = 'Chuyên cần', defaultVal 
   );
 }
 
-function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }) {
+function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false, showTimer = false }) {
   const rows = FALLBACK_ROWS.filter(filterFunc);
 
   const getBadgeColor = (val) => {
-    if (val === 'Lên lớp') return '#10b981';
-    if (val === 'Không lên lớp') return '#ef4444';
+    if (val === 'Đạt' || val === 'Đ') return '#10b981';
+    if (val === 'Không đạt' || val === 'K') return '#ef4444';
     return '#94a3b8';
   };
 
@@ -1366,11 +1639,18 @@ function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      gap: '1vh',
+      gap: '1.5vh',
       width: '100%',
       height: '100%',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'center'
     }}>
+      {showTimer && (
+        <div style={{ marginBottom: '1vh' }}>
+          <CountdownTimer style={{ marginTop: '0' }} />
+        </div>
+      )}
+
       <h3 style={{
         margin: '0 0 0.5vh 0',
         fontSize: isSlideshow ? '2.2vh' : '1.1rem',
@@ -1380,12 +1660,13 @@ function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }
       }}>
         📊 Bảng dữ liệu rút gọn
       </h3>
+
       <div className="table-responsive" style={{
         background: '#ffffff',
         borderRadius: '0.75rem',
         border: '1.5px solid var(--border-color)',
         boxShadow: 'var(--shadow-sm)',
-        maxHeight: isSlideshow ? '60vh' : '450px',
+        maxHeight: isSlideshow ? (showTimer ? '35vh' : '60vh') : '450px',
         overflowY: 'auto',
         width: '100%'
       }}>
@@ -1394,9 +1675,9 @@ function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }
             <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', position: 'sticky', top: 0, zIndex: 5 }}>
               <th style={{ padding: '1vh 0.8vw' }}>STT</th>
               <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Chuyên cần' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Chuyên cần</th>
-              <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Điểm giữa kỳ' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Điểm giữa kỳ</th>
+              <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Điểm kiểm tra lần 1' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Điểm kiểm tra lần 1</th>
               <th style={{ padding: '1vh 0.8vw', background: highlightAttr === 'Làm bài tập' ? 'rgba(99, 102, 241, 0.08)' : '' }}>Làm bài tập</th>
-              <th style={{ padding: '1vh 0.8vw', fontWeight: 'bold' }}>Kết quả học tập</th>
+              <th style={{ padding: '1vh 0.8vw', fontWeight: 'bold' }}>Kết quả</th>
             </tr>
           </thead>
           <tbody>
@@ -1408,8 +1689,8 @@ function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }
                 <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Chuyên cần' ? 'bold' : 'normal' }}>
                   {row['Chuyên cần']}
                 </td>
-                <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Điểm giữa kỳ' ? 'bold' : 'normal' }}>
-                  {row['Điểm giữa kỳ']}
+                <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Điểm kiểm tra lần 1' ? 'bold' : 'normal' }}>
+                  {row['Điểm kiểm tra lần 1']}
                 </td>
                 <td style={{ padding: '1vh 0.8vw', fontWeight: highlightAttr === 'Làm bài tập' ? 'bold' : 'normal' }}>
                   {row['Làm bài tập']}
@@ -1421,11 +1702,11 @@ function ActivityTable({ filterFunc, highlightAttr = null, isSlideshow = false }
                     borderRadius: '0.25rem',
                     fontSize: isSlideshow ? '1.6vh' : '0.75rem',
                     fontWeight: 'bold',
-                    background: getBadgeColor(row['Kết quả học tập']) + '15',
-                    color: getBadgeColor(row['Kết quả học tập']),
-                    border: `1.5px solid ${getBadgeColor(row['Kết quả học tập'])}`
+                    background: getBadgeColor(row['Kết quả']) + '15',
+                    color: getBadgeColor(row['Kết quả']),
+                    border: `1.5px solid ${getBadgeColor(row['Kết quả'])}`
                   }}>
-                    {row['Kết quả học tập']}
+                    {row['Kết quả']}
                   </span>
                 </td>
               </tr>
@@ -1471,7 +1752,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         baiTapYesIsUnit: true,
         baiTapNoVector: '(1/3, 2/3)',
         baiTapNoIsUnit: false,
-        selectedNode: 'Điểm giữa kỳ'
+        selectedNode: 'Điểm kiểm tra lần 1'
       });
       setShowFeedback(true);
     } else {
@@ -1499,7 +1780,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     baiTapYesIsUnit: true,
     baiTapNoVector: '1/3,2/3',
     baiTapNoIsUnit: false,
-    selectedNode: 'Điểm giữa kỳ'
+    selectedNode: 'Điểm kiểm tra lần 1'
   };
 
   const handleCheck = () => {
@@ -1535,7 +1816,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     if (field === 'selectedNode') {
       if (!val) return false;
       const cleanVal = val.trim().toLowerCase();
-      return cleanVal === 'điểm giữa kỳ' || cleanVal === 'làm bài tập';
+      return cleanVal === 'điểm kiểm tra lần 1' || cleanVal === 'làm bài tập';
     }
     return normalize(val) === correct[field];
   };
@@ -1644,22 +1925,22 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Đi học đủ</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
+          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Đi học đủ</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (Đ, K)</strong> có dạng <strong>(số Đ/tổng, số K/tổng)</strong> (với Đ: Đạt, K: Không đạt).
         </p>
 
         <div style={containerStyle}>
-          {/* Điểm giữa kỳ Card */}
+          {/* Điểm kiểm tra lần 1 Card */}
           <div style={cardStyle}>
             <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: isSlideshow ? '2vh' : '0.9rem', fontWeight: '800', borderBottom: '1.5px solid var(--border-color)', paddingBottom: '0.5vh', textAlign: 'center' }}>
-              🔍 Khảo sát thuộc tính: Điểm giữa kỳ
+              🔍 Khảo sát thuộc tính: Điểm kiểm tra lần 1
             </h4>
 
             {/* Branch >= 5 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh' }}>
-              <span style={labelStyle}>Nhánh: Điểm giữa kỳ ≥ 5 (Mẫu 1, 2, 3, 15)</span>
+              <span style={labelStyle}>Nhánh: Điểm kiểm tra lần 1 ≥ 5 (Mẫu 1, 2, 3, 15)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, L, L</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, Đ, Đ, Đ</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1688,10 +1969,10 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
 
             {/* Branch < 5 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh', marginTop: '0.5vh' }}>
-              <span style={labelStyle}>Nhánh: Điểm giữa kỳ &lt; 5 (Mẫu 4, 5, 6, 16)</span>
+              <span style={labelStyle}>Nhánh: Điểm kiểm tra lần 1 &lt; 5 (Mẫu 4, 5, 6, 16)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, K, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, Đ, K, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1730,7 +2011,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 1, 2, 4, 5, 15)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L, L, L, L</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, Đ, Đ, Đ, Đ</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1762,7 +2043,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Không (Mẫu 3, 6, 16)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, K, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -1841,7 +2122,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               disabled={isRevealed}
             >
               <option value="">-- Chọn thuộc tính --</option>
-              <option value="Điểm giữa kỳ">Điểm giữa kỳ</option>
+              <option value="Điểm kiểm tra lần 1">Điểm kiểm tra lần 1</option>
               <option value="Làm bài tập">Làm bài tập</option>
             </select>
             {getStatusIndicator('selectedNode', inputs.selectedNode)}
@@ -1892,7 +2173,7 @@ function ElaborateActivity1({ isTeacher, isRevealed, isSlideshow, onReveal }) {
             animation: 'fadeIn 0.25s ease-out'
           }}>
             {isFieldCorrect('selectedNode', inputs.selectedNode)
-              ? '🎉 Chính xác! Cả "Điểm giữa kỳ" và "Làm bài tập" đều có thể được chọn (đều có 1 vectơ đơn vị). Để tiếp tục bài học, ta thống nhất chọn Điểm giữa kỳ.'
+              ? '🎉 Chính xác! Cả "Điểm kiểm tra lần 1" và "Làm bài tập" đều có thể được chọn (đều có 1 vectơ đơn vị). Để tiếp tục bài học, ta thống nhất chọn Điểm kiểm tra lần 1.'
               : '❌ Chưa chính xác. Gợi ý: Hãy tính số vectơ đơn vị của từng thuộc tính.'}
           </div>
         )}
@@ -2074,7 +2355,7 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Đi học đủ ➔ Điểm giữa kỳ &lt; 5</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
+          Khảo sát dữ liệu tại nhánh <strong>Đi học đủ ➔ Điểm kiểm tra lần 1 &lt; 5</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (Đ, K)</strong> có dạng <strong>(số Đ/tổng, số K/tổng)</strong> (với Đ: Đạt, K: Không đạt).
         </p>
 
         <div style={containerStyle}>
@@ -2089,7 +2370,7 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
               <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 4, 5)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, Đ</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -2200,7 +2481,7 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
               disabled={isRevealed}
             >
               <option value="">-- Chọn thuộc tính --</option>
-              <option value="Điểm giữa kỳ">Điểm giữa kỳ</option>
+              <option value="Điểm kiểm tra lần 1">Điểm kiểm tra lần 1</option>
               <option value="Làm bài tập">Làm bài tập</option>
             </select>
             {getStatusIndicator('selectedNode', inputs.selectedNode)}
@@ -2251,8 +2532,8 @@ function ElaborateActivity1Part2({ isTeacher, isRevealed, isSlideshow, onReveal 
             animation: 'fadeIn 0.25s ease-out'
           }}>
             {isFieldCorrect('selectedNode', inputs.selectedNode)
-              ? '🎉 Chính xác! Nút quyết định tiếp theo tại nhánh Đi học đủ ➔ Điểm giữa kỳ < 5 là Làm bài tập.'
-              : '❌ Chưa chính xác. Gợi ý: Tại nhánh con này, thuộc tính Làm bài tập phân tách hoàn hảo các mẫu thành (T, T) và (K, K) - cả hai đều là vectơ đơn vị.'}
+              ? '🎉 Chính xác! Nút quyết định tiếp theo tại nhánh Đi học đủ ➔ Điểm kiểm tra lần 1 < 5 là Làm bài tập.'
+              : '❌ Chưa chính xác. Gợi ý: Tại nhánh con này, thuộc tính Làm bài tập phân tách hoàn hảo các mẫu thành (Đ, Đ) và (K, K) - cả hai đều là vectơ đơn vị.'}
           </div>
         )}
       </div>
@@ -2456,22 +2737,22 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         maxWidth: '580px'
       }}>
         <p style={{ fontSize: isSlideshow ? '1.8vh' : '0.9rem', margin: '0 0 0.5vh 0', color: 'var(--text-secondary)', textAlign: isSlideshow ? 'left' : 'center' }}>
-          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Thỉnh thoảng vắng</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (L, K)</strong> có dạng <strong>(số L/tổng, số K/tổng)</strong> (với L: Lên lớp, K: Không lên lớp).
+          Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Thỉnh thoảng vắng</strong>. Xác định giá trị nhãn và tính toán <strong>Vectơ (Đ, K)</strong> có dạng <strong>(số Đ/tổng, số K/tổng)</strong> (với Đ: Đạt, K: Không đạt).
         </p>
 
         <div style={containerStyle}>
-          {/* Điểm giữa kỳ Card */}
+          {/* Điểm kiểm tra lần 1 Card */}
           <div style={cardStyle}>
             <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: isSlideshow ? '2vh' : '0.9rem', fontWeight: '800', borderBottom: '1.5px solid var(--border-color)', paddingBottom: '0.5vh', textAlign: 'center' }}>
-              🔍 Khảo sát thuộc tính: Điểm giữa kỳ
+              🔍 Khảo sát thuộc tính: Điểm kiểm tra lần 1
             </h4>
 
             {/* Branch >= 5 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh' }}>
-              <span style={labelStyle}>Nhánh: Điểm giữa kỳ ≥ 5 (Mẫu 7, 8)</span>
+              <span style={labelStyle}>Nhánh: Điểm kiểm tra lần 1 ≥ 5 (Mẫu 7, 8)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, L</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, Đ</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -2500,7 +2781,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
 
             {/* Branch < 5 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4vh', marginTop: '0.5vh' }}>
-              <span style={labelStyle}>Nhánh: Điểm giữa kỳ &lt; 5 (Mẫu 9, 10)</span>
+              <span style={labelStyle}>Nhánh: Điểm kiểm tra lần 1 &lt; 5 (Mẫu 9, 10)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
                 <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>K, K</span>
@@ -2542,7 +2823,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Có (Mẫu 7, 9)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -2574,7 +2855,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               <span style={labelStyle}>Nhánh: Làm bài tập = Không (Mẫu 8, 10)</span>
               <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <span style={{ fontSize: isSlideshow ? '1.6vh' : '0.8rem', color: 'var(--text-secondary)' }}>Nhãn:</span>
-                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>L, K</span>
+                <span style={{ background: '#f1f5f9', padding: '0.2vh 0.5vw', borderRadius: '0.25rem', fontWeight: 'bold', fontSize: isSlideshow ? '1.6vh' : '0.8rem' }}>Đ, K</span>
               </div>
               <div style={{ display: 'flex', gap: '0.5vw', alignItems: 'center' }}>
                 <input
@@ -2653,7 +2934,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               disabled={isRevealed}
             >
               <option value="">-- Chọn thuộc tính --</option>
-              <option value="Điểm giữa kỳ">Điểm giữa kỳ</option>
+              <option value="Điểm kiểm tra lần 1">Điểm kiểm tra lần 1</option>
               <option value="Làm bài tập">Làm bài tập</option>
             </select>
             {getStatusIndicator('selectedNode', inputs.selectedNode)}
@@ -2704,8 +2985,8 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
             animation: 'fadeIn 0.25s ease-out'
           }}>
             {isFieldCorrect('selectedNode', inputs.selectedNode)
-              ? '🎉 Chính xác! Nút quyết định tiếp theo tại nhánh Thỉnh thoảng vắng là Điểm giữa kỳ (tạo ra 2 vectơ đơn vị giúp phân lớp hoàn toàn).'
-              : '❌ Chưa chính xác. Gợi ý: Tại nhánh này Điểm giữa kỳ phân tách hoàn hảo thành (T, T) và (K, K) - cả hai đều là vectơ đơn vị.'}
+              ? '🎉 Chính xác! Nút quyết định tiếp theo tại nhánh Thỉnh thoảng vắng là Điểm kiểm tra lần 1 (tạo ra 2 vectơ đơn vị giúp phân lớp hoàn toàn).'
+              : '❌ Chưa chính xác. Gợi ý: Tại nhánh này Điểm kiểm tra lần 1 phân tách hoàn hảo thành (Đ, Đ) và (K, K) - cả hai đều là vectơ đơn vị.'}
           </div>
         )}
       </div>
@@ -3800,9 +4081,9 @@ function App() {
                 {currentSlide.type === 'elaborate-h1' && !classState.isRevealed ? (
                   <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ'} isSlideshow={true} />
                 ) : currentSlide.type === 'elaborate-h1-2' && !classState.isRevealed ? (
-                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm giữa kỳ'] === '<5'} isSlideshow={true} />
+                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm kiểm tra lần 1'] === '<5'} isSlideshow={true} />
                 ) : currentSlide.type === 'elaborate-h2' && !classState.isRevealed ? (
-                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={true} />
+                  <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={true} showTimer={true} />
                 ) : (
                   <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} isSlideshow={true} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
                 )}
@@ -3885,32 +4166,36 @@ function App() {
 
         {/* Footer controls for GV & SV */}
         <div className="slideshow-footer">
-          <div className="score-card-group" style={{ gap: '1.5rem', alignItems: 'center' }}>
-            <div style={{ fontSize: '2vh', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5vw', position: 'relative' }}>
-              🔴 Nhóm 1: <span style={{ color: '#ef4444', fontSize: '2.6vh' }}>{classState.scores.group1} điểm</span>
-              {isTeacher && (
-                <div style={{ display: 'flex', gap: '0.2vw' }}>
-                  <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group1', 1)}>+</button>
-                  <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group1', -1)}>-</button>
-                </div>
-              )}
-              {glowEffects.filter(g => g.team === 'group1').map(g => (
-                <div key={g.id} className={`glow-score-bubble glow-score-bubble-footer ${g.team}`}>+{g.amount}</div>
-              ))}
+          {(classState.activeSlideIndex === 2 || classState.activeSlideIndex === 3) ? (
+            <div className="score-card-group" style={{ gap: '1.5rem', alignItems: 'center' }}>
+              <div style={{ fontSize: '2vh', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5vw', position: 'relative' }}>
+                🔴 Nhóm 1: <span style={{ color: '#ef4444', fontSize: '2.6vh' }}>{classState.scores.group1} điểm</span>
+                {isTeacher && (
+                  <div style={{ display: 'flex', gap: '0.2vw' }}>
+                    <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group1', 1)}>+</button>
+                    <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group1', -1)}>-</button>
+                  </div>
+                )}
+                {glowEffects.filter(g => g.team === 'group1').map(g => (
+                  <div key={g.id} className={`glow-score-bubble glow-score-bubble-footer ${g.team}`}>+{g.amount}</div>
+                ))}
+              </div>
+              <div style={{ fontSize: '2vh', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5vw', position: 'relative' }}>
+                🔵 Nhóm 2: <span style={{ color: '#3b82f6', fontSize: '2.6vh' }}>{classState.scores.group2} điểm</span>
+                {isTeacher && (
+                  <div style={{ display: 'flex', gap: '0.2vw' }}>
+                    <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group2', 1)}>+</button>
+                    <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group2', -1)}>-</button>
+                  </div>
+                )}
+                {glowEffects.filter(g => g.team === 'group2').map(g => (
+                  <div key={g.id} className={`glow-score-bubble glow-score-bubble-footer ${g.team}`}>+{g.amount}</div>
+                ))}
+              </div>
             </div>
-            <div style={{ fontSize: '2vh', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5vw', position: 'relative' }}>
-              🔵 Nhóm 2: <span style={{ color: '#3b82f6', fontSize: '2.6vh' }}>{classState.scores.group2} điểm</span>
-              {isTeacher && (
-                <div style={{ display: 'flex', gap: '0.2vw' }}>
-                  <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group2', 1)}>+</button>
-                  <button className="score-adjust-btn" style={{ padding: '0.2vh 0.6vw', fontSize: '1.6vh', cursor: 'pointer' }} onClick={() => adjustScore('group2', -1)}>-</button>
-                </div>
-              )}
-              {glowEffects.filter(g => g.team === 'group2').map(g => (
-                <div key={g.id} className={`glow-score-bubble glow-score-bubble-footer ${g.team}`}>+{g.amount}</div>
-              ))}
-            </div>
-          </div>
+          ) : (
+            <div />
+          )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <span style={{
@@ -3964,9 +4249,9 @@ function App() {
           <thead>
             <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold' }}>
               <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>📅 Chuyên cần</th>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>📝 Điểm giữa kỳ</th>
+              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>📝 Điểm kiểm tra lần 1</th>
               <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>💻 Làm bài tập</th>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả học tập</th>
+              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả</th>
             </tr>
           </thead>
           <tbody>
@@ -3977,8 +4262,8 @@ function App() {
                 </span>
               </td>
               <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem' }}>
-                <span className={`badge ${record['Điểm giữa kỳ'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.8vh' : '0.8rem', padding: '0.4em 0.9em' }}>
-                  {record['Điểm giữa kỳ']}
+                <span className={`badge ${record['Điểm kiểm tra lần 1'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.8vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+                  {record['Điểm kiểm tra lần 1']}
                 </span>
               </td>
               <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem' }}>
@@ -4001,7 +4286,7 @@ function App() {
     return (
       <div>
         <p style={{ fontSize: isSlideshow ? '2.1vh' : '1rem', marginBottom: '1vh' }}>
-          Xem thuộc tính kết quả học tập bên dưới. Dự đoán xem kết quả học tập là <strong>Lên lớp</strong> hay <strong>Không lên lớp</strong>?
+          Xem thuộc tính kết quả bên dưới. Dự đoán xem kết quả là <strong>Đạt</strong> hay <strong>Không đạt</strong>?
         </p>
 
         {isTeacher && (
@@ -4020,9 +4305,9 @@ function App() {
                 <thead>
                   <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold' }}>
                     <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem' }}>📅 Chuyên cần</th>
-                    <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem' }}>📝 Điểm giữa kỳ</th>
+                    <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem' }}>📝 Điểm kiểm tra lần 1</th>
                     <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem' }}>💻 Làm bài tập</th>
-                    <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả học tập</th>
+                    <th style={{ padding: isSlideshow ? '1.5vh 1.5vw' : '0.75rem 1rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -4033,8 +4318,8 @@ function App() {
                       </span>
                     </td>
                     <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '1rem' }}>
-                      <span className={`badge ${classState.exploreRecord['Điểm giữa kỳ'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
-                        {classState.exploreRecord['Điểm giữa kỳ']}
+                      <span className={`badge ${classState.exploreRecord['Điểm kiểm tra lần 1'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+                        {classState.exploreRecord['Điểm kiểm tra lần 1']}
                       </span>
                     </td>
                     <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '1rem' }}>
@@ -4044,8 +4329,8 @@ function App() {
                     </td>
                     <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '1rem', fontWeight: 'bold', background: 'rgba(99, 102, 241, 0.02)' }}>
                       {classState.isRevealed ? (
-                        <span className={`badge ${(classState.exploreRecord['Kết quả học tập'] === 'Lên lớp' || classState.exploreRecord['Kết quả học tập'] === 'Giỏi' || classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá') ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
-                          {classState.exploreRecord['Kết quả học tập']}
+                        <span className={`badge ${(classState.exploreRecord['Kết quả'] === 'Đạt' || classState.exploreRecord['Kết quả'] === 'Giỏi' || classState.exploreRecord['Kết quả'] === 'Trung bình khá') ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.9vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+                          {classState.exploreRecord['Kết quả']}
                         </span>
                       ) : (
                         <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontWeight: 'normal', fontSize: isSlideshow ? '1.9vh' : '0.85rem' }}>❓ Ẩn (Chờ GV)</span>
@@ -4070,7 +4355,7 @@ function App() {
 
               {classState.isRevealed ? (
                 <div
-                  className={`badge ${(classState.exploreRecord['Kết quả học tập'] === 'Lên lớp' || classState.exploreRecord['Kết quả học tập'] === 'Giỏi' || classState.exploreRecord['Kết quả học tập'] === 'Trung bình khá') ? 'success' : 'danger'}`}
+                  className={`badge ${(classState.exploreRecord['Kết quả'] === 'Đạt' || classState.exploreRecord['Kết quả'] === 'Giỏi' || classState.exploreRecord['Kết quả'] === 'Trung bình khá') ? 'success' : 'danger'}`}
                   style={{
                     padding: isSlideshow ? '1.5vh 2.5vw' : '0.6rem 2rem',
                     fontSize: isSlideshow ? '2.2vh' : '1rem',
@@ -4080,7 +4365,7 @@ function App() {
                     boxShadow: 'var(--shadow-sm)'
                   }}
                 >
-                  Đáp án: {classState.exploreRecord['Kết quả học tập']}
+                  Đáp án: {classState.exploreRecord['Kết quả']}
                 </div>
               ) : (
                 <div style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontSize: isSlideshow ? '1.8vh' : '0.9rem' }}>
@@ -4386,9 +4671,9 @@ function App() {
                     {currentSlide.type === 'elaborate-h1' && !classState.isRevealed ? (
                       <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ'} isSlideshow={false} />
                     ) : currentSlide.type === 'elaborate-h1-2' && !classState.isRevealed ? (
-                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm giữa kỳ'] === '<5'} isSlideshow={false} />
+                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Đi học đủ' && row['Điểm kiểm tra lần 1'] === '<5'} isSlideshow={false} />
                     ) : currentSlide.type === 'elaborate-h2' && !classState.isRevealed ? (
-                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={false} />
+                      <ActivityTable filterFunc={row => row['Chuyên cần'] === 'Thỉnh thoảng vắng'} isSlideshow={false} showTimer={true} />
                     ) : (
                       <DecisionTreeSVG highlightRecord={classState.isRevealed ? classState.exploreRecord : null} activeSlideIndex={classState.activeSlideIndex} treeState={getTreeState(currentSlide, classState.isRevealed)} />
                     )}

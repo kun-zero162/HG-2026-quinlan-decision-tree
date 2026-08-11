@@ -6,11 +6,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
   if (propTreeState) {
     treeState = propTreeState;
   } else if (activeSlideIndex !== undefined) {
-    if (activeSlideIndex >= 13 && activeSlideIndex <= 18) {
+    if (activeSlideIndex >= 14 && activeSlideIndex <= 19) {
       treeState = 'elaborate-1';
-    } else if (activeSlideIndex >= 19 && activeSlideIndex <= 22) {
+    } else if (activeSlideIndex >= 20 && activeSlideIndex <= 23) {
       treeState = 'elaborate-2';
-    } else if (activeSlideIndex >= 23 && activeSlideIndex <= 25) {
+    } else if (activeSlideIndex >= 24 && activeSlideIndex <= 26) {
       treeState = 'elaborate-3';
     }
   }
@@ -20,14 +20,14 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
   const activeNodes = new Set();
   const activeLinks = new Set();
 
-  if (activeSlideIndex === 16 && treeState === 'elaborate-2') {
+  if (activeSlideIndex === 17 && treeState === 'elaborate-2') {
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
     activeNodes.add('node-diem-left');
     activeLinks.add('diem-left-left');
     activeNodes.add('leaf-kha-1');
-  } else if (activeSlideIndex === 17 && treeState === 'elaborate-3') {
+  } else if (activeSlideIndex === 18 && treeState === 'elaborate-3') {
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
@@ -40,7 +40,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     activeNodes.add('leaf-tb-2');
     activeLinks.add('baitap-right');
     activeNodes.add('leaf-fail-3');
-  } else if (activeSlideIndex === 18 && treeState === 'full') {
+  } else if (activeSlideIndex === 19 && treeState === 'full') {
     hasCustomHighlight = true;
     // Add all nodes to light up the entire tree
     activeNodes.add('root');
@@ -76,7 +76,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       activeLinks.add('root-middle');
       activeNodes.add('node-diem-mid');
 
-      const diemGk = highlightRecord['Điểm giữa kỳ'];
+      const diemGk = highlightRecord['Điểm KT lần 1'];
       if (diemGk === '>=5') {
         activeLinks.add('diem-mid-left');
         activeNodes.add('leaf-tb-1');
@@ -88,7 +88,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       activeLinks.add('root-left');
       activeNodes.add('node-diem-left');
 
-      const diemGk = highlightRecord['Điểm giữa kỳ'];
+      const diemGk = highlightRecord['Điểm KT lần 1'];
       if (diemGk === '>=5') {
         activeLinks.add('diem-left-left');
         activeNodes.add('leaf-kha-1');
@@ -187,7 +187,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       );
     } else {
       // Leaf node drawn as rounded rect (capsule) - Enlarged
-      const isKha = label === 'Giỏi' || label === 'Khá giỏi' || label === 'Lên lớp';
+      const isKha = label === 'Giỏi' || label === 'Khá giỏi' || label === 'Lên lớp' || label === 'Đạt';
       const isTb = label === 'Trung bình khá';
       const isRot = label === 'Không đạt' || label === 'Rớt môn' || label === 'Không lên lớp';
 
@@ -304,21 +304,21 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
         {renderNode('root', 560, 80, 'Chuyên cần?')}
 
         {/* Right branch leaf */}
-        {renderNode('leaf-fail-1', 960, 280, 'Không lên lớp', 'leaf')}
+        {renderNode('leaf-fail-1', 960, 280, 'Không đạt', 'leaf')}
 
         {/* Left branch */}
         {treeState === 'elaborate-1' && renderNode('placeholder-left', 240, 280, '?|Mẫu: 1,2,3,4,5,6,15,16', 'placeholder')}
         {treeState !== 'elaborate-1' && (
           <>
-            {renderNode('node-diem-left', 240, 280, 'Điểm giữa kỳ?')}
-            {renderNode('leaf-kha-1', 110, 480, 'Lên lớp', 'leaf')}
+            {renderNode('node-diem-left', 240, 280, 'Điểm KT lần 1?')}
+            {renderNode('leaf-kha-1', 110, 480, 'Đạt', 'leaf')}
 
             {treeState === 'elaborate-2' && renderNode('placeholder-left-right', 360, 480, '?|Mẫu: 4,5,6,16', 'placeholder')}
             {(treeState === 'elaborate-3' || treeState === 'full') && (
               <>
                 {renderNode('node-baitap', 360, 480, 'Làm bài tập?')}
-                {renderNode('leaf-tb-2', 250, 680, 'Lên lớp', 'leaf')}
-                {renderNode('leaf-fail-3', 470, 680, 'Không lên lớp', 'leaf')}
+                {renderNode('leaf-tb-2', 250, 680, 'Đạt', 'leaf')}
+                {renderNode('leaf-fail-3', 470, 680, 'Không đạt', 'leaf')}
               </>
             )}
           </>
@@ -328,9 +328,9 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
         {treeState !== 'full' && renderNode('placeholder-mid', 660, 280, '?|Mẫu: 7,8,9,10', 'placeholder')}
         {treeState === 'full' && (
           <>
-            {renderNode('node-diem-mid', 660, 280, 'Điểm giữa kỳ?')}
-            {renderNode('leaf-tb-1', 560, 480, 'Lên lớp', 'leaf')}
-            {renderNode('leaf-fail-2', 760, 480, 'Không lên lớp', 'leaf')}
+            {renderNode('node-diem-mid', 660, 280, 'Điểm KT lần 1?')}
+            {renderNode('leaf-tb-1', 560, 480, 'Đạt', 'leaf')}
+            {renderNode('leaf-fail-2', 760, 480, 'Không đạt', 'leaf')}
           </>
         )}
       </svg>
