@@ -69,6 +69,9 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     activeNodes.add('root');
 
     const chuyenCan = highlightRecord['Chuyên cần'];
+    const diemGk = highlightRecord['Điểm kiểm tra lần 1'] || highlightRecord['Điểm KT lần 1'];
+    const baiTap = highlightRecord['Làm bài tập'];
+
     if (chuyenCan === 'Thường xuyên vắng') {
       activeLinks.add('root-right');
       activeNodes.add('leaf-fail-1');
@@ -76,8 +79,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       activeLinks.add('root-middle');
       activeNodes.add('node-diem-mid');
 
-      const diemGk = highlightRecord['Điểm KT lần 1'];
-      if (diemGk === '>=5') {
+      if (diemGk === '>=5' || diemGk === '≥5') {
         activeLinks.add('diem-mid-left');
         activeNodes.add('leaf-tb-1');
       } else if (diemGk === '<5') {
@@ -88,15 +90,13 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       activeLinks.add('root-left');
       activeNodes.add('node-diem-left');
 
-      const diemGk = highlightRecord['Điểm KT lần 1'];
-      if (diemGk === '>=5') {
+      if (diemGk === '>=5' || diemGk === '≥5') {
         activeLinks.add('diem-left-left');
         activeNodes.add('leaf-kha-1');
       } else if (diemGk === '<5') {
         activeLinks.add('diem-left-right');
         activeNodes.add('node-baitap');
 
-        const baiTap = highlightRecord['Làm bài tập'];
         if (baiTap === 'Có') {
           activeLinks.add('baitap-left');
           activeNodes.add('leaf-tb-2');

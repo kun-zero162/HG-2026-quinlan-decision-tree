@@ -185,11 +185,13 @@ wss.on('connection', (ws) => {
           broadcastState();
           break;
 
-        case 'TEACHER_UPDATE_STATE':
-          // GV updates state fields
-          classState = { ...classState, ...data.state };
+        case 'TEACHER_UPDATE_STATE': {
+          // GV updates state fields (never let teacher updates overwrite studentSubmissions)
+          const { studentSubmissions: _ignored, ...teacherUpdates } = (data.state || {});
+          classState = { ...classState, ...teacherUpdates };
           broadcastState();
           break;
+        }
 
         case 'TEACHER_RESET_CLASS':
           // Reset the entire classroom state
@@ -221,12 +223,20 @@ wss.on('connection', (ws) => {
             classState.studentSubmissions[questionId] = {};
           }
           
-          classState.studentSubmissions[questionId][username] = {
-            fullname,
-            selected
+          classState.studentSubmissions[questionId] = {
+            ...classState.studentSubmissions[questionId],
+            [username]: {
+              fullname,
+              selected
+            }
           };
           
-          classState = { ...classState };
+          classState = {
+            ...classState,
+            studentSubmissions: {
+              ...classState.studentSubmissions
+            }
+          };
           broadcastState();
           break;
         }

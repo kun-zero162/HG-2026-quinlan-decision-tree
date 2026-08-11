@@ -2566,7 +2566,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
         baiTapYesIsUnit: false,
         baiTapNoVector: '(1/2, 1/2)',
         baiTapNoIsUnit: false,
-        selectedNode: 'Điểm giữa kỳ'
+        selectedNode: 'Điểm kiểm tra lần 1'
       });
       setShowFeedback(true);
     } else {
@@ -2594,7 +2594,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
     baiTapYesIsUnit: false,
     baiTapNoVector: '1/2,1/2',
     baiTapNoIsUnit: false,
-    selectedNode: 'Điểm giữa kỳ'
+    selectedNode: 'Điểm kiểm tra lần 1'
   };
 
   const handleCheck = () => {
@@ -2919,7 +2919,7 @@ function ElaborateActivity2({ isTeacher, isRevealed, isSlideshow, onReveal }) {
               style={{
                 padding: '0.5vh 0.8vw',
                 borderRadius: '0.375rem',
-                border: `1.5px solid ${showFeedback && inputs.selectedNode !== 'Điểm giữa kỳ' ? 'var(--error)' : showFeedback ? 'var(--success)' : 'var(--border-color)'}`,
+                border: `1.5px solid ${showFeedback && !isFieldCorrect('selectedNode', inputs.selectedNode) ? 'var(--error)' : showFeedback ? 'var(--success)' : 'var(--border-color)'}`,
                 fontSize: isSlideshow ? '1.8vh' : '0.85rem',
                 outline: 'none',
                 background: '#ffffff',
@@ -3273,7 +3273,7 @@ function App() {
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify({
         type: 'TEACHER_UPDATE_STATE',
-        state: { ...classState, ...updatedFields }
+        state: updatedFields
       }));
     }
   };
