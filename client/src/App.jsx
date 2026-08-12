@@ -514,6 +514,189 @@ const SLIDES = [
   {
     stage: 'explain',
     type: 'content',
+    title: 'Giới thiệu thuật toán - Học có giám sát',
+    content: (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '45vh',
+        height: '100%',
+        padding: '3vh 3vw',
+        gap: '3.5vh',
+        maxWidth: '1350px',
+        margin: '0 auto',
+        width: '100%'
+      }}>
+        {/* Main Statement Card */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.12) 100%)',
+          border: '1.5px solid rgba(99, 102, 241, 0.25)',
+          borderRadius: '1.25rem',
+          padding: '2.5vh 3vw',
+          width: '100%',
+          boxShadow: '0 4px 15px rgba(99, 102, 241, 0.06)',
+          textAlign: 'center'
+        }}>
+          <p style={{
+            margin: 0,
+            fontSize: 'clamp(1.4rem, 3.4vh, 2.3rem)',
+            fontWeight: '700',
+            color: 'var(--text-primary)',
+            lineHeight: '1.6'
+          }}>
+            Thuật toán xây dựng <span style={{ color: 'var(--primary)', fontWeight: '800' }}>Cây quyết định dựa trên xác suất có điều kiện</span> là thuật toán <span style={{ color: 'var(--primary)', fontWeight: '800' }}>học có giám sát</span>, cần <strong>2 tập dữ liệu</strong>:
+          </p>
+        </div>
+
+        {/* 2 Main Data Pipelines */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2.5vh',
+          width: '100%'
+        }}>
+          {/* Row 1: Training Data */}
+          <div style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, rgba(99, 102, 241, 0.04) 100%)',
+            border: '2px solid rgba(99, 102, 241, 0.3)',
+            borderRadius: '1.25rem',
+            padding: '2.2vh 3vw',
+            boxShadow: '0 6px 16px rgba(99, 102, 241, 0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1.5vw',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              background: 'var(--primary)',
+              color: '#ffffff',
+              padding: '1vh 2vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 4px 10px rgba(99, 102, 241, 0.3)'
+            }}>
+              <span>📚</span>
+              <span>Training data</span>
+            </div>
+
+            <span style={{ fontSize: 'clamp(1.6rem, 3.8vh, 2.4rem)', color: 'var(--primary)', fontWeight: 'bold' }}>➔</span>
+
+            <div style={{
+              background: '#ffffff',
+              border: '2.5px solid var(--primary)',
+              color: 'var(--primary)',
+              padding: '1vh 2.5vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+            }}>
+              <span>⚙️</span>
+              <span>Học</span>
+            </div>
+
+            <span style={{ fontSize: 'clamp(1.6rem, 3.8vh, 2.4rem)', color: 'var(--primary)', fontWeight: 'bold' }}>➔</span>
+
+            <div style={{
+              background: 'linear-gradient(135deg, #4f46e5 0%, #4338ca 100%)',
+              color: '#ffffff',
+              padding: '1vh 2.5vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 4px 12px rgba(79, 70, 229, 0.35)'
+            }}>
+              <span>📜</span>
+              <span>Đưa ra luật</span>
+            </div>
+          </div>
+
+          {/* Row 2: Testing Data */}
+          <div style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, rgba(16, 185, 129, 0.04) 100%)',
+            border: '2px solid rgba(16, 185, 129, 0.35)',
+            borderRadius: '1.25rem',
+            padding: '2.2vh 3vw',
+            boxShadow: '0 6px 16px rgba(16, 185, 129, 0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1.5vw',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              background: '#059669',
+              color: '#ffffff',
+              padding: '1vh 2vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 4px 10px rgba(5, 150, 105, 0.3)'
+            }}>
+              <span>🧪</span>
+              <span>Testing data</span>
+            </div>
+
+            <span style={{ fontSize: 'clamp(1.6rem, 3.8vh, 2.4rem)', color: '#059669', fontWeight: 'bold' }}>➔</span>
+
+            <div style={{
+              background: '#ffffff',
+              border: '2.5px solid #059669',
+              color: '#059669',
+              padding: '1vh 2.5vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+            }}>
+              <span>🎯</span>
+              <span>Dự đoán</span>
+            </div>
+
+            <span style={{ fontSize: 'clamp(1.6rem, 3.8vh, 2.4rem)', color: '#059669', fontWeight: 'bold' }}>➔</span>
+
+            <div style={{
+              background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+              color: '#ffffff',
+              padding: '1vh 2.5vw',
+              borderRadius: '0.875rem',
+              fontWeight: '800',
+              fontSize: 'clamp(1.3rem, 3.2vh, 2rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: '0 4px 12px rgba(5, 150, 105, 0.35)'
+            }}>
+              <span>📊</span>
+              <span>Đánh giá</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    stage: 'explain',
+    type: 'content',
     title: 'Xác định Ngữ cảnh Dữ liệu',
     content: (
       <div style={{ padding: '2vh 3vw', display: 'flex', flexDirection: 'column', gap: '3vh', height: '100%', justifyContent: 'center' }}>
@@ -728,7 +911,16 @@ const SLIDES = [
           margin: 0,
           maxWidth: '900px'
         }}>
-          Sinh viên lên bảng xác định các vectơ cho thuộc tính <strong>“Điểm kiểm tra lần 1”</strong>
+          Sinh viên lên bảng xác định các vectơ
+        </p>
+        <p style={{
+          fontSize: '3vh',
+          lineHeight: '1.6',
+          color: 'var(--text-secondary)',
+          margin: 0,
+          maxWidth: '900px'
+        }}>
+          cho thuộc tính <strong>“Điểm kiểm tra lần 1”</strong>
         </p>
       </div>
     )
@@ -762,7 +954,16 @@ const SLIDES = [
           margin: 0,
           maxWidth: '900px'
         }}>
-          Cả lớp làm trên phiếu dữ liệu để xác định các vectơ cho thuộc tính <strong>“Làm bài tập”</strong>
+          Cả lớp làm trên phiếu dữ liệu để xác định các vectơ
+        </p>
+        <p style={{
+          fontSize: '3vh',
+          lineHeight: '1.6',
+          color: 'var(--text-secondary)',
+          margin: 0,
+          maxWidth: '900px'
+        }}>
+          cho thuộc tính <strong>“Làm bài tập”</strong>
         </p>
         <CountdownTimer />
       </div>
@@ -918,12 +1119,12 @@ const SLIDES = [
       <div className="rules-container">
         <p style={{ margin: '0 0 1vh 0' }}>Từ cây quyết định hoàn thiện, ta rút ra <strong>Tập luật quyết định (Decision Rules)</strong>:</p>
         <div className="rules-box">
-          1. IF Chuyên cần = Thường xuyên vắng THEN Kết quả = Không đạt <br />
-          2. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm kiểm tra lần 1 ≥ 5 THEN Kết quả = Đạt <br />
-          3. IF Chuyên cần = Thỉnh thoảng vắng AND Điểm kiểm tra lần 1 &lt; 5 THEN Kết quả = Không đạt <br />
-          4. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 ≥ 5 THEN Kết quả = Đạt <br />
-          5. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 &lt; 5 AND Làm bài tập = Có THEN Kết quả = Đạt <br />
-          6. IF Chuyên cần = Đi học đủ AND Điểm kiểm tra lần 1 &lt; 5 AND Làm bài tập = Không THEN Kết quả = Không đạt
+          1. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Thường xuyên vắng <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#dc2626' }}>Không đạt</span> <br />
+          2. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Thỉnh thoảng vắng <span style={{ color: '#7c3aed' }}>AND</span> Điểm kiểm tra lần 1 ≥ 5 <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#16a34a' }}>Đạt</span> <br />
+          3. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Thỉnh thoảng vắng <span style={{ color: '#7c3aed' }}>AND</span> Điểm kiểm tra lần 1 &lt; 5 <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#dc2626' }}>Không đạt</span> <br />
+          4. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Đi học đủ <span style={{ color: '#7c3aed' }}>AND</span> Điểm kiểm tra lần 1 ≥ 5 <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#16a34a' }}>Đạt</span> <br />
+          5. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Đi học đủ <span style={{ color: '#7c3aed' }}>AND</span> Điểm kiểm tra lần 1 &lt; 5 <span style={{ color: '#7c3aed' }}>AND</span> Làm bài tập = Có <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#16a34a' }}>Đạt</span> <br />
+          6. <span style={{ color: '#7c3aed' }}>IF</span> Chuyên cần = Đi học đủ <span style={{ color: '#7c3aed' }}>AND</span> Điểm kiểm tra lần 1 &lt; 5 <span style={{ color: '#7c3aed' }}>AND</span> Làm bài tập = Không <span style={{ color: '#7c3aed' }}>THEN</span> Kết quả = <span style={{ color: '#dc2626' }}>Không đạt</span>
         </div>
       </div>
     ),
@@ -995,10 +1196,6 @@ const SLIDES = [
         </div>
 
         <AlgorithmProcessFlow />
-
-        <p style={{ margin: '1vh 0 0 0', fontSize: '2.5vh', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}>
-          * Cấu trúc cây quyết định phụ thuộc trực tiếp vào đặc trưng của dữ liệu học tập đầu vào.
-        </p>
       </div>
     )
   },
@@ -1008,12 +1205,311 @@ const SLIDES = [
     type: 'content',
     title: 'Bài tập về nhà',
     content: (
-      <div>
-        <h3 style={{ color: 'var(--primary)' }}>Nhiệm vụ về nhà</h3>
-        <ol style={{ paddingLeft: '2.5rem', lineHeight: '1.6', paddingRight: '1.5rem' }}>
-          <li>Giả sử thuộc tính Điểm kiểm tra lần 1 được chi tiết hóa thành &quot;&gt;=8&quot;, &quot;5 đến &lt;8&quot;, và &quot;&lt;5&quot;, hãy thực hiện lại thuật toán để xây dựng cây quyết định mới.</li>
-          <li>Nếu ở bước chọn nút gốc, KHÔNG CÓ thuộc tính nào tạo được vectơ đơn vị thì thuật toán làm thế nào để chọn nút một cách khách quan nhất?</li>
-        </ol>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2.5vh',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '2vh 1vw',
+        width: '100%'
+      }}>
+        {/* Question 1 Box */}
+        <div style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, rgba(99, 102, 241, 0.03) 100%)',
+          border: '1.5px solid rgba(99, 102, 241, 0.25)',
+          borderRadius: '1.25rem',
+          padding: '2.5vh 2.5vw',
+          boxShadow: '0 6px 18px rgba(99, 102, 241, 0.06)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2vw'
+        }}>
+          <div style={{
+            width: 'clamp(2.8rem, 6vh, 4rem)',
+            height: 'clamp(2.8rem, 6vh, 4rem)',
+            borderRadius: '50%',
+            background: 'var(--primary)',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'clamp(1.2rem, 3vh, 1.8rem)',
+            fontWeight: '800',
+            flexShrink: 0,
+            boxShadow: '0 4px 10px rgba(99, 102, 241, 0.35)'
+          }}>
+            1
+          </div>
+          <p style={{
+            margin: 0,
+            fontSize: 'clamp(1.1rem, 2.6vh, 1.6rem)',
+            lineHeight: '1.6',
+            color: 'var(--text-primary)',
+            fontWeight: '600'
+          }}>
+            Giả sử thuộc tính Điểm kiểm tra lần 1 được chi tiết hóa thành &quot;&gt;=8&quot;, &quot;5 đến &lt;8&quot;, và &quot;&lt;5&quot;, hãy thực hiện lại thuật toán để xây dựng cây quyết định mới.
+          </p>
+        </div>
+
+        {/* Question 2 Box */}
+        <div style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, rgba(99, 102, 241, 0.03) 100%)',
+          border: '1.5px solid rgba(99, 102, 241, 0.25)',
+          borderRadius: '1.25rem',
+          padding: '2.5vh 2.5vw',
+          boxShadow: '0 6px 18px rgba(99, 102, 241, 0.06)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2vw'
+        }}>
+          <div style={{
+            width: 'clamp(2.8rem, 6vh, 4rem)',
+            height: 'clamp(2.8rem, 6vh, 4rem)',
+            borderRadius: '50%',
+            background: 'var(--primary)',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'clamp(1.2rem, 3vh, 1.8rem)',
+            fontWeight: '800',
+            flexShrink: 0,
+            boxShadow: '0 4px 10px rgba(99, 102, 241, 0.35)'
+          }}>
+            2
+          </div>
+          <p style={{
+            margin: 0,
+            fontSize: 'clamp(1.1rem, 2.6vh, 1.6rem)',
+            lineHeight: '1.6',
+            color: 'var(--text-primary)',
+            fontWeight: '600'
+          }}>
+            Nếu ở bước chọn nút gốc, KHÔNG CÓ thuộc tính nào tạo được vectơ đơn vị thì thuật toán làm thế nào để chọn nút một cách khách quan nhất?
+          </p>
+        </div>
+      </div>
+    )
+  },
+
+  {
+    stage: 'evaluate',
+    type: 'content',
+    title: 'Thực hiện 5S & An toàn phòng học',
+    content: (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '45vh',
+        height: '100%',
+        padding: '2vh 2vw',
+        gap: '2.5vh',
+        maxWidth: '1350px',
+        margin: '0 auto',
+        width: '100%'
+      }}>
+        {/* Main Banner */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.12) 100%)',
+          border: '1.5px solid rgba(99, 102, 241, 0.25)',
+          borderRadius: '1.25rem',
+          padding: '2vh 3vw',
+          width: '100%',
+          boxShadow: '0 4px 15px rgba(99, 102, 241, 0.05)',
+          textAlign: 'center'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.6rem',
+            background: 'var(--primary)',
+            color: '#ffffff',
+            padding: '0.4vh 1.4vw',
+            borderRadius: '2rem',
+            fontSize: 'clamp(0.9rem, 2vh, 1.15rem)',
+            fontWeight: '800',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            marginBottom: '1vh'
+          }}>
+            <span>THỰC HIỆN 5S & AN TOÀN PHÒNG HỌC</span>
+          </div>
+          <h3 style={{
+            margin: 0,
+            fontSize: 'clamp(1.3rem, 3.4vh, 2.2rem)',
+            fontWeight: '800',
+            color: 'var(--text-primary)',
+            lineHeight: '1.4'
+          }}>
+            NHẮC NHỞ TRƯỚC KHI RỜI KHỎI PHÒNG HỌC
+          </h3>
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '2vh 1.5vw',
+          width: '100%'
+        }}>
+          {/* Card 1: Turn off computers */}
+          <div style={{
+            background: '#ffffff',
+            border: '2px solid rgba(99, 102, 241, 0.3)',
+            borderRadius: '1.2rem',
+            padding: '2.5vh 1.8vw',
+            boxShadow: '0 6px 18px rgba(99, 102, 241, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '1.2vh',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: 'var(--primary)' }} />
+            <div style={{
+              width: '4rem',
+              height: '4rem',
+              borderRadius: '1rem',
+              background: 'rgba(99, 102, 241, 0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.2rem'
+            }}>
+              💻
+            </div>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+              1. Tắt máy tính
+            </h4>
+            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+              Tắt nguồn máy tính, tắt màn hình, đặt chuột và bàn phím ngăn nắp.
+            </p>
+          </div>
+
+          {/* Card 2: 5S Cleanliness */}
+          <div style={{
+            background: '#ffffff',
+            border: '2px solid rgba(16, 185, 129, 0.3)',
+            borderRadius: '1.2rem',
+            padding: '2.5vh 1.8vw',
+            boxShadow: '0 6px 18px rgba(16, 185, 129, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '1.2vh',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#10b981' }} />
+            <div style={{
+              width: '4rem',
+              height: '4rem',
+              borderRadius: '1rem',
+              background: 'rgba(16, 185, 129, 0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.2rem'
+            }}>
+              🧹
+            </div>
+            <h4 style={{ margin: 0, color: '#059669', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+              2. Vệ sinh 5S
+            </h4>
+            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+              Dọn dẹp rác tại chỗ ngồi, xếp gọn gàng bàn ghế ngay ngắn trước khi ra về.
+            </p>
+          </div>
+
+          {/* Card 3: Turn off lights & AC */}
+          <div style={{
+            background: '#ffffff',
+            border: '2px solid rgba(245, 158, 11, 0.35)',
+            borderRadius: '1.2rem',
+            padding: '2.5vh 1.8vw',
+            boxShadow: '0 6px 18px rgba(245, 158, 11, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '1.2vh',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#f59e0b' }} />
+            <div style={{
+              width: '4rem',
+              height: '4rem',
+              borderRadius: '1rem',
+              background: 'rgba(245, 158, 11, 0.12)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.2rem'
+            }}>
+              💡
+            </div>
+            <h4 style={{ margin: 0, color: '#d97706', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+              3. Tắt hết đèn & điện
+            </h4>
+            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+              Tắt đèn chiếu sáng, máy chiếu, quạt/điều hòa nhằm đảm bảo an toàn & tiết kiệm điện.
+            </p>
+          </div>
+
+          {/* Card 4: Close Doors */}
+          <div style={{
+            background: '#ffffff',
+            border: '2px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '1.2rem',
+            padding: '2.5vh 1.8vw',
+            boxShadow: '0 6px 18px rgba(239, 68, 68, 0.08)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '1.2vh',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#ef4444' }} />
+            <div style={{
+              width: '4rem',
+              height: '4rem',
+              borderRadius: '1rem',
+              background: 'rgba(239, 68, 68, 0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.2rem'
+            }}>
+              🚪
+            </div>
+            <h4 style={{ margin: 0, color: '#dc2626', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+              4. Đóng cửa
+            </h4>
+            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+              Kiểm tra đóng toàn bộ cửa sổ và khóa/khép chặt cửa chính trước khi rời phòng.
+            </p>
+          </div>
+        </div>
+
+        {/* Footer greeting */}
+        <div style={{
+          fontSize: 'clamp(1rem, 2.2vh, 1.3rem)',
+          color: 'var(--text-muted)',
+          fontWeight: '600',
+          fontStyle: 'italic',
+          textAlign: 'center'
+        }}>
+          ✨ Chúc các bạn học tập tốt và hẹn gặp lại ở buổi học tiếp theo! ✨
+        </div>
       </div>
     )
   }
@@ -3202,9 +3698,9 @@ function App() {
     };
   }, [isTeacher]);
 
-  // Student sync fullscreen state
+  // Student sync fullscreen state with slideshow
   useEffect(() => {
-    if (!isTeacher && classState.slideshowActive) {
+    if (!isTeacher) {
       const isCurrentlyFullscreen = !!(
         document.fullscreenElement ||
         document.webkitFullscreenElement ||
@@ -3212,61 +3708,36 @@ function App() {
         document.msFullscreenElement
       );
 
-      if (classState.isFullscreenActive && !isCurrentlyFullscreen) {
-        // Try to auto fullscreen
-        const docEl = document.documentElement;
-        const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
-        if (req) {
-          const promise = req.call(docEl);
-          if (promise) {
-            promise.catch(() => {
+      if (classState.slideshowActive) {
+        if (!isCurrentlyFullscreen) {
+          // Attempt automatic fullscreen or prompt student to enter fullscreen
+          const docEl = document.documentElement;
+          const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+          if (req) {
+            const promise = req.call(docEl);
+            if (promise) {
+              promise.catch(() => {
+                setShowAutoFullscreenPrompt(true);
+              });
+            } else {
               setShowAutoFullscreenPrompt(true);
-            });
+            }
           } else {
             setShowAutoFullscreenPrompt(true);
           }
         } else {
-          setShowAutoFullscreenPrompt(true);
+          // Already in fullscreen, hide any open prompt
+          setShowAutoFullscreenPrompt(false);
         }
-      } else if (!classState.isFullscreenActive && isCurrentlyFullscreen) {
-        // Exit fullscreen
-        exitFullscreen();
+      } else {
+        // Teacher has ended slideshow -> exit fullscreen and close prompt
         setShowAutoFullscreenPrompt(false);
-      } else if (isCurrentlyFullscreen) {
-        setShowAutoFullscreenPrompt(false);
-      }
-    } else {
-      setShowAutoFullscreenPrompt(false);
-    }
-  }, [isTeacher, classState.isFullscreenActive, classState.slideshowActive, isFullscreen]);
-
-  // Sync fullscreen state with slideshow state
-  useEffect(() => {
-    if (classState.slideshowActive) {
-      const timer = setTimeout(() => {
-        const isCurrentlyFullscreen = !!(
-          document.fullscreenElement ||
-          document.webkitFullscreenElement ||
-          document.mozFullScreenElement ||
-          document.msFullscreenElement
-        );
-        if (!isCurrentlyFullscreen) {
-          goFullscreen();
+        if (isCurrentlyFullscreen) {
+          exitFullscreen();
         }
-      }, 300);
-      return () => clearTimeout(timer);
-    } else {
-      const isCurrentlyFullscreen = !!(
-        document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.mozFullScreenElement ||
-        document.msFullscreenElement
-      );
-      if (isCurrentlyFullscreen) {
-        exitFullscreen();
       }
     }
-  }, [classState.slideshowActive]);
+  }, [isTeacher, classState.slideshowActive, isFullscreen]);
 
   // GV control state updates helper
   const sendStateUpdate = (updatedFields) => {
@@ -3997,7 +4468,10 @@ function App() {
             {isTeacher && (
               <button
                 className="exit-slideshow-btn"
-                onClick={() => sendStateUpdate({ slideshowActive: false })}
+                onClick={() => {
+                  sendStateUpdate({ slideshowActive: false, isFullscreenActive: false });
+                  exitFullscreen();
+                }}
               >
                 🚪 Thoát Trình Chiếu
               </button>
@@ -4482,22 +4956,24 @@ function App() {
             <div className="user-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
                 <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
-                {!isTeacher && (
+                {user.role === 'student' && user.group && user.group !== '0' && (
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>
                     Nhóm {user.group}
                   </span>
                 )}
               </div>
-              <span className="user-role-lbl">{isTeacher ? 'Giảng Viên' : `Sinh Viên`}</span>
+              <span className="user-role-lbl">
+                {user.role === 'teacher' ? 'Giảng Viên' : user.role === 'spectator' ? 'Quan sát viên' : 'Sinh Viên'}
+              </span>
             </div>
             <button className="btn danger btn-sm" onClick={handleLogout}>🚪 Thoát</button>
           </div>
         </header>
 
-        {/* Student read-only mirror notice */}
+        {/* Student/Spectator read-only mirror notice */}
         {!isTeacher && (
           <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', color: '#1e40af', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', marginBottom: '1.5rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            🖥️ Chế độ gương: Màn hình đang đồng bộ với bài giảng của Giảng viên. Hãy cùng tham gia thảo luận trực tiếp tại lớp học!
+            🖥️ Chế độ gương: Màn hình đang đồng bộ với bài giảng của Giảng viên. {user.role === 'spectator' ? 'Chào mừng Quý Thầy/Cô và Quan sát viên theo dõi buổi học!' : 'Hãy cùng tham gia thảo luận trực tiếp tại lớp học!'}
           </div>
         )}
 
@@ -4539,7 +5015,13 @@ function App() {
             </div>
 
             <div className="gv-action-row">
-              <button className="btn primary" onClick={() => sendStateUpdate({ slideshowActive: true })}>
+              <button
+                className="btn primary"
+                onClick={() => {
+                  sendStateUpdate({ slideshowActive: true, isFullscreenActive: true });
+                  goFullscreen();
+                }}
+              >
                 🎬 Mở Trình Chiếu (Slideshow)
               </button>
               <button className="btn" onClick={handlePrevSlide} disabled={classState.activeSlideIndex === 0}>
