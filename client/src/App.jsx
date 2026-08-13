@@ -7,7 +7,7 @@ export const ClassStateContext = createContext(null);
 
 // Definition of slides across the 5E stages
 const SLIDES = [
-  // --- ENGAGE ---
+  // --- ENGAGE (1 to 2) ---
   {
     stage: 'engage',
     type: 'content',
@@ -143,7 +143,7 @@ const SLIDES = [
     )
   },
 
-  // --- EXPLAIN (6 to 15) ---
+  // --- EXPLAIN (6 to 17) ---
   {
     stage: 'explain',
     type: 'content',
@@ -167,7 +167,7 @@ const SLIDES = [
       }}>
         <h3 style={{
           color: '#12498dff',
-          fontSize: '7vh',
+          fontSize: '6vh',
           fontWeight: '800',
           lineHeight: '1.6',
           margin: 0,
@@ -179,7 +179,7 @@ const SLIDES = [
         <div>
           <h3 style={{
             color: '#12498dff',
-            fontSize: '7vh',
+            fontSize: '6vh',
             fontWeight: '800',
             lineHeight: '1.6',
             margin: 0,
@@ -920,7 +920,7 @@ const SLIDES = [
           margin: 0,
           maxWidth: '900px'
         }}>
-          cho thuộc tính <strong>“Điểm kiểm tra lần 1”</strong>
+          cho thuộc tính <strong>"Điểm kiểm tra lần 1"</strong>
         </p>
       </div>
     )
@@ -963,7 +963,7 @@ const SLIDES = [
           margin: 0,
           maxWidth: '900px'
         }}>
-          cho thuộc tính <strong>“Làm bài tập”</strong>
+          cho thuộc tính <strong>"Làm bài tập”</strong>
         </p>
         <CountdownTimer />
       </div>
@@ -982,14 +982,13 @@ const SLIDES = [
     title: 'Nguyên lý chọn nút của Thuật toán',
     content: (
       <div>
-        <p>Ý tưởng cốt lõi của thuật toán Xây dựng cây quyết định dựa trên xác suất có điều kiện:</p>
         <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--border-color)', margin: '1rem 0' }}>
-          <p style={{ fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>Quy tắc tạo nút:</p>
-          <p>1. Đánh giá tất cả các thuộc tính chưa được dùng.</p>
-          <p>2. Xác định các vectơ thuộc tính mà chúng tạo ra.</p>
-          <p>3. Chọn thuộc tính nào tạo ra <strong>nhiều vectơ đơn vị nhất</strong> để làm nút tiếp theo cho cây quyết định.</p>
-          <p>Tiêu chí phụ:</p>
-          <ul style={{ textAlign: 'left', listStyleType: 'disc', marginLeft: '2rem', fontSize: '2.5vh', color: 'var(--text-secondary)' }}>
+          <p style={{ fontWeight: 'bold', color: 'var(--primary)', margin: 0, fontSize: '4vh' }}>Quy tắc tạo nút:</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '3.5vh' }}>1. Đánh giá tất cả các thuộc tính chưa được dùng.</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '3.5vh' }}>2. Xác định các vectơ thuộc tính mà chúng tạo ra.</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '3.5vh' }}>3. Chọn thuộc tính nào tạo ra <strong>nhiều vectơ đơn vị nhất</strong> để làm nút tiếp theo cho cây quyết định.</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '3.5vh' }}>Tiêu chí phụ:</p>
+          <ul style={{ textAlign: 'left', listStyleType: 'disc', marginLeft: '2rem', fontSize: '3.5vh', color: 'var(--text-secondary)' }}>
             <li>Nếu có sự trùng lặp (nhiều thuộc tính tạo ra cùng số lượng vectơ đơn vị nhiều nhất), thuật toán sẽ chọn thuộc tính có <strong>tổng số lượng vectơ ít hơn.</strong></li>
             <li>Nếu tổng số lượng vectơ vẫn bằng nhau, thuật toán sẽ lựa chọn <strong>ngẫu nhiên</strong> giữa các thuộc tính đó.</li>
           </ul>
@@ -1003,45 +1002,45 @@ const SLIDES = [
     type: 'content',
     title: 'Thống kê số lượng vectơ đơn vị - Chọn Nút gốc',
     content: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', width: '100%', maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
-        <p style={{ margin: 0, fontSize: '2.2vh', color: 'var(--text-secondary)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '1200px', margin: '0 auto', textAlign: 'left' }}>
+        <p style={{ margin: 0, fontSize: '2.5vh', lineHeight: '1.5', color: 'var(--text-secondary)' }}>
           Dưới đây là bảng thống kê số lượng vectơ đơn vị được tạo ra bởi các thuộc tính ứng viên khi phân tích trên toàn bộ tập dữ liệu (16 mẫu):
         </p>
 
         <div style={{ background: '#ffffff', border: '1.5px solid var(--border-color)', borderRadius: '1rem', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '2.2vh' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '2.4vh' }}>
             <thead>
-              <tr style={{ background: 'var(--primary-light)', color: 'var(--primary-hover)', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold' }}>
-                <th style={{ padding: '2vh 2vw', textAlign: 'left' }}>Thuộc tính ứng viên</th>
-                <th style={{ padding: '2vh 2vw', textAlign: 'center' }}>Vectơ các nhánh con</th>
-                <th style={{ padding: '2vh 2vw', textAlign: 'center', width: '180px' }}>Số vectơ đơn vị</th>
+              <tr style={{ background: 'var(--primary-light)', color: 'var(--primary-hover)', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold', fontSize: '2.5vh' }}>
+                <th style={{ padding: '1.8vh 2vw', textAlign: 'left' }}>Thuộc tính ứng viên</th>
+                <th style={{ padding: '1.8vh 2vw', textAlign: 'center' }}>Vectơ các nhánh con</th>
+                <th style={{ padding: '1.8vh 2vw', textAlign: 'center', width: '220px' }}>Số vectơ đơn vị</th>
               </tr>
             </thead>
             <tbody>
               <tr style={{ borderBottom: '1px solid var(--border-color)', background: 'rgba(79, 70, 229, 0.03)' }}>
-                <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold', color: 'var(--primary)' }}>Chuyên cần</td>
-                <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
+                <td style={{ padding: '1.8vh 2vw', fontWeight: 'bold', fontSize: '2.5vh', color: 'var(--primary)' }}>Chuyên cần</td>
+                <td style={{ padding: '1.8vh 2vw', fontSize: '2.4vh', lineHeight: '1.6' }}>
                   • Đi học đủ: (6/8, 2/8)<br />
                   • Thỉnh thoảng vắng: (2/4, 2/4)<br />
                   • Thường xuyên vắng: <strong>(0/4, 4/4)</strong> 🌟
                 </td>
-                <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh', color: 'var(--success)' }}>1</td>
+                <td style={{ padding: '1.8vh 2vw', textAlign: 'center', fontWeight: 'bold', fontSize: '3vh', color: 'var(--success)' }}>1</td>
               </tr>
               <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
-                <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Điểm kiểm tra lần 1</td>
-                <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
+                <td style={{ padding: '1.8vh 2vw', fontWeight: 'bold', fontSize: '2.5vh' }}>Điểm kiểm tra lần 1</td>
+                <td style={{ padding: '1.8vh 2vw', fontSize: '2.4vh', lineHeight: '1.6' }}>
                   • ≥ 5: (6/8, 2/8)<br />
                   • &lt; 5: (2/8, 6/8)
                 </td>
-                <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh' }}>0</td>
+                <td style={{ padding: '1.8vh 2vw', textAlign: 'center', fontWeight: 'bold', fontSize: '3vh' }}>0</td>
               </tr>
               <tr>
-                <td style={{ padding: '1.8vh 1vw', fontWeight: 'bold' }}>Làm bài tập</td>
-                <td style={{ padding: '1.8vh 1vw', fontSize: '1.8vh' }}>
+                <td style={{ padding: '1.8vh 2vw', fontWeight: 'bold', fontSize: '2.5vh' }}>Làm bài tập</td>
+                <td style={{ padding: '1.8vh 2vw', fontSize: '2.4vh', lineHeight: '1.6' }}>
                   • Có: (6/9, 3/9)<br />
                   • Không: (2/7, 5/7)
                 </td>
-                <td style={{ padding: '1.8vh 1vw', textAlign: 'center', fontWeight: 'bold', fontSize: '2vh' }}>0</td>
+                <td style={{ padding: '1.8vh 2vw', textAlign: 'center', fontWeight: 'bold', fontSize: '3vh' }}>0</td>
               </tr>
             </tbody>
           </table>
@@ -1050,18 +1049,19 @@ const SLIDES = [
         <div style={{
           background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%)',
           border: '1.5px solid rgba(16, 185, 129, 0.2)',
-          padding: '2vh 1.5vw',
-          borderRadius: '0.75rem',
+          padding: '2vh 2vw',
+          borderRadius: '0.875rem',
           color: 'var(--success-text)',
           fontWeight: '600',
-          fontSize: '2.6vh',
+          fontSize: '3vh',
+          lineHeight: '1.5',
           display: 'flex',
           alignItems: 'center',
           gap: '1vw'
         }}>
-          <span>🎯</span>
+          <span style={{ fontSize: '3.8vh' }}>🎯</span>
           <span>
-            <strong>Kết luận:</strong> Thuộc tính <strong>Chuyên cần</strong> được chọn làm <strong>nút gốc</strong> vì tạo ra nhiều vectơ đơn vị nhất (1 vectơ đơn vị tại nhánh <i>Thường xuyên vắng</i>).
+            <strong>Kết luận:</strong> Thuộc tính <strong>Chuyên cần</strong> được chọn làm <strong>nút gốc</strong> vì tạo ra nhiều vectơ đơn vị hơn các thuộc tính còn lại (1 vectơ đơn vị tại nhánh <i>Thường xuyên vắng</i>).
           </span>
         </div>
       </div>
@@ -1069,15 +1069,15 @@ const SLIDES = [
     showTree: false
   },
 
-  // --- ELABORATE (16 to 19) ---
+  // --- ELABORATE (18 to 21) ---
   {
     stage: 'elaborate',
     type: 'content',
     title: 'Áp dụng thuật toán',
     content: (
-      <div>
-        <p>Sau khi đưa thuộc tính <strong>Chuyên cần</strong> vào nút gốc của cây quyết định:</p>
-        <ul>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', fontSize: '2.8vh', lineHeight: '1.6' }}>
+        <p style={{ margin: 0 }}>Sau khi đưa thuộc tính <strong>Chuyên cần</strong> vào nút gốc của cây quyết định:</p>
+        <ul style={{ margin: 0, paddingLeft: '2.5vw', display: 'flex', flexDirection: 'column', gap: '1.5vh' }}>
           <li>Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi có kết quả = <strong>Không đạt</strong>. Với các giá trị nhãn: K, K, K, K, ta thu được vectơ đơn vị <strong>(0/4, 4/4)</strong>. Nhánh này kết thúc tại nút lá <i>Không đạt</i>.</li>
           <li>Các nhánh <strong>Thỉnh thoảng vắng</strong> và <strong>Đi học đủ</strong> chứa nhiều nhãn kết quả khác nhau. Chúng ta cần tiến hành phân nhánh tiếp!</li>
         </ul>
@@ -1110,11 +1110,11 @@ const SLIDES = [
     showTree: true
   },
 
-  // --- EVALUATE (20 to 26) ---
+  // --- EVALUATE (22 to 29) ---
   {
     stage: 'evaluate',
     type: 'content',
-    title: 'Đánh giá - Cây quyết định & Các luật',
+    title: 'Cây quyết định & Các luật',
     content: (
       <div className="rules-container">
         <p style={{ margin: '0 0 1vh 0' }}>Từ cây quyết định hoàn thiện, ta rút ra <strong>Tập luật quyết định (Decision Rules)</strong>:</p>
@@ -1132,9 +1132,9 @@ const SLIDES = [
   {
     stage: 'evaluate',
     type: 'question',
-    title: 'Đánh giá - Câu hỏi 1',
+    title: 'Câu hỏi đánh giá 1',
     question: {
-      text: 'Thuật toán Xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện thực hiện thao tác gì đầu tiên?',
+      text: 'Thuật toán Xây dựng cây quyết định dựa trên xác suất có điều kiện thực hiện thao tác gì đầu tiên?',
       options: [
         'Chọn ngẫu nhiên thuộc tính làm nút gốc.',
         'Chọn thuộc tính có số vectơ đơn vị lớn nhất để làm nút gốc.',
@@ -1148,7 +1148,7 @@ const SLIDES = [
   {
     stage: 'evaluate',
     type: 'question',
-    title: 'Đánh giá - Câu hỏi 2',
+    title: 'Câu hỏi đánh giá 2',
     question: {
       text: 'Sau khi xác định các vectơ, nếu hai thuộc tính có cùng số vectơ đơn vị, thuật toán sẽ làm gì?',
       options: [
@@ -1164,7 +1164,7 @@ const SLIDES = [
   {
     stage: 'evaluate',
     type: 'question',
-    title: 'Đánh giá - Câu hỏi 3',
+    title: 'Câu hỏi đánh giá 3',
     question: {
       text: 'Với bản ghi mới dưới đây, dựa vào cây quyết định và tập luật đã học, kết quả dự đoán của sinh viên này sẽ là gì?',
       record: {
@@ -1187,10 +1187,10 @@ const SLIDES = [
     type: 'content',
     title: 'Tổng kết',
     content: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3vh', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
         <div>
-          <h3 style={{ color: 'var(--primary)', marginBottom: '1vh', fontSize: '2.8vh' }}>Củng cố bài học</h3>
-          <p style={{ margin: '0.5vh 0', fontSize: '3vh', color: 'var(--text-secondary)' }}>
+          <h3 style={{ color: 'var(--primary)', marginBottom: '1vh', fontSize: '3vh' }}>Củng cố bài học</h3>
+          <p style={{ margin: '0.5vh 0', fontSize: '3vh', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
             Thuật toán Xây dựng cây quyết định dựa trên lý thuyết xác suất có điều kiện thực hiện việc so sánh số lượng các vectơ đơn vị một cách đệ quy để lần lượt chọn thuộc tính làm nút quyết định.
           </p>
         </div>
@@ -1307,7 +1307,7 @@ const SLIDES = [
         height: '100%',
         padding: '2vh 2vw',
         gap: '2.5vh',
-        maxWidth: '1350px',
+        maxWidth: '1400px',
         margin: '0 auto',
         width: '100%'
       }}>
@@ -1327,9 +1327,9 @@ const SLIDES = [
             gap: '0.6rem',
             background: 'var(--primary)',
             color: '#ffffff',
-            padding: '0.4vh 1.4vw',
+            padding: '0.5vh 1.6vw',
             borderRadius: '2rem',
-            fontSize: 'clamp(0.9rem, 2vh, 1.15rem)',
+            fontSize: 'clamp(1rem, 2.2vh, 1.3rem)',
             fontWeight: '800',
             letterSpacing: '0.05em',
             textTransform: 'uppercase',
@@ -1339,7 +1339,7 @@ const SLIDES = [
           </div>
           <h3 style={{
             margin: 0,
-            fontSize: 'clamp(1.3rem, 3.4vh, 2.2rem)',
+            fontSize: 'clamp(1.5rem, 3.8vh, 2.5rem)',
             fontWeight: '800',
             color: 'var(--text-primary)',
             lineHeight: '1.4'
@@ -1351,7 +1351,7 @@ const SLIDES = [
         {/* 4 Cards Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '2vh 1.5vw',
           width: '100%'
         }}>
@@ -1372,21 +1372,21 @@ const SLIDES = [
           }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: 'var(--primary)' }} />
             <div style={{
-              width: '4rem',
-              height: '4rem',
-              borderRadius: '1rem',
+              width: '4.5rem',
+              height: '4.5rem',
+              borderRadius: '1.2rem',
               background: 'rgba(99, 102, 241, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '2.2rem'
+              fontSize: '2.5rem'
             }}>
               💻
             </div>
-            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+            <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: 'clamp(1.2rem, 2.8vh, 1.8rem)', fontWeight: '800' }}>
               1. Tắt máy tính
             </h4>
-            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            <p style={{ margin: 0, fontSize: 'clamp(1rem, 2.3vh, 1.4rem)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
               Tắt nguồn máy tính, tắt màn hình, đặt chuột và bàn phím ngăn nắp.
             </p>
           </div>
@@ -1408,21 +1408,21 @@ const SLIDES = [
           }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#10b981' }} />
             <div style={{
-              width: '4rem',
-              height: '4rem',
-              borderRadius: '1rem',
+              width: '4.5rem',
+              height: '4.5rem',
+              borderRadius: '1.2rem',
               background: 'rgba(16, 185, 129, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '2.2rem'
+              fontSize: '2.5rem'
             }}>
               🧹
             </div>
-            <h4 style={{ margin: 0, color: '#059669', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+            <h4 style={{ margin: 0, color: '#059669', fontSize: 'clamp(1.2rem, 2.8vh, 1.8rem)', fontWeight: '800' }}>
               2. Vệ sinh 5S
             </h4>
-            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            <p style={{ margin: 0, fontSize: 'clamp(1rem, 2.3vh, 1.4rem)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
               Dọn dẹp rác tại chỗ ngồi, xếp gọn gàng bàn ghế ngay ngắn trước khi ra về.
             </p>
           </div>
@@ -1444,21 +1444,21 @@ const SLIDES = [
           }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#f59e0b' }} />
             <div style={{
-              width: '4rem',
-              height: '4rem',
-              borderRadius: '1rem',
+              width: '4.5rem',
+              height: '4.5rem',
+              borderRadius: '1.2rem',
               background: 'rgba(245, 158, 11, 0.12)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '2.2rem'
+              fontSize: '2.5rem'
             }}>
               💡
             </div>
-            <h4 style={{ margin: 0, color: '#d97706', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+            <h4 style={{ margin: 0, color: '#d97706', fontSize: 'clamp(1.2rem, 2.8vh, 1.8rem)', fontWeight: '800' }}>
               3. Tắt hết đèn & điện
             </h4>
-            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            <p style={{ margin: 0, fontSize: 'clamp(1rem, 2.3vh, 1.4rem)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
               Tắt đèn chiếu sáng, máy chiếu, quạt/điều hòa nhằm đảm bảo an toàn & tiết kiệm điện.
             </p>
           </div>
@@ -1480,21 +1480,21 @@ const SLIDES = [
           }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '5px', background: '#ef4444' }} />
             <div style={{
-              width: '4rem',
-              height: '4rem',
-              borderRadius: '1rem',
+              width: '4.5rem',
+              height: '4.5rem',
+              borderRadius: '1.2rem',
               background: 'rgba(239, 68, 68, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '2.2rem'
+              fontSize: '2.5rem'
             }}>
               🚪
             </div>
-            <h4 style={{ margin: 0, color: '#dc2626', fontSize: 'clamp(1.1rem, 2.4vh, 1.5rem)', fontWeight: '800' }}>
+            <h4 style={{ margin: 0, color: '#dc2626', fontSize: 'clamp(1.2rem, 2.8vh, 1.8rem)', fontWeight: '800' }}>
               4. Đóng cửa
             </h4>
-            <p style={{ margin: 0, fontSize: 'clamp(0.9rem, 2vh, 1.2rem)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            <p style={{ margin: 0, fontSize: 'clamp(1rem, 2.3vh, 1.4rem)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
               Kiểm tra đóng toàn bộ cửa sổ và khóa/khép chặt cửa chính trước khi rời phòng.
             </p>
           </div>
@@ -1502,9 +1502,9 @@ const SLIDES = [
 
         {/* Footer greeting */}
         <div style={{
-          fontSize: 'clamp(1rem, 2.2vh, 1.3rem)',
+          fontSize: 'clamp(1.2rem, 2.6vh, 1.6rem)',
           color: 'var(--text-muted)',
-          fontWeight: '600',
+          fontWeight: '700',
           fontStyle: 'italic',
           textAlign: 'center'
         }}>
@@ -1553,12 +1553,12 @@ function AlgorithmProcessFlow() {
           <marker id="arrow-purple" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M 0 2 L 6 5 L 0 8 Z" fill="#8b5cf6" />
           </marker>
-          <clipPath id="clip-card-1"><rect x="20" y="15" width="190" height="160" rx="12" /></clipPath>
-          <clipPath id="clip-card-2"><rect x="250" y="15" width="190" height="160" rx="12" /></clipPath>
-          <clipPath id="clip-card-3"><rect x="480" y="15" width="190" height="160" rx="12" /></clipPath>
-          <clipPath id="clip-card-4"><rect x="710" y="15" width="190" height="160" rx="12" /></clipPath>
-          <clipPath id="clip-card-5"><rect x="940" y="15" width="190" height="160" rx="12" /></clipPath>
-          <clipPath id="clip-card-6"><rect x="940" y="330" width="190" height="115" rx="12" /></clipPath>
+          <clipPath id="clip-card-1"><rect x="20" y="15" width="190" height="160" rx="14" /></clipPath>
+          <clipPath id="clip-card-2"><rect x="250" y="15" width="190" height="160" rx="14" /></clipPath>
+          <clipPath id="clip-card-3"><rect x="480" y="15" width="190" height="160" rx="14" /></clipPath>
+          <clipPath id="clip-card-4"><rect x="710" y="15" width="190" height="160" rx="14" /></clipPath>
+          <clipPath id="clip-card-5"><rect x="940" y="15" width="190" height="160" rx="14" /></clipPath>
+          <clipPath id="clip-card-6"><rect x="940" y="330" width="190" height="115" rx="14" /></clipPath>
         </defs>
 
         {/* Top-row straight arrows */}
@@ -1568,110 +1568,90 @@ function AlgorithmProcessFlow() {
         <path d="M 905 95 L 935 95" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
 
         {/* Down arrow from Card 5 to Diamond */}
-        <path d="M 1035 175 L 1035 209" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <path d="M 1035 175 L 1035 200" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
 
         {/* Down arrow from Diamond to Card 6 */}
-        <path d="M 1035 285 L 1035 324" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
-        <text x="1046" y="308" fill="#10b981" fontWeight="bold" fontSize="12px">CÓ</text>
+        <path d="M 1035 295 L 1035 324" fill="none" className="svg-arrow-line" markerEnd="url(#arrow-grey)" />
+        <text x="1050" y="316" fill="#10b981" fontWeight="800" fontSize="14px">CÓ</text>
 
         {/* Left dashed arrow from Diamond to Recursion Pill */}
-        <path d="M 950 250 L 742 250" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
-        <text x="848" y="242" fill="#ef4444" fontWeight="bold" fontSize="13px" textAnchor="middle">KHÔNG</text>
+        <path d="M 940 250 L 798 250" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
+        <text x="868" y="240" fill="#ef4444" fontWeight="800" fontSize="15px" textAnchor="middle">KHÔNG</text>
 
         {/* Returning dashed arrow from Recursion Pill back to Card 1 */}
-        <path d="M 415 250 L 115 250 L 115 182" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
+        <path d="M 360 250 L 115 250 L 115 182" fill="none" className="svg-arrow-line-dashed" markerEnd="url(#arrow-purple)" />
 
         {/* Card 1: XÉT THUỘC TÍNH */}
         <g className="svg-card-group" style={{ '--card-theme': '#4f46e5' }}>
-          <rect x="20" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
-          <rect x="20" y="15" width="190" height="6" fill="#4f46e5" clipPath="url(#clip-card-1)" />
-          <circle cx="115" cy="45" r="14" fill="#4f46e5" className="svg-card-badge" />
-          <text x="115" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">1</text>
-          <text x="115" y="80" textAnchor="middle" fontSize="24px">🔍</text>
-          <text x="115" y="103" textAnchor="middle" fill="#4f46e5" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">XÉT THUỘC TÍNH</text>
-          <text x="115" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Xét tập các thuộc tính</text>
-          <text x="115" y="139" textAnchor="middle" fill="#475569" fontSize="11px">còn lại có thể sử dụng.</text>
+          <rect x="20" y="15" width="190" height="160" rx="14" className="svg-card-bg" />
+          <rect x="20" y="15" width="190" height="7" fill="#4f46e5" clipPath="url(#clip-card-1)" />
+          <circle cx="115" cy="48" r="16" fill="#4f46e5" className="svg-card-badge" />
+          <text x="115" y="54" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="16px">1</text>
+          <text x="115" y="96" textAnchor="middle" fontSize="36px">🔍</text>
+          <text x="115" y="138" textAnchor="middle" fill="#4f46e5" fontWeight="800" fontSize="16px" letterSpacing="0.5px">XÉT THUỘC TÍNH</text>
         </g>
 
         {/* Card 2: XÁC ĐỊNH VECTOR */}
         <g className="svg-card-group" style={{ '--card-theme': '#0284c7' }}>
-          <rect x="250" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
-          <rect x="250" y="15" width="190" height="6" fill="#0284c7" clipPath="url(#clip-card-2)" />
-          <circle cx="345" cy="45" r="14" fill="#0284c7" className="svg-card-badge" />
-          <text x="345" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">2</text>
-          <text x="345" y="80" textAnchor="middle" fontSize="24px">📊</text>
-          <text x="345" y="103" textAnchor="middle" fill="#0284c7" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">XÁC ĐỊNH VECTOR</text>
-          <text x="345" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Với mỗi thuộc tính A, lập</text>
-          <text x="345" y="139" textAnchor="middle" fill="#475569" fontSize="11px">các vector nhãn theo từng</text>
-          <text x="345" y="155" textAnchor="middle" fill="#475569" fontSize="11px">giá trị (nhánh) của A.</text>
+          <rect x="250" y="15" width="190" height="160" rx="14" className="svg-card-bg" />
+          <rect x="250" y="15" width="190" height="7" fill="#0284c7" clipPath="url(#clip-card-2)" />
+          <circle cx="345" cy="48" r="16" fill="#0284c7" className="svg-card-badge" />
+          <text x="345" y="54" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="16px">2</text>
+          <text x="345" y="96" textAnchor="middle" fontSize="36px">📊</text>
+          <text x="345" y="138" textAnchor="middle" fill="#0284c7" fontWeight="800" fontSize="16px" letterSpacing="0.5px">XÁC ĐỊNH VECTOR</text>
         </g>
 
         {/* Card 3: ĐẾM VECTOR ĐƠN VỊ */}
         <g className="svg-card-group" style={{ '--card-theme': '#6366f1' }}>
-          <rect x="480" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
-          <rect x="480" y="15" width="190" height="6" fill="#6366f1" clipPath="url(#clip-card-3)" />
-          <circle cx="575" cy="45" r="14" fill="#6366f1" className="svg-card-badge" />
-          <text x="575" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">3</text>
-          <text x="575" y="80" textAnchor="middle" fontSize="24px">📋</text>
-          <text x="575" y="103" textAnchor="middle" fill="#6366f1" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">ĐẾM VECTOR ĐƠN VỊ</text>
-          <text x="575" y="123" textAnchor="middle" fill="#475569" fontSize="11px">Đếm số lượng vector đơn vị</text>
-          <text x="575" y="139" textAnchor="middle" fill="#475569" fontSize="11px">(mỗi vector có tất cả mẫu</text>
-          <text x="575" y="155" textAnchor="middle" fill="#475569" fontSize="11px">cùng một lớp).</text>
+          <rect x="480" y="15" width="190" height="160" rx="14" className="svg-card-bg" />
+          <rect x="480" y="15" width="190" height="7" fill="#6366f1" clipPath="url(#clip-card-3)" />
+          <circle cx="575" cy="48" r="16" fill="#6366f1" className="svg-card-badge" />
+          <text x="575" y="54" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="16px">3</text>
+          <text x="575" y="96" textAnchor="middle" fontSize="36px">📋</text>
+          <text x="575" y="138" textAnchor="middle" fill="#6366f1" fontWeight="800" fontSize="14.5px" letterSpacing="0.3px">ĐẾM VECTOR ĐƠN VỊ</text>
         </g>
 
         {/* Card 4: CHỌN NÚT */}
         <g className="svg-card-group" style={{ '--card-theme': '#ef4444' }}>
-          <rect x="710" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
-          <rect x="710" y="15" width="190" height="6" fill="#ef4444" clipPath="url(#clip-card-4)" />
-          <circle cx="805" cy="45" r="14" fill="#ef4444" className="svg-card-badge" />
-          <text x="805" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">4</text>
-          <text x="805" y="80" textAnchor="middle" fontSize="24px">🎯</text>
-          <text x="805" y="103" textAnchor="middle" fill="#ef4444" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">CHỌN NÚT</text>
-          <text x="805" y="121" textAnchor="middle" fill="#475569" fontSize="10.2px">Chọn thuộc tính có số lượng</text>
-          <text x="805" y="134" textAnchor="middle" fill="#475569" fontSize="10.2px">vector đơn vị lớn nhất.</text>
-          <text x="805" y="147" textAnchor="middle" fill="#475569" fontSize="10.2px">(Nếu hòa: chọn thuộc tính</text>
-          <text x="805" y="160" textAnchor="middle" fill="#475569" fontSize="10.2px">có tổng số vector ít hơn).</text>
+          <rect x="710" y="15" width="190" height="160" rx="14" className="svg-card-bg" />
+          <rect x="710" y="15" width="190" height="7" fill="#ef4444" clipPath="url(#clip-card-4)" />
+          <circle cx="805" cy="48" r="16" fill="#ef4444" className="svg-card-badge" />
+          <text x="805" y="54" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="16px">4</text>
+          <text x="805" y="96" textAnchor="middle" fontSize="36px">🎯</text>
+          <text x="805" y="138" textAnchor="middle" fill="#ef4444" fontWeight="800" fontSize="17px" letterSpacing="0.5px">CHỌN NÚT</text>
         </g>
 
         {/* Card 5: NHÁNH HÓA */}
         <g className="svg-card-group" style={{ '--card-theme': '#10b981' }}>
-          <rect x="940" y="15" width="190" height="160" rx="12" className="svg-card-bg" />
-          <rect x="940" y="15" width="190" height="6" fill="#10b981" clipPath="url(#clip-card-5)" />
-          <circle cx="1035" cy="45" r="14" fill="#10b981" className="svg-card-badge" />
-          <text x="1035" y="49" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">5</text>
-          <text x="1035" y="80" textAnchor="middle" fontSize="24px">🌳</text>
-          <text x="1035" y="103" textAnchor="middle" fill="#10b981" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">NHÁNH HÓA</text>
-          <text x="1035" y="121" textAnchor="middle" fill="#475569" fontSize="10.2px">Chọn thuộc tính đó làm nút,</text>
-          <text x="1035" y="134" textAnchor="middle" fill="#475569" fontSize="10.2px">tạo các nhánh tương ứng với</text>
-          <text x="1035" y="147" textAnchor="middle" fill="#475569" fontSize="10.2px">các giá trị của thuộc tính</text>
-          <text x="1035" y="160" textAnchor="middle" fill="#475569" fontSize="10.2px">và phân vùng dữ liệu.</text>
+          <rect x="940" y="15" width="190" height="160" rx="14" className="svg-card-bg" />
+          <rect x="940" y="15" width="190" height="7" fill="#10b981" clipPath="url(#clip-card-5)" />
+          <circle cx="1035" cy="48" r="16" fill="#10b981" className="svg-card-badge" />
+          <text x="1035" y="54" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="16px">5</text>
+          <text x="1035" y="96" textAnchor="middle" fontSize="36px">🌳</text>
+          <text x="1035" y="138" textAnchor="middle" fill="#10b981" fontWeight="800" fontSize="17px" letterSpacing="0.5px">NHÁNH HÓA</text>
         </g>
 
         {/* Decision Diamond: DỮ LIỆU CON CÓ THUẦN? */}
         <g className="svg-diamond-group">
-          <polygon points="1035,215 1120,250 1035,285 950,250" className="svg-diamond-bg" />
-          <text x="1035" y="246" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="10.5px" letterSpacing="0.3px">DỮ LIỆU CON</text>
-          <text x="1035" y="258" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="10.5px" letterSpacing="0.3px">CÓ THUẦN?</text>
+          <polygon points="1035,205 1130,250 1035,295 940,250" className="svg-diamond-bg" />
+          <text x="1035" y="244" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="13px" letterSpacing="0.5px">DỮ LIỆU CON</text>
+          <text x="1035" y="262" textAnchor="middle" fill="#92400e" fontWeight="800" fontSize="13px" letterSpacing="0.5px">CÓ THUẦN?</text>
         </g>
 
         {/* Card 6: DỪNG (NÚT LÁ) */}
         <g className="svg-card-group" style={{ '--card-theme': '#10b981' }}>
-          <rect x="940" y="330" width="190" height="115" rx="12" className="svg-card-bg" />
-          <rect x="940" y="330" width="190" height="6" fill="#10b981" clipPath="url(#clip-card-6)" />
-          <circle cx="1035" cy="358" r="14" fill="#10b981" className="svg-card-badge" />
-          <text x="1035" y="362" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px">6</text>
-          <text x="1035" y="388" textAnchor="middle" fontSize="20px">🍃</text>
-          <text x="1035" y="407" textAnchor="middle" fill="#10b981" fontWeight="bold" fontSize="12px" letterSpacing="0.3px">DỪNG (NÚT LÁ)</text>
-          <text x="1035" y="422" textAnchor="middle" fill="#475569" fontSize="10.5px">Tạo nút lá với nhãn</text>
-          <text x="1035" y="434" textAnchor="middle" fill="#475569" fontSize="10.5px">của lớp đồng nhất.</text>
+          <rect x="940" y="330" width="190" height="115" rx="14" className="svg-card-bg" />
+          <rect x="940" y="330" width="190" height="7" fill="#10b981" clipPath="url(#clip-card-6)" />
+          <circle cx="1035" cy="358" r="15" fill="#10b981" className="svg-card-badge" />
+          <text x="1035" y="363" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="15px">6</text>
+          <text x="1035" y="394" textAnchor="middle" fontSize="30px">🍃</text>
+          <text x="1035" y="425" textAnchor="middle" fill="#10b981" fontWeight="800" fontSize="16px" letterSpacing="0.5px">DỪNG (NÚT LÁ)</text>
         </g>
 
         {/* Recursion Pill: ĐỆ QUY TRÊN TỪNG NHÁNH */}
         <g className="svg-pill-group">
-          <rect x="415" y="220" width="320" height="60" rx="30" ry="30" className="svg-pill-bg" />
-          <text x="575" y="241" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="12px" letterSpacing="0.5px">ĐỆ QUY TRÊN TỪNG NHÁNH</text>
-          <text x="575" y="257" textAnchor="middle" fill="#f3e8ff" fontSize="10px">Lặp lại quy trình cho từng nhánh dữ liệu con</text>
-          <text x="575" y="270" textAnchor="middle" fill="#f3e8ff" fontSize="10px">với tập thuộc tính còn lại.</text>
+          <rect x="360" y="218" width="430" height="64" rx="32" ry="32" className="svg-pill-bg" />
+          <text x="575" y="258" textAnchor="middle" fill="#ffffff" fontWeight="800" fontSize="18px" letterSpacing="0.8px">🔄 ĐỆ QUY TRÊN TỪNG NHÁNH</text>
         </g>
       </svg>
     </div>
@@ -3498,6 +3478,500 @@ const getTreeState = (slide, isRevealed) => {
   return slide.treeState;
 };
 
+// Component that renders all 29 slides sequentially for high-resolution A4 landscape printing
+function PrintAllSlides({ dataset }) {
+  return (
+    <div className="print-slides-container">
+      {SLIDES.map((slide, index) => {
+        const isEngage = slide.stage === 'engage';
+        const isExplore = slide.stage === 'explore';
+        const isExplain = slide.stage === 'explain';
+        const isElaborate = slide.stage === 'elaborate';
+        const stageName = isEngage ? '1. Khởi động (Engage)' :
+          isExplore ? '2. Đặt vấn đề (Explore)' :
+            isExplain ? '3. Bài học (Explain)' :
+              isElaborate ? '4. Thực hành (Elaborate)' : '5. Đánh giá (Evaluate)';
+
+        let slideTreeState = 'full';
+        if (slide.treeState) {
+          slideTreeState = typeof slide.treeState === 'function' ? slide.treeState(true) : slide.treeState;
+        } else if (index === 17) {
+          slideTreeState = 'elaborate-1';
+        } else if (index === 18) {
+          slideTreeState = 'elaborate-2';
+        } else if (index === 19) {
+          slideTreeState = 'elaborate-3';
+        }
+
+        return (
+          <div key={index} className="print-slide-page">
+            {/* Slide Header */}
+            <div className="print-slide-header">
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span className="print-stage-tag">{stageName}</span>
+                <h3 className="print-slide-title">{slide.title}</h3>
+              </div>
+              <span className="print-slide-num">Trang {index + 1} / {SLIDES.length}</span>
+            </div>
+
+            {/* Slide Body */}
+            <div className="print-slide-body">
+              {/* Slide 1: Engage Introduction */}
+              {index === 0 ? (
+                <div className="print-content-full">
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '4vh 4vw',
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(99, 102, 241, 0.1) 100%)',
+                    borderRadius: '1.5rem',
+                    border: '2px dashed rgba(99, 102, 241, 0.3)',
+                    maxWidth: '900px',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    textAlign: 'center'
+                  }}>
+                    <h2 style={{
+                      color: 'var(--primary)',
+                      fontSize: '4.5vh',
+                      fontWeight: '800',
+                      lineHeight: '1.4',
+                      margin: 0,
+                      letterSpacing: '-0.01em'
+                    }}>
+                      KIỂM TRA BÀI CŨ
+                    </h2>
+                  </div>
+                </div>
+              ) : index === 1 ? (
+                /* Slide 2: Engage Question + Answer + Tree */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{
+                      background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.14) 100%)',
+                      border: '1.5px solid rgba(99, 102, 241, 0.3)',
+                      padding: '2.5vh 1.8vw',
+                      borderRadius: '1.2rem',
+                      boxShadow: '0 4px 15px rgba(99, 102, 241, 0.06)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1.5vh',
+                      textAlign: 'left',
+                      width: '100%',
+                      boxSizing: 'border-box'
+                    }}>
+                      <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        color: 'var(--primary)',
+                        fontWeight: '800',
+                        fontSize: '1.8vh',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em'
+                      }}>
+                        <span>❓ CÂU HỎI &amp; ĐÁP ÁN:</span>
+                      </div>
+                      <p style={{
+                        margin: 0,
+                        fontSize: '2.4vh',
+                        fontWeight: '700',
+                        color: 'var(--text-primary)',
+                        lineHeight: '1.4'
+                      }}>
+                        Xác định các thành phần chính trên cây quyết định:
+                      </p>
+                      <div style={{
+                        background: '#ffffff',
+                        border: '1px solid #c7d2fe',
+                        borderRadius: '0.75rem',
+                        padding: '1.2vh 1.2vw',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.8vh',
+                        fontSize: '1.7vh',
+                        color: 'var(--text-primary)'
+                      }}>
+                        <div>🔷 <strong>1. Nút gốc (Root Node):</strong> Nút phân hoạch thuộc tính đầu tiên (<i>Chuyên cần?</i>)</div>
+                        <div>🔹 <strong>2. Nút quyết định (Decision Nodes):</strong> Các nút phân hoạch tiếp theo (<i>Điểm KT lần 1?</i>, <i>Làm bài tập?</i>)</div>
+                        <div>🟢 <strong>3. Nút lá (Leaf Nodes):</strong> Giá trị phân lớp (<i>Đạt</i>, <i>Không đạt</i>)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG highlightRecord={null} isPrint={true} activeSlideIndex={1} treeState="full" />
+                  </div>
+                </div>
+              ) : index === 2 ? (
+                /* Slide 3: Explore Intro + Tree */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{
+                      background: '#f8fafc',
+                      border: '1.5px solid var(--border-color)',
+                      padding: '3vh 2vw',
+                      borderRadius: '1.2rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '2vh',
+                      textAlign: 'left',
+                      fontSize: '2.2vh',
+                      lineHeight: '1.6',
+                      width: '100%',
+                      boxSizing: 'border-box'
+                    }}>
+                      <p style={{ margin: 0 }}>
+                        Hoạt động: <strong style={{ color: 'var(--primary)' }}>&quot;Dự đoán nhãn dữ liệu&quot;</strong>.
+                      </p>
+                      <p style={{ margin: 0 }}>
+                        Các mẫu dữ liệu ngẫu nhiên sẽ được lần lượt hiển thị để sinh viên tham gia phân loại.
+                      </p>
+                      <p style={{ margin: 0 }}>
+                        Dựa vào cây quyết định và các thuộc tính nhận được, hãy dự đoán nhãn của dữ liệu là <strong>kết quả (Đạt / Không đạt)</strong>.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG highlightRecord={null} isPrint={true} activeSlideIndex={2} treeState="full" />
+                  </div>
+                </div>
+              ) : slide.type === 'explore-game' ? (
+                /* Slide 4: Explore Table + Tree */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{ textAlign: 'left', fontSize: '1.8vh', lineHeight: '1.6', width: '100%' }}>
+                      <p style={{ fontWeight: 'bold', color: 'var(--primary)', margin: '0 0 1vh 0', fontSize: '2.2vh' }}>
+                        Hoạt động: Dự đoán nhãn dữ liệu từ cây quyết định
+                      </p>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG highlightRecord={null} isPrint={true} activeSlideIndex={3} treeState="full" />
+                  </div>
+                </div>
+              ) : index === 13 ? (
+                /* Slide 14: Explain Activity 2 with Timer Badge */
+                <div className="print-content-full">
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '4vh 4vw',
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(99, 102, 241, 0.1) 100%)',
+                    borderRadius: '1.5rem',
+                    border: '1.5px solid rgba(99, 102, 241, 0.25)',
+                    maxWidth: '900px',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    textAlign: 'center',
+                    gap: '2.5vh'
+                  }}>
+                    <div style={{ fontSize: '6vh' }}>📝</div>
+                    <h3 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '3.2vh', fontWeight: '800', lineHeight: '1.5' }}>
+                      Cả lớp làm trên phiếu dữ liệu để xác định các vectơ cho thuộc tính &quot;Làm bài tập&quot;
+                    </h3>
+                    <div style={{
+                      background: '#eef2ff',
+                      color: '#4f46e5',
+                      border: '1.5px solid #c7d2fe',
+                      padding: '1.2vh 2.5vw',
+                      borderRadius: '2rem',
+                      fontWeight: '800',
+                      fontSize: '2.2vh',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.8rem'
+                    }}>
+                      <span>⏱️ Thời gian thực hành: 90 giây</span>
+                    </div>
+                  </div>
+                </div>
+              ) : index === 14 ? (
+                /* Slide 15: Vector Extraction Visualizer (Clean static print) */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{
+                      background: '#f8fafc',
+                      border: '1.5px solid var(--border-color)',
+                      padding: '2.5vh 2vw',
+                      borderRadius: '1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1.5vh',
+                      fontSize: '1.8vh',
+                      width: '100%'
+                    }}>
+                      <h4 style={{ margin: 0, color: 'var(--primary)', fontSize: '2.2vh', fontWeight: 'bold' }}>
+                        💡 Trích xuất Vectơ Minh Họa
+                      </h4>
+                      <p style={{ margin: 0 }}><strong>1. Thuộc tính xét:</strong> Làm bài tập</p>
+                      <p style={{ margin: 0 }}><strong>2. Giá trị xét:</strong> Làm bài tập = Có</p>
+                      <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1vh 1vw' }}>
+                        <p style={{ margin: '0 0 0.5vh 0', fontWeight: '600' }}>Các mẫu thỏa mãn: 1, 2, 4, 5, 7, 9, 11, 13, 15</p>
+                        <p style={{ margin: '0 0 0.5vh 0', fontWeight: '600' }}>Giá trị nhãn: Đ, Đ, Đ, Đ, Đ, K, K, K, Đ (6 Đạt, 3 Không đạt)</p>
+                      </div>
+                      <div style={{ background: '#eef2ff', border: '1.5px solid #6366f1', borderRadius: '0.75rem', padding: '1.2vh 1.5vw', textAlign: 'center', color: '#4f46e5', fontWeight: '800', fontSize: '2.4vh' }}>
+                        Vectơ (Đ, K): (6/9, 3/9)
+                      </div>
+                      <p style={{ margin: 0, color: '#dc2626', fontWeight: '600', fontSize: '1.6vh' }}>
+                        ❌ Không phải là vectơ đơn vị vì vẫn còn lẫn cả 2 nhãn Đạt và Không đạt.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    {dataset && dataset.rows && (
+                      <div style={{ background: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden', width: '100%' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1.5vh' }}>
+                          <thead>
+                            <tr style={{ background: 'var(--primary-light)', color: 'var(--primary-hover)', fontWeight: 'bold' }}>
+                              <th style={{ padding: '0.5vh 0.5vw', textAlign: 'center' }}>STT</th>
+                              <th style={{ padding: '0.5vh 0.5vw', textAlign: 'center' }}>Chuyên cần</th>
+                              <th style={{ padding: '0.5vh 0.5vw', textAlign: 'center' }}>Điểm KT 1</th>
+                              <th style={{ padding: '0.5vh 0.5vw', textAlign: 'center' }}>Làm bài tập</th>
+                              <th style={{ padding: '0.5vh 0.5vw', textAlign: 'center' }}>Kết quả</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dataset.rows.slice(0, 9).map((r, rIdx) => (
+                              <tr key={rIdx} style={{ borderBottom: '1px solid #e2e8f0', textAlign: 'center', background: r['Làm bài tập'] === 'Có' ? '#f0fdf4' : '#ffffff' }}>
+                                <td style={{ padding: '0.4vh 0.5vw', fontWeight: 'bold' }}>#{r.STT}</td>
+                                <td style={{ padding: '0.4vh 0.5vw' }}>{r['Chuyên cần']}</td>
+                                <td style={{ padding: '0.4vh 0.5vw' }}>{r['Điểm kiểm tra lần 1']}</td>
+                                <td style={{ padding: '0.4vh 0.5vw', fontWeight: r['Làm bài tập'] === 'Có' ? 'bold' : 'normal', color: r['Làm bài tập'] === 'Có' ? '#16a34a' : 'inherit' }}>{r['Làm bài tập']}</td>
+                                <td style={{ padding: '0.4vh 0.5vw', fontWeight: 'bold', color: r['Kết quả'] === 'Đạt' ? 'var(--success)' : 'var(--danger)' }}>{r['Kết quả']}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : index === 17 ? (
+                /* Slide 18: Elaborate Intro + Tree */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{
+                      background: '#f8fafc',
+                      border: '1.5px solid var(--border-color)',
+                      padding: '2.5vh 2vw',
+                      borderRadius: '1.2rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '2vh',
+                      textAlign: 'left',
+                      fontSize: '2.2vh',
+                      lineHeight: '1.6',
+                      width: '100%',
+                      boxSizing: 'border-box'
+                    }}>
+                      <p style={{ margin: 0, fontWeight: 'bold', color: 'var(--primary)', fontSize: '2.4vh' }}>
+                        Sau khi đưa thuộc tính Chuyên cần vào nút gốc:
+                      </p>
+                      <ul style={{ margin: 0, paddingLeft: '1.5vw', display: 'flex', flexDirection: 'column', gap: '1.5vh' }}>
+                        <li>
+                          Nhánh <strong>Thường xuyên vắng</strong> chỉ chứa các bản ghi kết quả = <strong>Không đạt</strong> &rarr; Tạo vectơ đơn vị <strong>(0/4, 4/4)</strong> &rarr; Kết thúc tại nút lá <i>Không đạt</i>.
+                        </li>
+                        <li>
+                          Các nhánh <strong>Thỉnh thoảng vắng</strong> và <strong>Đi học đủ</strong> chứa tập dữ liệu con hỗn hợp &rarr; Tiến hành đệ quy phân nhánh tiếp!
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG highlightRecord={null} isPrint={true} activeSlideIndex={17} treeState="elaborate-1" />
+                  </div>
+                </div>
+              ) : index === 18 ? (
+                /* Slide 19: Elaborate Activity 1 Part 1 */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2vh', fontSize: '1.6vh', width: '100%' }}>
+                      <p style={{ margin: 0, color: 'var(--text-secondary)', fontWeight: '600' }}>
+                        Khảo sát dữ liệu tại nhánh <strong>Chuyên cần = Đi học đủ</strong>:
+                      </p>
+                      <div style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1', borderRadius: '0.75rem', padding: '1.2vh 1.2vw' }}>
+                        <h4 style={{ margin: '0 0 0.6vh 0', color: 'var(--primary)', fontSize: '1.8vh', fontWeight: 'bold' }}>
+                          🔍 Thuộc tính: Điểm kiểm tra lần 1
+                        </h4>
+                        <p style={{ margin: '0.3vh 0' }}>• <strong>≥ 5</strong> (Mẫu 1, 2, 3, 15): Nhãn (Đ, Đ, Đ, Đ) &rarr; Vectơ <strong>(4/4, 0/4)</strong> 🌟 <em>(Đơn vị)</em> &rarr; Lá: <strong>Đạt</strong></p>
+                        <p style={{ margin: '0.3vh 0' }}>• <strong>&lt; 5</strong> (Mẫu 4, 5, 6, 16): Nhãn (Đ, Đ, K, K) &rarr; Vectơ <strong>(2/4, 2/4)</strong> <em>(Không đơn vị)</em></p>
+                      </div>
+                      <div style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1', borderRadius: '0.75rem', padding: '1.2vh 1.2vw' }}>
+                        <h4 style={{ margin: '0 0 0.6vh 0', color: 'var(--primary)', fontSize: '1.8vh', fontWeight: 'bold' }}>
+                          🔍 Thuộc tính: Làm bài tập
+                        </h4>
+                        <p style={{ margin: '0.3vh 0' }}>• <strong>Có</strong> (Mẫu 1, 2, 4, 5, 15): Nhãn (Đ, Đ, Đ, Đ, Đ) &rarr; Vectơ <strong>(5/5, 0/5)</strong> <em>(1 ĐV)</em></p>
+                        <p style={{ margin: '0.3vh 0' }}>• <strong>Không</strong> (Mẫu 3, 6, 16): Nhãn (Đ, K, K) &rarr; Vectơ <strong>(1/3, 2/3)</strong> <em>(0 ĐV)</em></p>
+                      </div>
+                      <div style={{ background: '#ecfdf5', border: '1.5px solid #10b981', borderRadius: '0.75rem', padding: '0.8vh 1.2vw', color: '#065f46', fontWeight: 'bold' }}>
+                        🎯 <strong>Chọn nút:</strong> Chọn <strong>Điểm kiểm tra lần 1</strong> làm nút phân nhánh tiếp theo!
+                      </div>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG activeSlideIndex={18} isPrint={true} treeState="elaborate-2" />
+                  </div>
+                </div>
+              ) : index === 19 ? (
+                /* Slide 20: Elaborate Activity 1 Part 2 */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', fontSize: '1.8vh', width: '100%' }}>
+                      <p style={{ margin: 0, color: 'var(--text-secondary)', fontWeight: '600' }}>
+                        Khảo sát tại nhánh: <strong>Đi học đủ &rarr; Điểm KT &lt; 5</strong>:
+                      </p>
+                      <div style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1', borderRadius: '0.75rem', padding: '1.5vh 1.5vw' }}>
+                        <h4 style={{ margin: '0 0 1vh 0', color: 'var(--primary)', fontSize: '2vh', fontWeight: 'bold' }}>
+                          🔍 Thuộc tính: Làm bài tập
+                        </h4>
+                        <p style={{ margin: '0.5vh 0' }}>• <strong>Làm bài tập = Có</strong> (Mẫu 4, 5): Nhãn (Đ, Đ) &rarr; Vectơ <strong>(2/2, 0/2)</strong> 🌟 <em>(Đơn vị)</em> &rarr; Lá: <strong>Đạt</strong></p>
+                        <p style={{ margin: '0.5vh 0' }}>• <strong>Làm bài tập = Không</strong> (Mẫu 6, 16): Nhãn (K, K) &rarr; Vectơ <strong>(0/2, 2/2)</strong> 🌟 <em>(Đơn vị)</em> &rarr; Lá: <strong>Không đạt</strong></p>
+                      </div>
+                      <div style={{ background: '#ecfdf5', border: '1.5px solid #10b981', borderRadius: '0.75rem', padding: '1.2vh 1.5vw', color: '#065f46', fontWeight: 'bold' }}>
+                        🎯 <strong>Kết luận:</strong> Chọn <strong>Làm bài tập</strong> làm nút phân nhánh. Hoàn thành nhánh <i>Đi học đủ</i>!
+                      </div>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG activeSlideIndex={19} isPrint={true} treeState="elaborate-3" />
+                  </div>
+                </div>
+              ) : index === 20 ? (
+                /* Slide 21: Elaborate Activity 2 */
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5vh', fontSize: '1.8vh', width: '100%' }}>
+                      <p style={{ margin: 0, color: 'var(--text-secondary)', fontWeight: '600' }}>
+                        Khảo sát tại nhánh: <strong>Chuyên cần = Thỉnh thoảng vắng</strong>:
+                      </p>
+                      <div style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1', borderRadius: '0.75rem', padding: '1.5vh 1.5vw' }}>
+                        <h4 style={{ margin: '0 0 1vh 0', color: 'var(--primary)', fontSize: '2vh', fontWeight: 'bold' }}>
+                          🔍 Thuộc tính: Điểm kiểm tra lần 1
+                        </h4>
+                        <p style={{ margin: '0.5vh 0' }}>• <strong>Điểm KT &ge; 5</strong> (Mẫu 7, 8): Nhãn (Đ, Đ) &rarr; Vectơ <strong>(2/2, 0/2)</strong> 🌟 <em>(Đơn vị)</em> &rarr; Lá: <strong>Đạt</strong></p>
+                        <p style={{ margin: '0.5vh 0' }}>• <strong>Điểm KT &lt; 5</strong> (Mẫu 9, 10): Nhãn (K, K) &rarr; Vectơ <strong>(0/2, 2/2)</strong> 🌟 <em>(Đơn vị)</em> &rarr; Lá: <strong>Không đạt</strong></p>
+                      </div>
+                      <div style={{ background: '#ecfdf5', border: '1.5px solid #10b981', borderRadius: '0.75rem', padding: '1.2vh 1.5vw', color: '#065f46', fontWeight: 'bold' }}>
+                        🎯 <strong>Kết luận:</strong> Chọn <strong>Điểm kiểm tra lần 1</strong>. Toàn bộ cây quyết định hoàn thiện 100%!
+                      </div>
+                    </div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG activeSlideIndex={20} isPrint={true} treeState="full" />
+                  </div>
+                </div>
+              ) : slide.showTree && slide.type === 'content' ? (
+                <div className="print-split-layout">
+                  <div className="print-left-col">
+                    <div style={{ width: '100%' }}>{slide.content}</div>
+                  </div>
+                  <div className="print-right-col">
+                    <DecisionTreeSVG highlightRecord={null} isPrint={true} activeSlideIndex={index} treeState={slideTreeState} />
+                  </div>
+                </div>
+              ) : slide.type === 'content' ? (
+                <div className="print-content-full">
+                  {slide.content}
+                </div>
+              ) : slide.type === 'vector-visualizer' ? (
+                <div className="print-content-full">
+                  <VectorExtractionVisualizer
+                    defaultAttr={slide.defaultAttr}
+                    defaultVal={slide.defaultVal}
+                    isSlideshow={true}
+                    definition={slide.definition}
+                  />
+                </div>
+              ) : slide.type === 'question' ? (
+                <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', textAlign: 'left' }}>
+                  <p style={{ fontWeight: 'bold', fontSize: '2.8vh', color: 'var(--text-primary)', marginBottom: '1.5vh', lineHeight: '1.5' }}>
+                    {slide.question.text}
+                  </p>
+                  {slide.question.record && (
+                    <div style={{ marginBottom: '1.5vh' }}>
+                      <table style={{ borderCollapse: 'collapse', width: '100%', border: '1.5px solid var(--border-color)', borderRadius: '0.5rem', fontSize: '2vh' }}>
+                        <tbody>
+                          <tr style={{ background: 'var(--primary-light)', color: 'var(--primary-hover)' }}>
+                            {Object.keys(slide.question.record).map((k, ki) => (
+                              <th key={ki} style={{ padding: '0.8vh 1vw', border: '1px solid #e2e8f0', textAlign: 'center' }}>{k}</th>
+                            ))}
+                          </tr>
+                          <tr>
+                            {Object.values(slide.question.record).map((v, vi) => (
+                              <td key={vi} style={{ padding: '0.8vh 1vw', border: '1px solid #e2e8f0', textAlign: 'center', fontWeight: 'bold' }}>{v}</td>
+                            ))}
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2vh 1.5vw' }}>
+                    {slide.question.options.map((opt, oIdx) => {
+                      const isCorrect = oIdx === slide.question.correct;
+                      return (
+                        <div
+                          key={oIdx}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.8rem',
+                            padding: '1.2vh 1.4vw',
+                            borderRadius: '0.75rem',
+                            border: isCorrect ? '2px solid #10b981' : '1px solid #e2e8f0',
+                            background: isCorrect ? '#ecfdf5' : '#ffffff',
+                            color: isCorrect ? '#065f46' : 'var(--text-primary)',
+                            fontWeight: isCorrect ? 'bold' : 'normal',
+                            fontSize: '2.2vh'
+                          }}
+                        >
+                          <span style={{
+                            width: '34px',
+                            height: '34px',
+                            borderRadius: '50%',
+                            background: isCorrect ? '#10b981' : '#f1f5f9',
+                            color: isCorrect ? '#ffffff' : '#64748b',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 'bold',
+                            fontSize: '1.8vh'
+                          }}>
+                            {String.fromCharCode(65 + oIdx)}
+                          </span>
+                          <span>{opt} {isCorrect && '✅ (Đáp án đúng)'}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : slide.type === 'evaluate-stats' ? (
+                <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
+                  <div style={{ background: '#f8fafc', border: '1.5px solid var(--border-color)', borderRadius: '1rem', padding: '2.5vh 2.5vw', textAlign: 'center' }}>
+                    <h3 style={{ color: 'var(--primary)', margin: '0 0 1.5vh 0', fontSize: '3vh' }}>📊 Thống kê hoàn thành bài học</h3>
+                    <p style={{ fontSize: '2.2vh', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0 }}>
+                      Tổng kết quá trình trả lời câu hỏi và đánh giá năng lực thực hành của sinh viên trong toàn bộ buổi học.
+                    </p>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+
+            {/* Slide Footer */}
+            <div className="print-slide-footer">
+              <span>Lớp: CD CNTT 24AI • Môn: Cơ sở trí tuệ nhân tạo</span>
+              <span>GV: Nguyễn Hoàng Việt</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function App() {
 
   const [user, setUser] = useState(null);
@@ -3777,7 +4251,7 @@ function App() {
             padding: isSlideshow ? '3vh' : '1.5rem',
             textAlign: 'center',
             color: 'var(--text-secondary)',
-            fontSize: isSlideshow ? '2.2vh' : '1rem',
+            fontSize: isSlideshow ? '2.8vh' : '1.15rem',
             fontWeight: 'bold',
             marginTop: '1.5vh'
           }}>
@@ -3794,7 +4268,7 @@ function App() {
             marginTop: '1.5vh',
             color: 'var(--success-text)',
             fontWeight: 'bold',
-            fontSize: isSlideshow ? '2.6vh' : '1.15rem',
+            fontSize: isSlideshow ? '3vh' : '1.25rem',
             textAlign: 'center',
             boxShadow: 'var(--shadow-sm)',
             animation: 'fadeIn 0.5s ease'
@@ -3832,8 +4306,8 @@ function App() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: isSlideshow ? '1.2vh 1.8vw' : '0.75rem 1rem',
-                    fontSize: isSlideshow ? '2.2vh' : '1rem',
+                    padding: isSlideshow ? '1.6vh 2vw' : '0.85rem 1.25rem',
+                    fontSize: isSlideshow ? '2.8vh' : '1.15rem',
                     fontWeight: '600',
                     transition: 'all 0.25s ease'
                   }}
@@ -3843,23 +4317,24 @@ function App() {
                     <span
                       className="option-letter"
                       style={{
-                        marginRight: '0.5rem',
+                        marginRight: isSlideshow ? '1vw' : '0.75rem',
                         background: isCurrentSelection ? 'var(--primary)' : '#f1f5f9',
                         color: isCurrentSelection ? 'white' : 'var(--text-secondary)',
-                        width: isSlideshow ? '3.5vh' : '28px',
-                        height: isSlideshow ? '3.5vh' : '28px',
-                        fontSize: isSlideshow ? '1.8vh' : '0.85rem',
+                        width: isSlideshow ? '4.5vh' : '32px',
+                        height: isSlideshow ? '4.5vh' : '32px',
+                        fontSize: isSlideshow ? '2.2vh' : '0.95rem',
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: '50%'
+                        borderRadius: '50%',
+                        flexShrink: 0
                       }}
                     >
                       {String.fromCharCode(65 + oIdx)}
                     </span>
-                    {opt}
+                    <span>{opt}</span>
                   </div>
-                  {isCurrentSelection && <span style={{ color: 'var(--primary)', fontSize: '0.85rem' }}>Đã chọn 🎯</span>}
+                  {isCurrentSelection && <span style={{ color: 'var(--primary)', fontSize: isSlideshow ? '2.2vh' : '0.95rem', fontWeight: 'bold' }}>Đã chọn 🎯</span>}
                 </button>
               );
             })}
@@ -3884,12 +4359,12 @@ function App() {
                 bg = 'var(--success-bg)';
                 border = 'var(--success)';
                 color = 'var(--success-text)';
-                suffix = <span style={{ color: 'var(--success)' }}>✓ Đáp án đúng</span>;
+                suffix = <span style={{ color: 'var(--success)', fontSize: isSlideshow ? '2.2vh' : '0.95rem', fontWeight: 'bold' }}>✓ Đáp án đúng</span>;
               } else if (isSelected && !isStudentCorrect) {
                 bg = 'var(--error-bg)';
                 border = 'var(--error)';
                 color = 'var(--error-text)';
-                suffix = <span style={{ color: 'var(--error)' }}>✗ Lựa chọn của bạn</span>;
+                suffix = <span style={{ color: 'var(--error)', fontSize: isSlideshow ? '2.2vh' : '0.95rem', fontWeight: 'bold' }}>✗ Lựa chọn của bạn</span>;
               }
 
               return (
@@ -3900,8 +4375,8 @@ function App() {
                     background: bg,
                     borderColor: border,
                     color: color,
-                    padding: isSlideshow ? '1.2vh 1.8vw' : '0.75rem 1rem',
-                    fontSize: isSlideshow ? '2.2vh' : '1rem',
+                    padding: isSlideshow ? '1.6vh 2vw' : '0.85rem 1.25rem',
+                    fontSize: isSlideshow ? '2.8vh' : '1.15rem',
                     fontWeight: '600'
                   }}
                 >
@@ -3909,20 +4384,22 @@ function App() {
                     <span
                       className="option-letter"
                       style={{
-                        marginRight: '0.5rem',
+                        marginRight: isSlideshow ? '1vw' : '0.75rem',
                         background: isCorrect ? 'var(--success)' : isSelected ? 'var(--error)' : '#f1f5f9',
                         color: isCorrect || isSelected ? 'white' : 'var(--text-secondary)',
-                        width: isSlideshow ? '3.5vh' : '28px',
-                        height: isSlideshow ? '3.5vh' : '28px',
+                        width: isSlideshow ? '4.5vh' : '32px',
+                        height: isSlideshow ? '4.5vh' : '32px',
+                        fontSize: isSlideshow ? '2.2vh' : '0.95rem',
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: '50%'
+                        borderRadius: '50%',
+                        flexShrink: 0
                       }}
                     >
                       {String.fromCharCode(65 + oIdx)}
                     </span>
-                    {opt}
+                    <span>{opt}</span>
                   </div>
                   {suffix}
                 </div>
@@ -3948,31 +4425,32 @@ function App() {
                 borderColor: showHighlight ? 'var(--success)' : 'var(--border-color)',
                 background: showHighlight ? 'var(--success-bg)' : '#ffffff',
                 color: showHighlight ? 'var(--success-text)' : 'var(--text-primary)',
-                padding: isSlideshow ? '1.2vh 1.8vw' : '0.75rem 1rem',
-                fontSize: isSlideshow ? '2.2vh' : '1rem'
+                padding: isSlideshow ? '1.6vh 2vw' : '0.85rem 1.25rem',
+                fontSize: isSlideshow ? '2.8vh' : '1.15rem'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <span
                   className="option-letter"
                   style={{
-                    marginRight: '0.5rem',
+                    marginRight: isSlideshow ? '1vw' : '0.75rem',
                     background: showHighlight ? 'var(--success)' : '#f1f5f9',
                     color: showHighlight ? 'white' : 'var(--text-secondary)',
-                    width: isSlideshow ? '3.5vh' : '28px',
-                    height: isSlideshow ? '3.5vh' : '28px',
-                    fontSize: isSlideshow ? '1.8vh' : '0.85rem',
+                    width: isSlideshow ? '4.5vh' : '32px',
+                    height: isSlideshow ? '4.5vh' : '32px',
+                    fontSize: isSlideshow ? '2.2vh' : '0.95rem',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    borderRadius: '50%'
+                    borderRadius: '50%',
+                    flexShrink: 0
                   }}
                 >
                   {String.fromCharCode(65 + oIdx)}
                 </span>
-                {opt}
+                <span>{opt}</span>
               </div>
-              {showHighlight && <span style={{ color: 'var(--success)' }}>✓ Đúng</span>}
+              {showHighlight && <span style={{ color: 'var(--success)', fontSize: isSlideshow ? '2.2vh' : '0.95rem', fontWeight: 'bold' }}>✓ Đúng</span>}
             </div>
           );
         })}
@@ -3980,7 +4458,7 @@ function App() {
     );
   };
 
-  const renderEvaluateAnswerLogger = (questionId) => {
+  const renderEvaluateAnswerLogger = (questionId, isSlideshow = false) => {
     const submissions = classState.studentSubmissions?.[questionId] || {};
 
     // Fetch all student users from demoAccounts to see who hasn't submitted
@@ -3990,16 +4468,16 @@ function App() {
 
     if (isTeacher) {
       return (
-        <div style={{ marginTop: '1.5rem', background: '#f8fafc', padding: '1rem', borderRadius: '0.75rem', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div style={{ marginTop: isSlideshow ? '2.5vh' : '1.5rem', background: '#f8fafc', padding: isSlideshow ? '1.5vh 2vw' : '1rem', borderRadius: '0.75rem', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: isSlideshow ? '1vh' : '0.75rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontWeight: 'bold', fontSize: '0.95rem', color: 'var(--primary)' }}>
+            <span style={{ fontWeight: 'bold', fontSize: isSlideshow ? '2.2vh' : '1.05rem', color: 'var(--primary)' }}>
               📊 Giám sát sinh viên nộp bài ({submittedCount}/{totalStudents}):
             </span>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontSize: isSlideshow ? '1.8vh' : '0.85rem', color: 'var(--text-muted)' }}>
               (Tự động đồng bộ từ thiết bị của SV)
             </span>
           </div>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
+          <div style={{ display: 'flex', gap: isSlideshow ? '0.8vw' : '0.5rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
             {studentUsers.map(s => {
               const sub = submissions[s.username];
               const hasSubmitted = sub !== undefined;
@@ -4033,17 +4511,17 @@ function App() {
                     background: badgeBg,
                     color: badgeColor,
                     border: `1px solid ${badgeBorder}`,
-                    padding: '0.25rem 0.75rem',
+                    padding: isSlideshow ? '0.6vh 1.2vw' : '0.35rem 0.85rem',
                     borderRadius: '0.5rem',
-                    fontSize: '0.85rem',
+                    fontSize: isSlideshow ? '2vh' : '0.95rem',
                     fontWeight: '600',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.25rem'
+                    gap: '0.35rem'
                   }}
                 >
                   <span>{s.fullname}:</span>
-                  <span style={{ fontSize: '0.8rem', opacity: 0.9 }}>{label}</span>
+                  <span style={{ fontSize: isSlideshow ? '1.8vh' : '0.85rem', opacity: 0.9 }}>{label}</span>
                 </div>
               );
             })}
@@ -4055,7 +4533,7 @@ function App() {
     // For students, we can show a nice personal submission status
     const hasSubmitted = submissions[user.username] !== undefined;
     return (
-      <div style={{ marginTop: '1.5rem', padding: '0.75rem 1rem', borderRadius: '0.5rem', background: hasSubmitted ? 'var(--success-bg)' : 'var(--warning-bg)', border: `1px solid ${hasSubmitted ? 'var(--success-border)' : 'var(--warning-border)'}`, color: hasSubmitted ? 'var(--success-text)' : 'var(--warning-text)', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div style={{ marginTop: isSlideshow ? '2.5vh' : '1.5rem', padding: isSlideshow ? '1.5vh 2vw' : '0.85rem 1.25rem', borderRadius: '0.75rem', background: hasSubmitted ? 'var(--success-bg)' : 'var(--warning-bg)', border: `1px solid ${hasSubmitted ? 'var(--success-border)' : 'var(--warning-border)'}`, color: hasSubmitted ? 'var(--success-text)' : 'var(--warning-text)', fontWeight: 'bold', fontSize: isSlideshow ? '2.4vh' : '1.05rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         {hasSubmitted ? (
           <span>✓ Bạn đã gửi câu trả lời thành công. {classState.isRevealed ? '' : 'Đang chờ giáo viên hiện đáp án...'}</span>
         ) : (
@@ -4116,23 +4594,23 @@ function App() {
 
     let topText = '';
     if (topStudents.length > 0) {
-      topText = `🏆 Thủ khoa Đánh giá: ${topStudents.map(s => s.fullname).join(', ')} (${topScore}/${evaluateQuestions.length} câu đúng!)`;
+      topText = `🏆 Chiến thần học tập: ${topStudents.map(s => s.fullname).join(', ')} (${topScore}/${evaluateQuestions.length} câu đúng!)`;
     } else {
       topText = '📊 Hãy hoàn thành các câu hỏi để xem kết quả vinh danh!';
     }
 
     return (
-      <div style={{ padding: isSlideshow ? '0.5vh 0' : '0', color: 'var(--text-primary)' }}>
+      <div style={{ padding: isSlideshow ? '1vh 0' : '0', color: 'var(--text-primary)', width: '100%', maxWidth: isSlideshow ? '1200px' : '1000px', margin: '0 auto' }}>
         {/* Top Student Honor Banner */}
         <div style={{
           background: topScore > 0 ? 'rgba(99, 102, 241, 0.08)' : 'var(--bg-card)',
-          border: `1.5px solid ${topScore > 0 ? 'var(--primary)' : 'var(--border-color)'}`,
-          padding: isSlideshow ? '1vh 2vw' : '1rem',
-          borderRadius: '0.75rem',
+          border: `2px solid ${topScore > 0 ? 'var(--primary)' : 'var(--border-color)'}`,
+          padding: isSlideshow ? '1.8vh 2vw' : '1.25rem 1.5rem',
+          borderRadius: '1rem',
           textAlign: 'center',
           fontWeight: 'bold',
-          fontSize: isSlideshow ? '1.9vh' : '1.1rem',
-          marginBottom: isSlideshow ? '1.5vh' : '1.5rem',
+          fontSize: isSlideshow ? '2.8vh' : '1.3rem',
+          marginBottom: isSlideshow ? '2vh' : '1.5rem',
           boxShadow: 'var(--shadow-sm)'
         }}>
           {topText}
@@ -4142,14 +4620,14 @@ function App() {
         {isSlideshow ? (
           <div style={{
             display: 'flex',
-            gap: '3vw',
+            gap: '3.5vw',
             justifyContent: 'center',
-            marginBottom: '1.5vh',
-            fontSize: '1.7vh',
+            marginBottom: '2vh',
+            fontSize: '2.4vh',
             background: 'var(--bg-app)',
-            padding: '1vh 2vw',
-            borderRadius: '0.5rem',
-            border: '1px solid var(--border-color)',
+            padding: '1.4vh 2.5vw',
+            borderRadius: '0.875rem',
+            border: '1.5px solid var(--border-color)',
             fontWeight: '600'
           }}>
             <div>Tổng số Sinh viên: <strong style={{ color: 'var(--primary)' }}>{studentStats.length}</strong></div>
@@ -4161,31 +4639,31 @@ function App() {
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
             <div style={{ background: '#ffffff', border: '1.5px solid var(--border-color)', borderRadius: '0.75rem', padding: '1rem', textAlign: 'center', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Tổng số Sinh viên</div>
-              <div style={{ fontSize: '1.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{studentStats.length}</div>
+              <div style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Tổng số Sinh viên</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)' }}>{studentStats.length}</div>
             </div>
             <div style={{ background: '#ffffff', border: '1.5px solid var(--border-color)', borderRadius: '0.75rem', padding: '1rem', textAlign: 'center', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Số câu hỏi</div>
-              <div style={{ fontSize: '1.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{evaluateQuestions.length}</div>
+              <div style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Số câu hỏi</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)' }}>{evaluateQuestions.length}</div>
             </div>
             <div style={{ background: '#ffffff', border: '1.5px solid var(--border-color)', borderRadius: '0.75rem', padding: '1rem', textAlign: 'center', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Độ chính xác trung bình</div>
-              <div style={{ fontSize: '1.75rem', fontWeight: 'bold', color: 'var(--success)' }}>{classAverage}%</div>
+              <div style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Độ chính xác trung bình</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--success)' }}>{classAverage}%</div>
             </div>
           </div>
         )}
 
         {/* Student Performance Table */}
-        <div style={{ background: '#ffffff', border: '1.5px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: isSlideshow ? '1.5vh' : '0.85rem' }}>
+        <div style={{ background: '#ffffff', border: '2px solid var(--border-color)', borderRadius: '1rem', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: isSlideshow ? '2.4vh' : '1.15rem' }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1.5px solid var(--border-color)', fontWeight: 'bold' }}>
-                <th style={{ padding: isSlideshow ? '0.6vh 1vw' : '0.5rem 1rem', width: '60px', textAlign: 'center' }}>Hạng</th>
-                <th style={{ padding: isSlideshow ? '0.6vh 1vw' : '0.5rem 1rem' }}>Sinh viên</th>
-                <th style={{ padding: isSlideshow ? '0.6vh 1vw' : '0.5rem 1rem', textAlign: 'center' }}>Số câu đúng</th>
-                <th style={{ padding: isSlideshow ? '0.6vh 1vw' : '0.5rem 1rem', textAlign: 'center' }}>Tỉ lệ đúng</th>
+              <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold' }}>
+                <th style={{ padding: isSlideshow ? '1.4vh 1.2vw' : '0.85rem 1.25rem', width: isSlideshow ? '80px' : '65px', textAlign: 'center' }}>Hạng</th>
+                <th style={{ padding: isSlideshow ? '1.4vh 1.2vw' : '0.85rem 1.25rem' }}>Sinh viên</th>
+                <th style={{ padding: isSlideshow ? '1.4vh 1.2vw' : '0.85rem 1.25rem', textAlign: 'center' }}>Số câu đúng</th>
+                <th style={{ padding: isSlideshow ? '1.4vh 1.2vw' : '0.85rem 1.25rem', textAlign: 'center' }}>Tỉ lệ đúng</th>
                 {evaluateQuestions.map((_, qIdx) => (
-                  <th key={qIdx} style={{ padding: isSlideshow ? '0.6vh 1vw' : '0.5rem 1rem', textAlign: 'center' }}>Câu {qIdx + 1}</th>
+                  <th key={qIdx} style={{ padding: isSlideshow ? '1.4vh 1.2vw' : '0.85rem 1.25rem', textAlign: 'center' }}>Câu {qIdx + 1}</th>
                 ))}
               </tr>
             </thead>
@@ -4194,30 +4672,30 @@ function App() {
                 const isWinner = topScore > 0 && stat.correct === topScore;
 
                 return (
-                  <tr key={stat.username} style={{ borderBottom: '1px solid var(--border-color)', background: isWinner ? 'rgba(99, 102, 241, 0.02)' : 'transparent' }}>
-                    <td style={{ padding: isSlideshow ? '0.5vh 1vw' : '0.5rem 1rem', textAlign: 'center', fontWeight: 'bold' }}>
+                  <tr key={stat.username} style={{ borderBottom: '1px solid var(--border-color)', background: isWinner ? 'rgba(99, 102, 241, 0.04)' : 'transparent' }}>
+                    <td style={{ padding: isSlideshow ? '1.2vh 1.2vw' : '0.75rem 1.25rem', textAlign: 'center', fontWeight: 'bold', fontSize: isSlideshow ? '2.6vh' : '1.25rem' }}>
                       {idx === 0 && topScore > 0 ? '🥇' : idx === 1 && stat.correct > 0 ? '🥈' : idx === 2 && stat.correct > 0 ? '🥉' : idx + 1}
                     </td>
-                    <td style={{ padding: isSlideshow ? '0.5vh 1vw' : '0.5rem 1rem', fontWeight: '600' }}>
+                    <td style={{ padding: isSlideshow ? '1.2vh 1.2vw' : '0.75rem 1.25rem', fontWeight: '700' }}>
                       {stat.fullname} {isWinner && '👑'}
                     </td>
-                    <td style={{ padding: isSlideshow ? '0.5vh 1vw' : '0.5rem 1rem', textAlign: 'center', fontWeight: 'bold', color: 'var(--success-text)' }}>
+                    <td style={{ padding: isSlideshow ? '1.2vh 1.2vw' : '0.75rem 1.25rem', textAlign: 'center', fontWeight: 'bold', color: 'var(--success-text)' }}>
                       {stat.correct} / {stat.total}
                     </td>
-                    <td style={{ padding: isSlideshow ? '0.5vh 1vw' : '0.5rem 1rem', textAlign: 'center' }}>
+                    <td style={{ padding: isSlideshow ? '1.2vh 1.2vw' : '0.75rem 1.25rem', textAlign: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                        <span style={{ fontWeight: '600' }}>{stat.accuracy}%</span>
-                        <div style={{ width: '50px', background: '#f1f5f9', height: '6px', borderRadius: '3px', overflow: 'hidden', display: isSlideshow ? 'none' : 'block' }}>
+                        <span style={{ fontWeight: '700' }}>{stat.accuracy}%</span>
+                        <div style={{ width: isSlideshow ? '70px' : '50px', background: '#f1f5f9', height: isSlideshow ? '8px' : '6px', borderRadius: '4px', overflow: 'hidden', display: isSlideshow ? 'none' : 'block' }}>
                           <div style={{ width: `${stat.accuracy}%`, background: 'var(--success)', height: '100%' }}></div>
                         </div>
                       </div>
                     </td>
                     {stat.details.map((detail, dIdx) => (
-                      <td key={dIdx} style={{ padding: isSlideshow ? '0.5vh 1vw' : '0.5rem 1rem', textAlign: 'center' }}>
+                      <td key={dIdx} style={{ padding: isSlideshow ? '1.2vh 1.2vw' : '0.75rem 1.25rem', textAlign: 'center' }}>
                         {detail === 'correct' ? (
-                          <span style={{ color: 'var(--success)', fontWeight: 'bold' }}>Đúng ✅</span>
+                          <span style={{ color: 'var(--success)', fontWeight: 'bold', fontSize: isSlideshow ? '2.2vh' : '1.05rem' }}>Đúng ✅</span>
                         ) : detail === 'incorrect' ? (
-                          <span style={{ color: 'var(--error)', fontWeight: 'bold' }}>Sai ❌</span>
+                          <span style={{ color: 'var(--error)', fontWeight: 'bold', fontSize: isSlideshow ? '2.2vh' : '1.05rem' }}>Sai ❌</span>
                         ) : (
                           <span style={{ color: 'var(--text-muted)' }}>-</span>
                         )}
@@ -4526,15 +5004,15 @@ function App() {
 
                   {/* Questions Screen */}
                   {currentSlide.type === 'question' && (
-                    <div>
-                      <p style={{ fontWeight: '600', fontSize: '2.4vh', color: 'var(--text-primary)', marginBottom: '1.5vh', textAlign: 'left' }}>
+                    <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
+                      <p style={{ fontWeight: '700', fontSize: '3.4vh', lineHeight: '1.5', color: 'var(--text-primary)', marginBottom: '2vh', textAlign: 'left' }}>
                         {currentSlide.question.text}
                       </p>
                       {currentSlide.question.record && renderRecordTable(currentSlide.question.record, true)}
 
                       {/* Engage question show-hide logic */}
                       {isEngageStage && !classState.isRevealed ? (
-                        <div style={{ textAlign: 'center', padding: '2vh', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.75rem', color: 'var(--text-secondary)', fontSize: '2.2vh' }}>
+                        <div style={{ textAlign: 'center', padding: '2vh', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.75rem', color: 'var(--text-secondary)', fontSize: '2.4vh' }}>
                           ❓ Trả lời câu hỏi ôn tập thực tế. Click <strong>Hiện đáp án</strong> để kiểm tra.
                         </div>
                       ) : (
@@ -4610,15 +5088,15 @@ function App() {
 
                 {/* Questions Screen */}
                 {currentSlide.type === 'question' && (
-                  <div>
-                    <p style={{ fontWeight: '600', fontSize: '2.4vh', color: 'var(--text-primary)', marginBottom: '1.5vh', textAlign: 'left' }}>
+                  <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
+                    <p style={{ fontWeight: '700', fontSize: '3.4vh', lineHeight: '1.5', color: 'var(--text-primary)', marginBottom: '2vh', textAlign: 'left' }}>
                       {currentSlide.question.text}
                     </p>
                     {currentSlide.question.record && renderRecordTable(currentSlide.question.record, true)}
 
                     {/* Engage question show-hide logic */}
                     {isEngageStage && !classState.isRevealed ? (
-                      <div style={{ textAlign: 'center', padding: '2vh', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.75rem', color: 'var(--text-secondary)', fontSize: '2.2vh' }}>
+                      <div style={{ textAlign: 'center', padding: '2vh', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.75rem', color: 'var(--text-secondary)', fontSize: '2.4vh' }}>
                         ❓ Trả lời câu hỏi ôn tập thực tế. Click <strong>Hiện đáp án</strong> để kiểm tra.
                       </div>
                     ) : (
@@ -4718,35 +5196,35 @@ function App() {
   const renderRecordTable = (record, isSlideshow = false) => {
     if (!record) return null;
     return (
-      <div className="table-responsive" style={{ width: '100%', overflowX: 'auto', background: '#ffffff', borderRadius: '1rem', border: '1.5px solid var(--border-color)', boxShadow: 'var(--shadow-sm)', margin: isSlideshow ? '1.5vh auto' : '1rem 0', maxWidth: '650px' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: isSlideshow ? '2vh' : '0.95rem' }}>
+      <div className="table-responsive" style={{ width: '100%', overflowX: 'auto', background: '#ffffff', borderRadius: '1rem', border: '1.5px solid var(--border-color)', boxShadow: 'var(--shadow-sm)', margin: isSlideshow ? '2vh auto' : '1.25rem 0', maxWidth: isSlideshow ? '900px' : '700px' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: isSlideshow ? '2.6vh' : '1.1rem' }}>
           <thead>
             <tr style={{ background: '#f8fafc', borderBottom: '2px solid var(--border-color)', fontWeight: 'bold' }}>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>📅 Chuyên cần</th>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>📝 Điểm kiểm tra lần 1</th>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem' }}>💻 Làm bài tập</th>
-              <th style={{ padding: isSlideshow ? '1.5vh 1vw' : '0.75rem 1rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả</th>
+              <th style={{ padding: isSlideshow ? '1.8vh 1.5vw' : '0.85rem 1.2rem' }}>📅 Chuyên cần</th>
+              <th style={{ padding: isSlideshow ? '1.8vh 1.5vw' : '0.85rem 1.2rem' }}>📝 Điểm kiểm tra lần 1</th>
+              <th style={{ padding: isSlideshow ? '1.8vh 1.5vw' : '0.85rem 1.2rem' }}>💻 Làm bài tập</th>
+              <th style={{ padding: isSlideshow ? '1.8vh 1.5vw' : '0.85rem 1.2rem', background: 'rgba(99, 102, 241, 0.05)', color: 'var(--primary)', fontWeight: 'bold' }}>🎯 Kết quả</th>
             </tr>
           </thead>
           <tbody>
             <tr style={{ background: '#ffffff' }}>
-              <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem' }}>
-                <span className={`badge ${record['Chuyên cần'] === 'Đi học đủ' ? 'success' : record['Chuyên cần'] === 'Thỉnh thoảng vắng' ? 'warning' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.8vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+              <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '0.9rem' }}>
+                <span className={`badge ${record['Chuyên cần'] === 'Đi học đủ' ? 'success' : record['Chuyên cần'] === 'Thỉnh thoảng vắng' ? 'warning' : 'danger'}`} style={{ fontSize: isSlideshow ? '2.2vh' : '1rem', padding: '0.45em 1em' }}>
                   {record['Chuyên cần']}
                 </span>
               </td>
-              <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem' }}>
-                <span className={`badge ${record['Điểm kiểm tra lần 1'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.8vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+              <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '0.9rem' }}>
+                <span className={`badge ${record['Điểm kiểm tra lần 1'] === '>=5' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '2.2vh' : '1rem', padding: '0.45em 1em' }}>
                   {record['Điểm kiểm tra lần 1']}
                 </span>
               </td>
-              <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem' }}>
-                <span className={`badge ${record['Làm bài tập'] === 'Có' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '1.8vh' : '0.8rem', padding: '0.4em 0.9em' }}>
+              <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '0.9rem' }}>
+                <span className={`badge ${record['Làm bài tập'] === 'Có' ? 'success' : 'danger'}`} style={{ fontSize: isSlideshow ? '2.2vh' : '1rem', padding: '0.45em 1em' }}>
                   {record['Làm bài tập']}
                 </span>
               </td>
-              <td style={{ padding: isSlideshow ? '1.8vh 1vw' : '0.75rem', fontWeight: 'bold', background: 'rgba(99, 102, 241, 0.02)' }}>
-                <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontWeight: 'normal', fontSize: isSlideshow ? '1.8vh' : '0.85rem' }}>❓ Cần dự đoán</span>
+              <td style={{ padding: isSlideshow ? '2vh 1.5vw' : '0.9rem', fontWeight: 'bold', background: 'rgba(99, 102, 241, 0.02)' }}>
+                <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontWeight: 'normal', fontSize: isSlideshow ? '2.2vh' : '1rem' }}>❓ Cần dự đoán</span>
               </td>
             </tr>
           </tbody>
@@ -4940,6 +5418,9 @@ function App() {
         {/* Slideshow view takeover */}
         {renderSlideshowOverlay()}
 
+        {/* Dedicated high-res A4 Landscape Print Engine (hidden on screen, only rendered for print) */}
+        <PrintAllSlides dataset={dataset} />
+
         {/* Classroom Header */}
         <header className="app-header">
           <div className="brand">
@@ -4953,6 +5434,16 @@ function App() {
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+            <button
+              type="button"
+              className="btn btn-sm"
+              style={{ background: '#ecfdf5', color: '#059669', borderColor: '#a7f3d0', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+              onClick={() => window.print()}
+              title="Xuất file PDF hoặc In toàn bộ 29 slide bài giảng chuẩn A4 ngang"
+            >
+              🖨️ In bài giảng (PDF)
+            </button>
+
             <div className="user-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
                 <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>{user.fullname}</span>
@@ -5023,6 +5514,14 @@ function App() {
                 }}
               >
                 🎬 Mở Trình Chiếu (Slideshow)
+              </button>
+              <button
+                className="btn"
+                style={{ background: '#ecfdf5', color: '#059669', borderColor: '#a7f3d0', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}
+                onClick={() => window.print()}
+                title="Xuất file PDF hoặc In toàn bộ 29 slide bài giảng chuẩn A4 ngang"
+              >
+                🖨️ In / Xuất PDF toàn bộ Slide
               </button>
               <button className="btn" onClick={handlePrevSlide} disabled={classState.activeSlideIndex === 0}>
                 ◀ Trước
@@ -5098,15 +5597,15 @@ function App() {
                     {/* Questions screen (standard view) */}
                     {currentSlide.type === 'question' && (
                       <div style={{ marginTop: '1.5rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                          <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.15rem', margin: 0 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
+                          <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.35rem', lineHeight: '1.5', margin: 0 }}>
                             {currentSlide.question.text}
                           </p>
                           {isTeacher && !classState.isRevealed && (
                             <button
                               type="button"
                               className="btn"
-                              style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
+                              style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1rem' }}
                               onClick={handleRevealAnswer}
                             >
                               👁️ Hiện đáp án
@@ -5117,7 +5616,7 @@ function App() {
                         {currentSlide.question.record && renderRecordTable(currentSlide.question.record, false)}
 
                         {currentSlide.stage === 'engage' && !classState.isRevealed ? (
-                          <div style={{ padding: '1rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem' }}>
+                          <div style={{ padding: '1.25rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem', fontSize: '1.15rem' }}>
                             ❓ Trả lời câu hỏi thực tế tại lớp.
                           </div>
                         ) : (
@@ -5208,15 +5707,15 @@ function App() {
                   {/* Questions screen (standard view) */}
                   {currentSlide.type === 'question' && (
                     <div style={{ marginTop: '1.5rem' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                        <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.15rem', margin: 0 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
+                        <p style={{ fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1.35rem', lineHeight: '1.5', margin: 0 }}>
                           {currentSlide.question.text}
                         </p>
                         {isTeacher && !classState.isRevealed && (
                           <button
                             type="button"
                             className="btn"
-                            style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold' }}
+                            style={{ background: 'var(--warning)', color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1rem' }}
                             onClick={handleRevealAnswer}
                           >
                             👁️ Hiện đáp án
@@ -5227,7 +5726,7 @@ function App() {
                       {currentSlide.question.record && renderRecordTable(currentSlide.question.record, false)}
 
                       {currentSlide.stage === 'engage' && !classState.isRevealed ? (
-                        <div style={{ padding: '1rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem' }}>
+                        <div style={{ padding: '1.25rem', background: '#f8fafc', border: '1px dashed var(--border-color)', borderRadius: '0.5rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem', fontSize: '1.15rem' }}>
                           ❓ Trả lời câu hỏi thực tế tại lớp.
                         </div>
                       ) : (

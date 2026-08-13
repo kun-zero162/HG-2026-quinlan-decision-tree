@@ -1174,16 +1174,16 @@ body {
 .quiz-options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5vh 2vw;
-  margin-top: 1vh;
+  gap: 2vh 2vw;
+  margin-top: 1.8vh;
   width: 100%;
 }
 
 .quiz-options-grid-teacher {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5vh 2vw;
-  margin-top: 1.5vh;
+  gap: 2vh 2vw;
+  margin-top: 1.8vh;
   width: 100%;
 }
 
@@ -1191,10 +1191,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2vh 1.8vw;
+  padding: 1.6vh 2vw;
   border: 1.5px solid var(--border-color);
-  border-radius: 0.75rem;
-  font-size: 2.2vh;
+  border-radius: 0.875rem;
+  font-size: 2.8vh;
   font-weight: 600;
   transition: all 0.4s ease;
 }
@@ -1234,17 +1234,17 @@ body {
 
 /* Adjust option btn sizes specifically for slideshow mode */
 .slideshow-overlay .quiz-option-btn {
-  padding: 1.2vh 1.5vw;
-  font-size: 2.1vh;
-  gap: 0.75vw;
-  border-radius: 0.5rem;
+  padding: 1.6vh 2vw;
+  font-size: 2.8vh;
+  gap: 1vw;
+  border-radius: 0.875rem;
   margin: 0;
 }
 
 .slideshow-overlay .option-letter {
-  width: 3.5vh;
-  height: 3.5vh;
-  font-size: 1.8vh;
+  width: 4.5vh;
+  height: 4.5vh;
+  font-size: 2.2vh;
 }
 
 .rules-container {
@@ -1628,4 +1628,217 @@ body {
 
 .svg-arrow-head-dashed {
   fill: #8b5cf6;
+}
+
+/* ==========================================================================
+   PRINT / PDF EXPORT ALL 29 SLIDES SYSTEM (A4 / 16:9 Landscape)
+   ========================================================================== */
+.print-slides-container {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1e293b !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    overflow: visible !important;
+  }
+
+  /* Hide regular UI elements when printing */
+  .app-header,
+  .gv-controls-panel,
+  .content-grid,
+  .slideshow-overlay,
+  .modal-overlay,
+  .login-wrapper,
+  .landing-navbar,
+  .btn,
+  header,
+  footer,
+  .countdown-timer-box,
+  .countdown-digits,
+  .timer-control-row {
+    display: none !important;
+  }
+
+  /* Show only the dedicated 29 slides container */
+  .print-slides-container {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-slide-page {
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 2.2vh 3.5vw !important;
+    background: #ffffff !important;
+    border: none !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .print-slide-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 2px solid #6366f1 !important;
+    padding-bottom: 0.8vh !important;
+    margin-bottom: 1.5vh !important;
+    width: 100% !important;
+  }
+
+  .print-slide-title {
+    font-size: 2.4vh !important;
+    font-weight: 800 !important;
+    color: #1e293b !important;
+    margin: 0 !important;
+  }
+
+  .print-stage-tag {
+    background: #eef2ff !important;
+    color: #4f46e5 !important;
+    padding: 0.4vh 0.8vw !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    font-size: 1.6vh !important;
+    margin-right: 1vw !important;
+    border: 1px solid #c7d2fe !important;
+    text-transform: uppercase !important;
+    display: inline-block !important;
+  }
+
+  .print-slide-num {
+    font-weight: 700 !important;
+    font-size: 1.8vh !important;
+    color: #64748b !important;
+    white-space: nowrap !important;
+  }
+
+  .print-slide-body {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-split-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 3vw !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-left-col {
+    flex: 0 0 42% !important;
+    width: 42% !important;
+    max-width: 42% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    font-size: 1.8vh !important;
+    line-height: 1.5 !important;
+  }
+
+  .print-right-col {
+    flex: 0 0 55% !important;
+    width: 55% !important;
+    max-width: 55% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-right-col svg,
+  .print-right-col .tree-svg-standard,
+  .print-right-col .tree-svg-slideshow,
+  .print-right-col .tree-svg-print {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 72vh !important;
+    display: block !important;
+  }
+
+  .print-right-col .tree-wrapper-standard,
+  .print-right-col .tree-wrapper-slideshow,
+  .print-right-col .tree-wrapper-print {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 72vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .print-content-full {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-slide-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding-top: 0.6vh !important;
+    margin-top: 1vh !important;
+    font-size: 1.4vh !important;
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    width: 100% !important;
+  }
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 
-function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeState: propTreeState }) {
+function DecisionTreeSVG({ highlightRecord, isSlideshow, isPrint, activeSlideIndex, treeState: propTreeState }) {
   // Determine tree build state based on activeSlideIndex or direct prop
   let treeState = 'full';
   if (propTreeState) {
     treeState = propTreeState;
   } else if (activeSlideIndex !== undefined) {
-    if (activeSlideIndex >= 14 && activeSlideIndex <= 19) {
+    if (activeSlideIndex >= 17 && activeSlideIndex <= 18) {
       treeState = 'elaborate-1';
-    } else if (activeSlideIndex >= 20 && activeSlideIndex <= 23) {
+    } else if (activeSlideIndex === 19) {
       treeState = 'elaborate-2';
-    } else if (activeSlideIndex >= 24 && activeSlideIndex <= 26) {
+    } else if (activeSlideIndex === 20) {
       treeState = 'elaborate-3';
     }
   }
@@ -20,14 +20,16 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
   const activeNodes = new Set();
   const activeLinks = new Set();
 
-  if ((activeSlideIndex === 17 || activeSlideIndex === 18) && treeState === 'elaborate-2') {
+  if (activeSlideIndex === 18 && treeState === 'elaborate-2') {
+    // Slide 19 revealed: highlight left sub-branch (>=5 -> Đạt)
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
     activeNodes.add('node-diem-left');
     activeLinks.add('diem-left-left');
     activeNodes.add('leaf-kha-1');
-  } else if ((activeSlideIndex === 18 || activeSlideIndex === 19) && treeState === 'elaborate-3') {
+  } else if (activeSlideIndex === 19 && treeState === 'elaborate-3') {
+    // Slide 20 revealed: highlight entire left branch (<5 -> Làm bài tập -> Đạt / Không đạt)
     hasCustomHighlight = true;
     activeNodes.add('root');
     activeLinks.add('root-left');
@@ -40,7 +42,8 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     activeNodes.add('leaf-tb-2');
     activeLinks.add('baitap-right');
     activeNodes.add('leaf-fail-3');
-  } else if ((activeSlideIndex === 19 || activeSlideIndex === 20) && treeState === 'full') {
+  } else if (activeSlideIndex === 20 && treeState === 'full') {
+    // Slide 21 revealed: highlight entire tree completed
     hasCustomHighlight = true;
     // Add all nodes to light up the entire tree
     activeNodes.add('root');
@@ -124,11 +127,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           />
           <text
             x={x}
-            y={y + 6}
+            y={y + 7}
             textAnchor="middle"
             fill={isActive ? '#1e293b' : '#94a3b8'}
             fontWeight="bold"
-            fontSize="18px"
+            fontSize="20px"
           >
             {label}
           </text>
@@ -151,11 +154,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           />
           <text
             x={x}
-            y={y + 7}
+            y={y + 8}
             textAnchor="middle"
             fill="#64748b"
             fontWeight="bold"
-            fontSize="22px"
+            fontSize="24px"
           >
             {nodeText}
           </text>
@@ -165,7 +168,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
                 x={x - 100}
                 y={y + 46}
                 width={200}
-                height={24}
+                height={26}
                 rx={4}
                 fill="#fef2f2"
                 stroke="#fca5a5"
@@ -173,11 +176,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
               />
               <text
                 x={x}
-                y={y + 62}
+                y={y + 63}
                 textAnchor="middle"
                 fill="#ef4444"
                 fontWeight="bold"
-                fontSize="13px"
+                fontSize="14px"
               >
                 {subText}
               </text>
@@ -186,7 +189,7 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
         </g>
       );
     } else {
-      // Leaf node drawn as rounded rect (capsule) - Enlarged
+      // Leaf node drawn as rounded rect (capsule) - Optimized width to prevent clipping
       const isKha = label === 'Giỏi' || label === 'Khá giỏi' || label === 'Lên lớp' || label === 'Đạt';
       const isTb = label === 'Trung bình khá';
       const isRot = label === 'Không đạt' || label === 'Rớt môn' || label === 'Không lên lớp';
@@ -205,11 +208,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
       return (
         <g key={id}>
           <rect
-            x={x - 90}
-            y={y - 30}
-            width={180}
-            height={60}
-            rx={30}
+            x={x - 70}
+            y={y - 28}
+            width={140}
+            height={56}
+            rx={28}
             fill={isActive ? activeBg : '#ffffff'}
             stroke={isActive ? activeColor : '#e2e8f0'}
             strokeWidth={isActive ? 3 : 2}
@@ -217,11 +220,11 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           />
           <text
             x={x}
-            y={y + 6}
+            y={y + 7}
             textAnchor="middle"
             fill={isActive ? activeColor : '#94a3b8'}
             fontWeight="bold"
-            fontSize="18px"
+            fontSize="20px"
           >
             {label}
           </text>
@@ -249,10 +252,10 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
         />
         <rect
           x={midX - labelWidth / 2}
-          y={midY - 12}
+          y={midY - 13}
           width={labelWidth}
-          height={24}
-          rx={4}
+          height={26}
+          rx={5}
           fill="#ffffff"
           stroke={isActive ? '#8b5cf6' : '#cbd5e1'}
           strokeWidth={1}
@@ -262,8 +265,8 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
           y={midY + 5}
           textAnchor="middle"
           fill={isActive ? '#8b5cf6' : '#94a3b8'}
-          fontSize="12px"
-          fontWeight={isActive ? 'bold' : 'normal'}
+          fontSize="14px"
+          fontWeight={isActive ? 'bold' : '600'}
         >
           {label}
         </text>
@@ -271,32 +274,34 @@ function DecisionTreeSVG({ highlightRecord, isSlideshow, activeSlideIndex, treeS
     );
   };
 
+  const isFullOrPrint = isSlideshow || isPrint;
+
   return (
-    <div className={isSlideshow ? "tree-wrapper-slideshow" : "tree-wrapper-standard"}>
-      <svg viewBox="20 0 1080 800" className={isSlideshow ? "tree-svg-slideshow" : "tree-svg-standard"} {...(!isSlideshow ? { width: 1080, height: 800 } : {})}>
+    <div className={isPrint ? "tree-wrapper-print" : isSlideshow ? "tree-wrapper-slideshow" : "tree-wrapper-standard"}>
+      <svg viewBox="0 0 1080 800" className={isPrint ? "tree-svg-print" : isSlideshow ? "tree-svg-slideshow" : "tree-svg-standard"} {...(!isFullOrPrint ? { width: 1080, height: 800 } : {})}>
         {/* Links */}
-        {renderLink('root-left', 560, 80, 240, 280, 'Đi học đủ', 75, { x: -25, y: -10 }, 45, (treeState === 'elaborate-1' ? 40 : 45))}
-        {renderLink('root-middle', 560, 80, 660, 280, 'Thỉnh thoảng vắng', 125, { x: 10, y: 15 }, 45, (treeState === 'full' ? 45 : 40))}
-        {renderLink('root-right', 560, 80, 960, 280, 'Thường xuyên vắng', 130, { x: 35, y: -10 }, 45, 30)}
+        {renderLink('root-left', 560, 80, 240, 280, 'Đi học đủ', 85, { x: -25, y: -10 }, 45, (treeState === 'elaborate-1' ? 40 : 45))}
+        {renderLink('root-middle', 560, 80, 660, 280, 'Thỉnh thoảng vắng', 145, { x: 10, y: 15 }, 45, (treeState === 'full' ? 45 : 40))}
+        {renderLink('root-right', 560, 80, 960, 280, 'Thường xuyên vắng', 150, { x: 35, y: -10 }, 45, 28)}
 
         {treeState !== 'elaborate-1' && (
           <>
-            {renderLink('diem-left-left', 240, 280, 110, 480, '≥5', 45, { x: -15, y: 0 }, 45, 30)}
-            {renderLink('diem-left-right', 240, 280, 360, 480, '<5', 45, { x: 15, y: 0 }, 45, (treeState === 'elaborate-3' || treeState === 'full' ? 45 : 40))}
+            {renderLink('diem-left-left', 240, 280, 110, 480, '≥5', 48, { x: -15, y: 0 }, 45, 28)}
+            {renderLink('diem-left-right', 240, 280, 360, 480, '<5', 48, { x: 15, y: 0 }, 45, (treeState === 'elaborate-3' || treeState === 'full' ? 45 : 40))}
           </>
         )}
 
         {treeState === 'full' && (
           <>
-            {renderLink('diem-mid-left', 660, 280, 560, 480, '≥5', 45, { x: -15, y: 0 }, 45, 30)}
-            {renderLink('diem-mid-right', 660, 280, 760, 480, '<5', 45, { x: 15, y: 0 }, 45, 30)}
+            {renderLink('diem-mid-left', 660, 280, 560, 480, '≥5', 48, { x: -15, y: 0 }, 45, 28)}
+            {renderLink('diem-mid-right', 660, 280, 760, 480, '<5', 48, { x: 15, y: 0 }, 45, 28)}
           </>
         )}
 
         {(treeState === 'elaborate-3' || treeState === 'full') && (
           <>
-            {renderLink('baitap-left', 360, 480, 250, 680, 'Có', 45, { x: -15, y: 0 }, 45, 30)}
-            {renderLink('baitap-right', 360, 480, 470, 680, 'Không', 55, { x: 15, y: 0 }, 45, 30)}
+            {renderLink('baitap-left', 360, 480, 250, 680, 'Có', 48, { x: -15, y: 0 }, 45, 28)}
+            {renderLink('baitap-right', 360, 480, 470, 680, 'Không', 62, { x: 15, y: 0 }, 45, 28)}
           </>
         )}
 
